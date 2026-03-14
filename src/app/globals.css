@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap');
+
+@keyframes float1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+@keyframes float2 { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-8px) rotate(2deg)} }
+@keyframes scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+@keyframes blob { 0%,100%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%} 50%{border-radius:30% 60% 70% 40%/50% 60% 30% 60%} }
+@keyframes pulse-ring { 0%{transform:scale(1);opacity:.6} 100%{transform:scale(1.4);opacity:0} }
+
+.anim-float1 { animation: float1 4s ease-in-out infinite; }
+.anim-float2 { animation: float2 5s ease-in-out infinite; }
+.logo-scroll { animation: scroll 25s linear infinite; }
+.logo-scroll:hover { animation-play-state: paused; }
+.anim-blob { animation: blob 8s ease-in-out infinite; }
+.pulse-ring::after { content:''; position:absolute; inset:-4px; border-radius:inherit; border:2px solid #703b95; animation: pulse-ring 2s ease-out infinite; }
+
+* { scroll-behavior: smooth; }
+body { -webkit-font-smoothing: antialiased; }
+
+.tilt-card { transition: transform 0.15s ease-out; transform-style: preserve-3d; }
+
+.mega-menu { opacity:0; visibility:hidden; transform:translateX(-50%) translateY(8px); transition: all .2s ease; }
+.nav-item:hover .mega-menu { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
+.nav-item:hover .chevron { transform: rotate(180deg); }
+
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+.fade-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-left.visible { opacity: 1; transform: translateX(0); }
+.fade-right { opacity: 0; transform: translateX(40px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-right.visible { opacity: 1; transform: translateX(0); }
+.scale-in { opacity: 0; transform: scale(0.92); transition: opacity 0.5s ease, transform 0.5s ease; }
+.scale-in.visible { opacity: 1; transform: scale(1); }
+.stagger-child { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.stagger-child.visible { opacity: 1; transform: translateY(0); }

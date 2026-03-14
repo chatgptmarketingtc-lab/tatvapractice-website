@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zyvelor AI — TatvaCare's AI Centre of Excellence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  /* ============ RESET & BASE ============ */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Mulish', sans-serif; color: #000;
+    background: #ffffff; -webkit-font-smoothing: antialiased;
+  }
+
+  :root {
+    --bg: #f6f0fb;
+    --white: #ffffff;
+    --a1: #703b95;
+    --a2: #442c84;
+    --a3: #a19fcf;
+    --black: #000000;
+    --g6: #3a3a4a;
+    --g4: #6a6a7a;
+    --g3: #8a8a9a;
+    --g2: #d0d0da;
+    --g1: #f5f5f8;
+    --max: 1140px;
+  }
+
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+
+  /* ============ NAV ============ */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,.92); backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,.04);
+  }
+  .nav-inner {
+    max-width: var(--max); margin: 0 auto; padding: 0 32px;
+    display: flex; align-items: center; justify-content: space-between; height: 64px;
+  }
+  .nav-logo { text-decoration: none; display: inline-flex; align-items: center; }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    font-size: 13.5px; font-weight: 600; color: var(--g6); text-decoration: none;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--a1); }
+  .nav-links .dropdown { position: relative; cursor: pointer; }
+  .nav-links .dropdown::after { content: ' ▾'; font-size: 10px; color: var(--g3); }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 28px; border-radius: 8px; font-family: 'Mulish', sans-serif;
+    font-size: 13.5px; font-weight: 700; text-decoration: none; border: none;
+    cursor: pointer; transition: all .2s ease;
+  }
+  .btn-p { background: var(--a1); color: #fff; }
+  .btn-p:hover { background: var(--a2); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(112,59,149,.25); }
+  .btn-o { background: transparent; color: var(--a1); border: 2px solid rgba(112,59,149,.2); }
+  .btn-o:hover { background: rgba(112,59,149,.04); border-color: var(--a1); }
+  .btn-w { background: #fff; color: var(--a2); }
+  .btn-w:hover { background: #f8f4fc; }
+  .nav-cta { padding: 9px 22px; font-size: 12.5px; border-radius: 6px; color: #fff !important; }
+
+  /* ============ MEGA MENU ============ */
+  .nav-item { position: relative; }
+  .nav-item > a {
+    font-size: 13.5px; font-weight: 600; color: var(--g6); text-decoration: none;
+    transition: color .2s; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;
+    padding: 20px 0;
+  }
+  .nav-item > a:hover { color: var(--a1); }
+  .nav-item > a .chevron {
+    font-size: 9px; color: var(--g3); transition: transform .2s;
+  }
+  .nav-item:hover > a .chevron { transform: rotate(180deg); }
+  .nav-item:hover > a { color: var(--a1); }
+
+  /* The dropdown panel */
+  .mega-menu {
+    position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+    width: 720px; background: var(--white);
+    border-radius: 14px; box-shadow: 0 20px 60px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.04);
+    border: 1px solid rgba(0,0,0,.05);
+    padding: 0; opacity: 0; visibility: hidden;
+    transition: opacity .2s ease, transform .2s ease, visibility .2s;
+    transform: translateX(-50%) translateY(8px);
+    z-index: 200;
+  }
+  .nav-item:hover .mega-menu {
+    opacity: 1; visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+  /* Invisible bridge to prevent hover gap */
+  .mega-menu::before {
+    content: ''; position: absolute; top: -16px; left: 0; right: 0; height: 16px;
+  }
+
+  .mega-inner {
+    display: grid; grid-template-columns: 280px 1fr; min-height: 280px;
+  }
+
+  /* Left: Featured section */
+  .mega-featured {
+    background: var(--g1); border-radius: 14px 0 0 14px;
+    padding: 28px 24px; display: flex; flex-direction: column; justify-content: center;
+  }
+  .mega-featured-visual {
+    width: 100%; height: 120px; border-radius: 10px; margin-bottom: 16px;
+    background: linear-gradient(135deg, #ede6f6, #d8ccf0);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .mega-featured-visual .mfv-icon {
+    font-size: 48px; opacity: .4;
+  }
+  .mega-featured h4 {
+    font-size: 17px; font-weight: 900; color: var(--black); line-height: 1.25; margin-bottom: 8px;
+  }
+  .mega-featured h4 em {
+    font-style: normal; color: var(--a1);
+  }
+  .mega-featured p {
+    font-size: 12px; color: var(--g4); line-height: 1.6; margin-bottom: 14px;
+  }
+  .mega-featured-link {
+    font-size: 12px; font-weight: 700; color: var(--a1); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .mega-featured-link:hover { color: var(--a2); gap: 8px; }
+
+  /* Right: Nav links */
+  .mega-links {
+    padding: 24px 28px;
+  }
+  .mega-links-label {
+    font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--g3); margin-bottom: 16px;
+  }
+  .mega-link-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 12px 14px; border-radius: 10px; text-decoration: none;
+    transition: background .15s;
+    margin-bottom: 2px;
+  }
+  .mega-link-item:hover { background: var(--g1); }
+  .mega-link-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+    background: rgba(112,59,149,.06);
+  }
+  .mega-link-text h5 {
+    font-size: 13.5px; font-weight: 800; color: var(--black); margin-bottom: 2px;
+  }
+  .mega-link-text p {
+    font-size: 11.5px; color: var(--g4); line-height: 1.45;
+  }
+
+  /* ============ HERO (Dark background) ============ */
+  .hero {
+    padding: 140px 0 80px;
+    background: linear-gradient(170deg, #1a1230 0%, #2d1a54 50%, var(--a2) 100%);
+    color: #fff; overflow: hidden;
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+  }
+  .hero-content { max-width: 540px; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(161,159,207,.15); color: var(--a3);
+    font-size: 11px; font-weight: 800; padding: 6px 14px; border-radius: 20px;
+    margin-bottom: 24px; letter-spacing: .6px; text-transform: uppercase;
+  }
+  .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--a3); }
+  .hero h1 {
+    font-size: 46px; font-weight: 900; line-height: 1.1;
+    color: #fff; margin-bottom: 20px; letter-spacing: -1.2px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--a3), #e0ddf5);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero .sub {
+    font-size: 16.5px; color: rgba(255,255,255,.75); line-height: 1.7;
+    margin-bottom: 36px; font-weight: 400;
+  }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-zy { background: rgba(255,255,255,.08); color: #fff; border: 1px solid rgba(255,255,255,.12); }
+  .btn-zy:hover { background: rgba(255,255,255,.14); }
+  .btn-zyp { background: var(--a3); color: var(--a2); }
+  .btn-zyp:hover { background: #b5b3db; }
+
+  /* Hero visual — agent grid */
+  .hero-visual {
+    position: relative;
+  }
+  .hero-mockup {
+    background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06);
+    border-radius: 16px; padding: 28px; position: relative; overflow: hidden;
+  }
+  .agent-grid-visual {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  }
+  .agent-item {
+    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.06);
+    border-radius: 10px; padding: 14px 12px; text-align: center;
+  }
+  .agent-icon { font-size: 24px; margin-bottom: 8px; }
+  .agent-name { font-size: 11px; font-weight: 800; color: var(--a3); margin-bottom: 3px; }
+  .agent-desc { font-size: 9px; color: rgba(255,255,255,.4); line-height: 1.3; }
+  .center-badge {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, var(--a1), var(--a2));
+    color: #fff; font-size: 10px; font-weight: 800; letter-spacing: .5px;
+    padding: 10px 18px; border-radius: 20px; z-index: 2;
+    box-shadow: 0 4px 24px rgba(112,59,149,.4);
+    white-space: nowrap;
+  }
+
+  /* ============ DATA FLYWHEEL ============ */
+  .flywheel {
+    background: var(--white); padding: 100px 0;
+  }
+  .fw-header { text-align: center; margin-bottom: 56px; }
+  .fw-label {
+    font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--a1); margin-bottom: 12px;
+  }
+  .fw-title { font-size: 34px; font-weight: 900; color: var(--black); margin-bottom: 14px; letter-spacing: -.5px; }
+  .fw-sub { font-size: 15px; color: var(--g6); max-width: 540px; margin: 0 auto; line-height: 1.7; }
+
+  .fw-visual {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; align-items: center; margin-top: 48px;
+    position: relative;
+  }
+  .fw-step {
+    text-align: center;
+  }
+  .fw-step-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--a1), var(--a2));
+    color: #fff; font-size: 20px; font-weight: 900; margin-bottom: 16px;
+  }
+  .fw-step h3 { font-size: 18px; font-weight: 800; color: var(--black); margin-bottom: 8px; }
+  .fw-step p { font-size: 13px; color: var(--g4); line-height: 1.6; }
+
+  /* Arrows connecting steps */
+  .fw-arrow {
+    position: absolute; top: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--a3), transparent);
+  }
+  .fw-arrow-1 { width: 100%; left: 0; top: 28px; }
+
+  /* ============ AGENT CATEGORIES (Alternating layout) ============ */
+  .categories { padding: 100px 0; }
+  .cat-section { padding: 80px 0; }
+  .cat-section:nth-child(even) { background: var(--g1); }
+  .cat-section:nth-child(odd) { background: var(--white); }
+  .cat-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+  }
+  .cat-grid.reverse .cat-visual { order: 2; }
+  .cat-grid.reverse .cat-text { order: 1; }
+
+  .cat-label {
+    font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--a1); margin-bottom: 14px;
+  }
+  .cat-title { font-size: 32px; font-weight: 900; line-height: 1.15; color: var(--black); margin-bottom: 16px; letter-spacing: -.5px; }
+  .cat-body { font-size: 15px; color: var(--g6); line-height: 1.75; margin-bottom: 24px; }
+  .cat-items { list-style: none; margin-bottom: 28px; }
+  .cat-items li {
+    font-size: 14px; color: var(--g6); padding: 10px 0 10px 24px;
+    position: relative; line-height: 1.6;
+  }
+  .cat-items li::before {
+    content: '✓'; position: absolute; left: 0; top: 10px;
+    color: var(--a1); font-weight: 900; font-size: 13px;
+  }
+
+  .cat-visual {
+    background: linear-gradient(135deg, #f8f4fc 0%, #ede6f6 100%);
+    border-radius: 16px; padding: 40px; position: relative;
+    box-shadow: 0 2px 16px rgba(68,44,132,.04);
+    border: 1px solid rgba(112,59,149,.04);
+  }
+  .cat-card {
+    background: var(--white); border-radius: 12px; padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.04); margin-bottom: 16px;
+  }
+  .cat-card:last-child { margin-bottom: 0; }
+  .card-header {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
+    padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,.04);
+  }
+  .card-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+    background: rgba(112,59,149,.08);
+  }
+  .card-name { font-size: 13px; font-weight: 800; color: var(--black); }
+  .card-desc { font-size: 11px; color: var(--g4); }
+
+  /* ============ STANDALONE PRODUCTS ============ */
+  .standalone { background: var(--white); padding: 100px 0; }
+  .sp-header { text-align: center; margin-bottom: 56px; }
+  .sp-label {
+    font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--a1); margin-bottom: 12px;
+  }
+  .sp-title { font-size: 34px; font-weight: 900; color: var(--black); margin-bottom: 14px; }
+
+  .sp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .sp-card {
+    background: var(--g1); border-radius: 14px; padding: 36px;
+    border: 1px solid rgba(0,0,0,.02); transition: all .25s;
+  }
+  .sp-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(68,44,132,.07); }
+  .sp-tag {
+    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+    color: var(--a1); margin-bottom: 12px; display: inline-block;
+  }
+  .sp-card h3 { font-size: 22px; font-weight: 900; color: var(--black); margin-bottom: 12px; }
+  .sp-card p { font-size: 14px; color: var(--g6); line-height: 1.7; margin-bottom: 24px; }
+  .sp-features { list-style: none; }
+  .sp-features li {
+    font-size: 13px; color: var(--g6); padding: 8px 0 8px 24px;
+    position: relative; line-height: 1.6;
+  }
+  .sp-features li::before {
+    content: '→'; position: absolute; left: 0; top: 8px;
+    color: var(--a1); font-weight: 800; font-size: 14px;
+  }
+
+  /* ============ CLIENT LOGOS / TRUST BAR ============ */
+  .logos {
+    padding: 40px 0;
+    background: var(--white);
+    border-top: 1px solid rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.03);
+  }
+  .logos-label {
+    text-align: center; font-size: 12px; font-weight: 600;
+    color: var(--g3); letter-spacing: .5px; margin-bottom: 24px;
+  }
+  .logos-track {
+    display: flex; align-items: center; justify-content: center;
+    gap: 48px; flex-wrap: wrap; overflow: hidden;
+  }
+  .logo-item {
+    font-size: 16px; font-weight: 800; color: var(--g2);
+    letter-spacing: .3px; white-space: nowrap;
+    opacity: .5; transition: opacity .3s;
+  }
+  .logo-item:hover { opacity: .8; }
+
+  /* ============ STATS ============ */
+  .stats { background: var(--g1); padding: 80px 0; }
+  .stats-header { text-align: center; margin-bottom: 56px; }
+  .stats-title { font-size: 34px; font-weight: 900; color: var(--black); margin-bottom: 14px; }
+  .stats-sub { font-size: 15px; color: var(--g6); }
+
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .stat-card {
+    text-align: center; background: var(--white); border-radius: 14px;
+    padding: 32px 16px; border: 1px solid rgba(0,0,0,.02);
+  }
+  .stat-num { font-size: 36px; font-weight: 900; color: var(--a2); letter-spacing: -1px; margin-bottom: 4px; }
+  .stat-lbl { font-size: 13px; color: var(--g4); font-weight: 600; line-height: 1.5; }
+
+  /* ============ CTA ============ */
+  .cta {
+    background: linear-gradient(135deg, var(--a1), var(--a2));
+    text-align: center; padding: 80px 0;
+  }
+  .cta h2 { font-size: 34px; font-weight: 900; color: #fff; margin-bottom: 14px; letter-spacing: -.3px; }
+  .cta p { font-size: 15px; color: rgba(255,255,255,.65); margin-bottom: 32px; max-width: 460px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+  .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .cta .btn-w { padding: 14px 32px; }
+
+  /* ============ FOOTER ============ */
+  footer { background: #130f24; color: rgba(255,255,255,.4); padding: 56px 0 28px; }
+  .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 28px; margin-bottom: 36px; }
+  .foot-brand .fl { font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 8px; }
+  .foot-brand .fl span { color: var(--a3); }
+  .foot-brand p { font-size: 11px; line-height: 1.6; }
+  .foot-col h5 { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: var(--a3); margin-bottom: 12px; }
+  .foot-col a { display: block; font-size: 12px; color: rgba(255,255,255,.4); text-decoration: none; padding: 3px 0; transition: color .2s; }
+  .foot-col a:hover { color: #fff; }
+  .foot-bottom {
+    border-top: 1px solid rgba(255,255,255,.05); padding-top: 20px;
+    display: flex; justify-content: space-between; font-size: 10px;
+  }
+  .foot-bottom a { color: rgba(255,255,255,.3); text-decoration: none; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px) {
+    .mega-menu { display: none; }
+    .nav-item > a .chevron { display: none; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 34px; }
+    .fw-visual { grid-template-columns: 1fr; }
+    .fw-arrow { display: none; }
+    .cat-grid { grid-template-columns: 1fr; gap: 36px; }
+    .cat-grid.reverse .cat-visual { order: 1; }
+    .cat-grid.reverse .cat-text { order: 2; }
+    .sp-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+    .logos-track { gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <div class="nav-inner">
+    <a href="homepage-v3.html" class="nav-logo"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 3600 648" style="height:28px;width:auto;display:block;"><defs><style>.tc1{fill:url(#lg)}.tc2{fill:#4b4ad5}</style><linearGradient id="lg" x1="2711.5" y1="902.59" x2="1117.71" y2="-213.4" gradientUnits="userSpaceOnUse"><stop offset=".09" stop-color="#b122ff"/><stop offset=".24" stop-color="#9f28f7"/><stop offset=".52" stop-color="#733ae5"/><stop offset=".75" stop-color="#4b4ad5"/></linearGradient></defs><path class="tc2" d="M1072.99,165.85v-51.02c0-14.16-10.7-26-22.79-24.67-40.93,4.5-62.06,22.04-70.14,28.8v-41.19c0-17.48-5.25-31.14-20.23-31.14h-52.5v184.18c-24.24-15.77-34.23-28.47-55.18-37.4-22.94-9.77-57.8-13.87-76.35-10.26-6.1,1.18-17.97,6.49-26.05,26.2v49.52c44.44-8.29,74.15,11.67,88.67,18.79,14.53,7.11,29.84,17.25,40.61,29.82,8.61,10.06,14.96,21.75,20.59,34.64,6.41-30.04,18.74-68.36,49.2-103.63,77.18-85.25,124.16-72.63,124.16-72.63Z"/><path class="tc2" d="M1105.17,558.62c-.79-2.35-.27-1.86-3.2-2.32-2.38-.38-4.8-.61-7.2-.87-3.35-.37-6.72-.65-10.07-.96-2.87-.27-5.74-.55-8.6-.94-20.4-2.99-38.94-12.33-55.21-24.26-14.66-10.75-25.72-24.98-30.69-42.22-7.21-25.01-8.39-50.21-7.99-75.95.73-47.49-3.21-94.87-2.22-142.32.07-1.68-2.4-2.63-4-1.56-16.07,10.65-26.42,27.65-34.54,44.35-9.14,18.8-16.93,38.51-22.92,58.45-6.05,20.14-9.01,41.06-9.35,62.01-.34,20.79.31,42.54,5.58,62.78,1.94,7.45,3.59,15.09,7.04,22.01,15.51,31.09,38.36,59.12,68.88,77.58,23.99,14.53,51.95,22.6,80.26,22.95,10.64.13,20.92-1.2,31.43-2.73.52-.08,2.03-.51,2.03-.51"/><g><path class="tc1" d="M1116.28,298.31h-65.04c7.82-47.92,41.56-71.39,101.23-71.39,71.4,0,107.58,23.47,109.05,71.39v88.02c0,71.4-43.03,103.19-112.96,108.08-62.1,4.89-105.14-23.97-105.14-81.18,1.47-62.11,46.46-78.74,111.98-85.09,27.87-3.43,42.05-11.74,42.05-25.92-1.47-14.67-15.16-22-42.05-22-22.98,0-35.7,5.87-39.12,18.09ZM1198.43,383.4v-23.96c-15.16,6.35-32.76,11.74-51.84,15.65-25.92,4.89-39.12,17.11-39.12,36.19,1.47,20.54,12.22,30.32,32.76,30.32,36.19,0,58.19-21.51,58.19-58.19Z"/><path class="tc1" d="M1374.47,277.28h-6.85v143.27c0,10.76,6.36,16.63,19.07,16.63h20.05v49.39c-21.03,1.96-44.01,1.96-68.46-.49-24.45-2.44-36.19-17.6-35.7-46.45V156.99h33.74c17.12,0,31.3,15.65,31.3,32.76v41.08h39.12v14.19c0,18.58-14.18,32.27-32.27,32.27Z"/><path class="tc1" d="M1680.59,230.82l-91.44,258.69h-68.95l-90.96-258.69h71.89l52.32,181.43,44.99-158.44c4.89-15.16,15.65-22.99,31.79-22.99h50.37Z"/><path class="tc1" d="M1762.26,298.31h-65.04c7.83-47.92,41.57-71.39,101.23-71.39,71.4,0,107.58,23.47,109.05,71.39v88.02c0,71.4-43.03,103.19-112.96,108.08-62.11,4.89-105.14-23.97-105.14-81.18,1.47-62.11,46.46-78.74,111.98-85.09,27.87-3.43,42.06-11.74,42.06-25.92-1.47-14.67-15.16-22-42.06-22-22.98,0-35.7,5.87-39.12,18.09ZM1844.42,383.4v-23.96c-15.16,6.35-32.76,11.74-51.84,15.65-25.92,4.89-39.12,17.11-39.12,36.19,1.47,20.54,12.22,30.32,32.76,30.32,36.19,0,58.19-21.51,58.19-58.19Z"/><path class="tc1" d="M2057.14,495.38c-78.24,0-118.34-44.99-120.3-133.99,0-88.51,39.61-133.01,119.32-134.48,62.59,0,99.76,27.88,111.01,84.11h-70.91c-7.82-17.6-21.51-26.89-42.05-26.89-34.23,0-51.35,25.91-51.35,77.26s18.09,77.26,54.28,76.77c15.16,0,28.36-6.35,39.12-18.58,6.36-6.35,13.69-9.28,22.01-9.28h48.91c-11.74,52.81-49.88,86.55-110.03,85.09Z"/><path class="tc1" d="M2268.39,298.31h-65.04c7.83-47.92,41.57-71.39,101.23-71.39,71.4,0,107.58,23.47,109.05,71.39v88.02c0,71.4-43.03,103.19-112.96,108.08-62.1,4.89-105.14-23.97-105.14-81.18,1.47-62.11,46.46-78.74,111.98-85.09,27.88-3.43,42.06-11.74,42.06-25.92-1.47-14.67-15.16-22-42.06-22-22.98,0-35.7,5.87-39.12,18.09ZM2350.54,383.4v-23.96c-15.16,6.35-32.76,11.74-51.84,15.65-25.92,4.89-39.12,17.11-39.12,36.19,1.47,20.54,12.22,30.32,32.76,30.32,36.19,0,58.19-21.51,58.19-58.19Z"/><path class="tc1" d="M2444.92,356.01c1.95-83.62,46.45-125.19,133.01-125.19h9.29v67.48h-22.01c-36.19,0-54.28,19.08-54.28,56.73v134.48h-66.02v-133.51Z"/><path class="tc1" d="M2732.95,495.38c-78.25-2.45-117.36-47.93-117.36-135.95s39.61-132.03,118.34-132.53c82.16,0,120.78,50.37,115.9,151.59h-167.24c2.44,39.61,19.56,59.66,51.35,59.66,15.16,0,29.34-6.35,42.06-18.58,5.87-6.35,13.2-9.28,22.01-9.28h47.92c-14.18,54.77-49.39,85.09-112.96,85.09ZM2683.56,332.05h97.32c-3.91-34.23-20.05-51.84-47.93-51.84s-44.5,17.6-49.39,51.84Z"/></g></svg></a>
+    <div class="nav-links">
+
+      <!-- PRODUCTS dropdown -->
+      <div class="nav-item">
+        <a href="/">Products <span class="chevron">▾</span></a>
+        <div class="mega-menu">
+          <div class="mega-inner">
+            <div class="mega-featured">
+              <div class="mega-featured-visual"><span class="mfv-icon">🏥</span></div>
+              <h4>The full care continuum, <em>connected.</em></h4>
+              <p>Three products that span doctors, patients, and pharma — powered by a shared AI layer that learns from every interaction.</p>
+              <a href="products-tatvapractice.html" class="mega-featured-link">Explore all products &rarr;</a>
+            </div>
+            <div class="mega-links">
+              <div class="mega-links-label">Products</div>
+              <a href="products-tatvapractice.html" class="mega-link-item">
+                <div class="mega-link-icon">💊</div>
+                <div class="mega-link-text">
+                  <h5>TatvaPractice</h5>
+                  <p>AI-powered Cloud EMR for doctors and hospitals</p>
+                </div>
+              </a>
+              <a href="products-goodflip.html" class="mega-link-item">
+                <div class="mega-link-icon">🍎</div>
+                <div class="mega-link-text">
+                  <h5>GoodFlip</h5>
+                  <p>Health & wellness app with AI coaching</p>
+                </div>
+              </a>
+              <a href="products-evalus.html" class="mega-link-item">
+                <div class="mega-link-icon">📊</div>
+                <div class="mega-link-text">
+                  <h5>Evalus</h5>
+                  <p>Real-world evidence and clinical research</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ZYVELOR AI dropdown -->
+      <div class="nav-item">
+        <a href="#zyvelor">Zyvelor AI <span class="chevron">▾</span></a>
+        <div class="mega-menu">
+          <div class="mega-inner">
+            <div class="mega-featured">
+              <div class="mega-featured-visual" style="background: linear-gradient(135deg, #2d1a54, #442c84);"><span class="mfv-icon" style="filter: brightness(2);">🧠</span></div>
+              <h4>Healthcare-native AI, <em>in production.</em></h4>
+              <p>20+ AI agents trained on real clinical data from real Indian healthcare workflows. Not synthetic. Not simulated.</p>
+              <a href="zyvelor-ai.html" class="mega-featured-link">Learn about Zyvelor &rarr;</a>
+            </div>
+            <div class="mega-links">
+              <div class="mega-links-label">Capabilities</div>
+              <a href="zyvelor-ai.html" class="mega-link-item">
+                <div class="mega-link-icon">🎤</div>
+                <div class="mega-link-text">
+                  <h5>Voice & Clinical AI</h5>
+                  <p>VoiceRx, SnapRx, AmbientRx, multilingual input</p>
+                </div>
+              </a>
+              <a href="zyvelor-ai.html" class="mega-link-item">
+                <div class="mega-link-icon">🧬</div>
+                <div class="mega-link-text">
+                  <h5>Clinical Decision Support</h5>
+                  <p>DDx scoring, lab analysis, dose checks</p>
+                </div>
+              </a>
+              <a href="zyvelor-ai.html" class="mega-link-item">
+                <div class="mega-link-icon">📄</div>
+                <div class="mega-link-text">
+                  <h5>Document Extractor API</h5>
+                  <p>Healthcare-grade OCR, available as standalone API</p>
+                </div>
+              </a>
+              <a href="zyvelor-ai.html" class="mega-link-item">
+                <div class="mega-link-icon">📈</div>
+                <div class="mega-link-text">
+                  <h5>Velora</h5>
+                  <p>Enterprise natural language querying platform</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOLUTIONS dropdown -->
+      <div class="nav-item">
+        <a href="/">Solutions <span class="chevron">▾</span></a>
+        <div class="mega-menu">
+          <div class="mega-inner">
+            <div class="mega-featured">
+              <div class="mega-featured-visual" style="background: linear-gradient(135deg, #e8e4f4, #d8ccf0);"><span class="mfv-icon">🎯</span></div>
+              <h4>Built for <em>your world.</em></h4>
+              <p>Whether you run a clinic, manage chronic patients, lead pharma programs, or fund healthcare — we have a solution for you.</p>
+              <a href="solutions-doctors.html" class="mega-featured-link">See all solutions &rarr;</a>
+            </div>
+            <div class="mega-links">
+              <div class="mega-links-label">By Stakeholder</div>
+              <a href="solutions-doctors.html" class="mega-link-item">
+                <div class="mega-link-icon">🩺</div>
+                <div class="mega-link-text">
+                  <h5>For Doctors</h5>
+                  <p>AI-powered prescriptions, practice growth tools</p>
+                </div>
+              </a>
+              <a href="solutions-hospitals.html" class="mega-link-item">
+                <div class="mega-link-icon">🏥</div>
+                <div class="mega-link-text">
+                  <h5>For Hospitals & Clinics</h5>
+                  <p>Enterprise EMR, digital clinic infrastructure</p>
+                </div>
+              </a>
+              <a href="solutions-pharma.html" class="mega-link-item">
+                <div class="mega-link-icon">💊</div>
+                <div class="mega-link-text">
+                  <h5>For Pharma</h5>
+                  <p>PSP programs, RWE, commercial analytics</p>
+                </div>
+              </a>
+              <a href="solutions-payors.html" class="mega-link-item">
+                <div class="mega-link-icon">🏦</div>
+                <div class="mega-link-text">
+                  <h5>For Payors & Insurers</h5>
+                  <p>Benefits management, outcomes tracking, connected care</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="ecosystem-visit.html" style="font-size:13.5px; font-weight:600; color:var(--g6); text-decoration:none;">Ecosystem</a>
+      <a href="about.html" style="font-size:13.5px; font-weight:600; color:var(--g6); text-decoration:none;">About</a>
+      <a href="#cta" class="btn btn-p nav-cta">Request a Demo</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="zyvelor">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-tag">AI Centre of Excellence</div>
+        <h1>Healthcare-native AI, <br>in <em>production</em></h1>
+        <p class="sub">20+ AI agents trained on real clinical data from real Indian healthcare workflows. Built to power TatvaCare's products and available as standalone B2B services.</p>
+        <div class="hero-btns">
+          <a href="#capabilities" class="btn btn-zyp">Explore Capabilities &nbsp;→</a>
+          <a href="#cta" class="btn btn-zy">Talk to our AI team</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-mockup">
+          <div class="agent-grid-visual">
+            <div class="agent-item"><div class="agent-icon">🎤</div><div class="agent-name">Voice & Clinical</div><div class="agent-desc">VoiceRx, SnapRx, AmbientRx</div></div>
+            <div class="agent-item"><div class="agent-icon">🧬</div><div class="agent-name">Clinical Decision</div><div class="agent-desc">DDx, lab analysis, dosing</div></div>
+            <div class="agent-item"><div class="agent-icon">📄</div><div class="agent-name">Document Intelligence</div><div class="agent-desc">OCR, extraction, validation</div></div>
+            <div class="agent-item"><div class="agent-icon">🤖</div><div class="agent-name">Patient AI Agents</div><div class="agent-desc">KAIRA, diet plans, coaching</div></div>
+            <div class="agent-item"><div class="agent-icon">⚙️</div><div class="agent-name">Operations AI</div><div class="agent-desc">Scheduling, appointment booking</div></div>
+            <div class="agent-item"><div class="agent-icon">📈</div><div class="agent-name">Enterprise Analytics</div><div class="agent-desc">Velora NLQ, analytics, targeting</div></div>
+          </div>
+          <div class="center-badge">20+ AI Agents</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DATA FLYWHEEL ============ -->
+<section class="flywheel">
+  <div class="container">
+    <div class="fw-header">
+      <div class="fw-label">The Zyvelor Advantage</div>
+      <div class="fw-title">How Zyvelor powers TatvaCare</div>
+      <p class="fw-sub">Our AI is self-improving through a virtuous cycle: TatvaCare products generate real clinical data, Zyvelor trains on that data to build smarter agents, which make our products more powerful.</p>
+    </div>
+
+    <div class="fw-visual">
+      <div class="fw-step">
+        <div class="fw-step-num">1</div>
+        <h3>Products Generate Data</h3>
+        <p>Every interaction across TatvaPractice, GoodFlip, and Evalus creates real clinical data from real Indian healthcare workflows.</p>
+      </div>
+      <div class="fw-step">
+        <div class="fw-step-num">2</div>
+        <h3>Zyvelor Trains & Optimizes</h3>
+        <p>Our AI team uses this data to build, train, and continuously improve our AI agents with cutting-edge ML and Gen AI techniques.</p>
+      </div>
+      <div class="fw-step">
+        <div class="fw-step-num">3</div>
+        <h3>Products Get Smarter</h3>
+        <p>New agents and improvements are deployed back to products, making every feature faster, more accurate, and more clinical.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AI AGENT CATEGORIES ============ -->
+<section class="categories" id="capabilities">
+
+  <!-- 1. Voice & Clinical AI -->
+  <div class="cat-section">
+    <div class="container">
+      <div class="cat-grid">
+        <div class="cat-text">
+          <div class="cat-label">Voice & Clinical AI</div>
+          <div class="cat-title">Clinical documentation in seconds, not minutes.</div>
+          <div class="cat-body">Doctors don't have time to type. Our voice, photo, and ambient AI agents let clinicians document prescriptions, diagnoses, and clinical notes using their natural workflow.</div>
+          <ul class="cat-items">
+            <li>VoiceRx: Speak prescription, get digital Rx instantly</li>
+            <li>SnapRx: Photo-to-prescription OCR with AI validation</li>
+            <li>AmbientRx: Hands-free ambient listening for clinical notes</li>
+            <li>Multilingual: 7+ languages including Indian regional languages</li>
+            <li>Real-time: Sub-second latency for clinical use</li>
+          </ul>
+        </div>
+        <div class="cat-visual">
+          <div class="cat-card">
+            <div class="card-header">
+              <div class="card-icon">🎤</div>
+              <div><div class="card-name">VoiceRx</div><div class="card-desc">Voice-to-prescription</div></div>
+            </div>
+            <div style="padding: 8px 0; font-size: 12px; color: var(--g4); line-height: 1.6;">"Amoxycillin 500mg, thrice daily for 5 days" → structured prescription in 2 seconds</div>
+          </div>
+          <div class="cat-card">
+            <div class="card-header">
+              <div class="card-icon">📷</div>
+              <div><div class="card-name">SnapRx</div><div class="card-desc">Photo-based extraction</div></div>
+            </div>
+            <div style="padding: 8px 0; font-size: 12px; color: var(--g4); line-height: 1.6;">Handwritten prescription photo → validated digital Rx</div>
+          </div>
+          <div class="cat-card">
+            <div class="card-header">
+              <div class="card-icon">🎧</div>
+              <div><div class="card-name">AmbientRx</div><div class="card-desc">Continuous listening</div></div>
+            </div>
+            <div style="padding: 8px 0; font-size: 12px; color: var(--g4); line-height: 1.6;">Ambient recording → automatic clinical documentation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Clinical Decision Support -->
+  <div class="cat-section">
+    <div class="container">
+      <div class="cat-grid reverse">
+        <div class="cat-text">
+          <div class="cat-label">Clinical Decision Support</div>
+          <div class="cat-title">AI that thinks like a clinician.</div>
+          <div class="cat-body">Our clinical decision support engines integrate with the doctor's workflow, suggesting differential diagnoses, analyzing lab results, and guiding treatment decisions — trained on thousands of real cases.</div>
+          <ul class="cat-items">
+            <li>Differential Diagnosis (DDx): ML-powered diagnosis suggestions with likelihood scoring</li>
+            <li>Smart Lab Reports: AI analysis of lab results with clinical insights</li>
+            <li>Tumor Profiling: Oncology-specific AI for personalized chemo planning</li>
+            <li>Dose Calculators: Evidence-based dosing checks and drug interactions</li>
+            <li>Care Pathways: Protocol-driven care pathways for chronic conditions</li>
+          </ul>
+        </div>
+        <div class="cat-visual">
+          <div class="cat-card">
+            <div class="card-header">
+              <div class="card-icon">🧬</div>
+              <div><div class="card-name">DDx Engine</div><div class="card-desc">Differential diagnosis</div></div>
+            </div>
+            <div style="padding: 8px 0; font-size: 12px; color: var(--g4); line-height: 1.6;">Symptoms → top 5 diagnoses with ML confidence scores</div>
+          </div>
+          <div class="cat-card">
+            <div class="card-header">
+              <div class="card-icon">🔬</div>
+              <div><div class="card-name">Smart Lab Reports</div><div class="card-desc">Lab analysis & insights</div></div>
+            </div>
+            <div style="padding: 8px 0; font-size: 12px; color: var(--g4); line-height: 1.6;">Lab values → clinical interpretation + action suggestions</div>
+          </div>
+          <div class="cat-card">
+            <div class="card-header">
+              <div class="card-icon">💊</div>
+              <div><div class="card-name">Dose Calculator</div><div class="card-desc">Evidence-based dosing</div></div>
+            </div>
+            <div style="padding: 8px 0; font-size: 12px; color: var(--g4); line-height: 1.6;">Drug + patient profile → safe dosage + interaction alerts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Document Intelligence -->
+  <div class="cat-section">
+    <div class="container">
+      <div class="cat-grid">
+        <div class="cat-text">
+          <div class="cat-label">Document Intelligence</div>
+          <div class="cat-title">Every document, instantly understood.</div>
+          <div class="cat-body">Healthcare documents are a mess: handwriting, multiple formats, OCR errors. Our Document Extractor API uses computer vision and reasoning to extract structured, validated data from any healthcare document.</div>
+          <ul class="cat-items">
+            <li>Prescription OCR: Handwritten & printed prescriptions → structured data</li>
+            <li>Insurance Claims: Claim documents → extracted fields for pre-auth</li>
+            <li>Medical Records: Discharge summaries, lab reports, notes → validated extraction</li>
+            <li>Form Processing: Identity docs, enrollment forms → standardized data</li>
+            <li>Multi-language: Handles English, Hindi, regional languages, mixed text</li>
+          </ul>
+        </div>
+        <div class="cat-visual">
+          <div class="cat-card">
+            <div class="card-header">
+              <div class="card-icon">🏥</div>
+              <div><div class="card-name">Prescription OCR</div><div class="card-desc">Handwritten & printed</div></div>
+            </div>
+            <div style="padding: 8px 0; font-size: 12px; color: var(--g4); line-height: 1.6;">Prescription image → drug name, dosage, frequency, duration</div>
+          </div>
+          <div class="cat-card">
+            <div class="card-header">
+              <div class="card-icon">📋</div>
+              <div><div class="card-name">Claims Extraction</div><div class="card-desc">Insurance documents</div></div>
+            </div>
+            <div style="padding: 8px 0; font-size: 12px; color: var(--g4); line-height: 1.6;">Claim document → patient ID, policy, diagnosis, amount</div>
+          </div>
+          <div class="cat-card">
+            <div class="card-header">
+              <div class="card-icon">📄</div>
+              <div><div class="card-name">Report Analysis</div><div class="card-desc">Medical records</div></div>
+            </div>
+            <div style="padding: 8px 0; font-size: 12px; color: var(--g4); line-height: 1.6;">Lab/discharge report → findings, recommendations, alerts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Patient AI Agents -->
+  <div class="cat-section">
+    <div class="container">
+      <div class="cat-grid reverse">
+        <div class="cat-text">
+          <div class="cat-label">Patient AI Agents</div>
+          <div class="cat-title">Your patients' personal AI health coach.</div>
+          <div class="cat-body">Patients need support between doctor visits. Our patient AI agents provide personalized coaching, disease management, medication adherence, and lifestyle guidance — trained on clinical best practices and patient behavior data.</div>
+          <ul class="cat-items">
+            <li>KAIRA: Multi-purpose health AI for patient engagement and coaching</li>
+            <li>Diet Planning: AI-generated personalized nutrition plans from patient data</li>
+            <li>Food Logging: Voice & photo-based food tracking with AI analysis</li>
+            <li>Report Analysis: AI explains medical reports in patient-friendly language</li>
+            <li>Medication Reminders: Smart adherence tracking and refill alerts</li>
+          </ul>
+        </div>
+        <div class="cat-visual">
+          <div class="cat-card">
+            <div class="card-header">
+              <div class="card-icon">🤖</div>
+              <div><div class="card-name">KAIRA</div><div class="card-desc">Patient health AI agent</div></div>
+            </div>
+            <div style="padding: 8px 0; font-size: 12px; color: var(--g4); line-height: 1.6;">24/7 AI health coach for questions, tracking, and encouragement</div>
+          </div>
+          <div class="cat-card">
+            <div class="card-header">
+              <div class="card-icon">🍎</div>
+              <div><div class="card-name">Diet Planning</div><div class="card-desc">Personalized nutrition</div></div>
+            </div>
+            <div style="padding: 8px 0; font-size: 12px; color: var(--g4); line-height: 1.6;">Patient health profile → customized meal plans & recipes</div>
+          </div>
+          <div class="cat-card">
+            <div class="card-header">
+              <div class="card-icon">📸</div>
+              <div><div class="card-name">Food Logging</div><div class="card-desc">Voice & photo tracking</div></div>
+            </div>
+            <div style="padding: 8px 0; font-size: 12px; color: var(--g4); line-height: 1.6;">Show food photo → automatic logging + nutritional analysis</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Operations AI -->
+  <div class="cat-section">
+    <div class="container">
+      <div class="cat-grid">
+        <div class="cat-text">
+          <div class="cat-label">Operations AI</div>
+          <div class="cat-title">Healthcare operations, optimized by AI.</div>
+          <div class="cat-body">Hospitals and clinics waste resources on scheduling, appointment management, and workflow optimization. Our Operations AI agents solve these problems using ML and constraint-based reasoning.</div>
+          <ul class="cat-items">
+            <li>Nurse Scheduling: AI-optimized rostering based on occupancy, skills, rules</li>
+            <li>Appointment Booking: Automated scheduling via voice/SMS/web</li>
+            <li>Clinic Workflow: Optimized patient flow and resource allocation</li>
+            <li>Inventory Management: Predictive ordering and stock optimization</li>
+            <li>No-show Prediction: ML forecasting to reduce appointment no-shows</li>
+          </ul>
+        </div>
+        <div class="cat-visual">
+          <div class="cat-card">
+            <div class="card-header">
+              <div class="card-icon">📅</div>
+              <div><div class="card-name">Nurse Scheduler</div><div class="card-desc">AI-optimized rostering</div></div>
+            </div>
+            <div style="padding: 8px 0; font-size: 12px; color: var(--g4); line-height: 1.6;">Hospital constraints → optimal nurse schedule</div>
+          </div>
+          <div class="cat-card">
+            <div class="card-header">
+              <div class="card-icon">📞</div>
+              <div><div class="card-name">Appointment Agent</div><div class="card-desc">Multi-channel booking</div></div>
+            </div>
+            <div style="padding: 8px 0; font-size: 12px; color: var(--g4); line-height: 1.6;">Voice/SMS/web → instant appointment confirmation</div>
+          </div>
+          <div class="cat-card">
+            <div class="card-header">
+              <div class="card-icon">⚙️</div>
+              <div><div class="card-name">Workflow Optimizer</div><div class="card-desc">Operations AI</div></div>
+            </div>
+            <div style="padding: 8px 0; font-size: 12px; color: var(--g4); line-height: 1.6;">Patient flow → resource allocation → efficiency gains</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Enterprise Analytics -->
+  <div class="cat-section">
+    <div class="container">
+      <div class="cat-grid reverse">
+        <div class="cat-text">
+          <div class="cat-label">Enterprise Analytics</div>
+          <div class="cat-title">Your data speaks naturally.</div>
+          <div class="cat-body">Business users shouldn't need a data team to answer questions. Velora is our enterprise NLQ platform — ask questions in plain English, get insights in seconds with visualizations.</div>
+          <ul class="cat-items">
+            <li>Velora NLQ: Natural language queries against enterprise databases</li>
+            <li>Marketing Mix Modeling: AI analysis of marketing effectiveness</li>
+            <li>HCP Targeting: ML-based healthcare provider segmentation & targeting</li>
+            <li>Business Intelligence: Self-service dashboards and reporting</li>
+            <li>Predictive Analytics: Forecasting and trend analysis</li>
+          </ul>
+        </div>
+        <div class="cat-visual">
+          <div class="cat-card">
+            <div class="card-header">
+              <div class="card-icon">📈</div>
+              <div><div class="card-name">Velora</div><div class="card-desc">Enterprise NLQ platform</div></div>
+            </div>
+            <div style="padding: 8px 0; font-size: 12px; color: var(--g4); line-height: 1.6;">"Show revenue by region last quarter" → instant insight with chart</div>
+          </div>
+          <div class="cat-card">
+            <div class="card-header">
+              <div class="card-icon">📊</div>
+              <div><div class="card-name">Analytics Agents</div><div class="card-desc">Business intelligence</div></div>
+            </div>
+            <div style="padding: 8px 0; font-size: 12px; color: var(--g4); line-height: 1.6;">Data exploration → insights → automated reporting</div>
+          </div>
+          <div class="cat-card">
+            <div class="card-header">
+              <div class="card-icon">🎯</div>
+              <div><div class="card-name">HCP Targeting</div><div class="card-desc">Provider segmentation</div></div>
+            </div>
+            <div style="padding: 8px 0; font-size: 12px; color: var(--g4); line-height: 1.6;">Doctor data → targeted engagement + ROI optimization</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============ STANDALONE PRODUCTS ============ -->
+<section class="standalone">
+  <div class="container">
+    <div class="sp-header">
+      <div class="sp-label">Also available as standalone products</div>
+      <div class="sp-title">Power your own systems with Zyvelor AI</div>
+    </div>
+
+    <div class="sp-grid">
+      <div class="sp-card">
+        <div class="sp-tag">API-as-a-Service</div>
+        <h3>Document Extractor API</h3>
+        <p>Healthcare-grade document extraction for any industry. Prescriptions, invoices, contracts, identity documents, medical records — our API handles them all with accuracy that outperforms generic OCR solutions.</p>
+        <ul class="sp-features">
+          <li>Multi-format: Handwritten, printed, digital, scanned documents</li>
+          <li>Multi-language: English, Hindi, regional Indian languages, mixed scripts</li>
+          <li>Domain-trained: Healthcare-specific models for Rx, lab reports, claims</li>
+          <li>Structured output: JSON with validated, typed fields</li>
+          <li>High accuracy: 99%+ field-level accuracy on healthcare documents</li>
+          <li>Easy integration: REST API, webhooks, batch processing</li>
+        </ul>
+      </div>
+      <div class="sp-card">
+        <div class="sp-tag">Enterprise Platform</div>
+        <h3>Velora</h3>
+        <p>Natural language interface to enterprise data. Ask questions in English, get insights in seconds — no SQL, no dashboard bottleneck, no data team required. Designed for healthcare enterprises with compliance and security built-in.</p>
+        <ul class="sp-features">
+          <li>Natural language: Query databases using plain English</li>
+          <li>Connected data: Integrate with your existing data warehouse</li>
+          <li>Healthcare-ready: HIPAA compliance, secure multi-tenant architecture</li>
+          <li>Smart visualization: Automatic chart generation for insights</li>
+          <li>Business logic: Learns your KPIs, metrics, and terminology</li>
+          <li>Role-based access: Secure access control by user and dataset</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLIENT LOGOS / TRUST BAR ============ -->
+<section class="logos">
+  <div class="container">
+    <div class="logos-label">Trusted by leading healthcare organizations</div>
+    <div class="logos-track">
+      <span class="logo-item">Zydus</span>
+      <span class="logo-item">Cliantha Research</span>
+      <span class="logo-item">Guardian Health</span>
+      <span class="logo-item">Zydus Wellness</span>
+      <span class="logo-item">Sentiss Pharma</span>
+      <span class="logo-item">AliveCor</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-header">
+      <div class="stats-title">Zyvelor by the numbers</div>
+      <div class="stats-sub">Real AI, real impact, real clinical data</div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-num">20+</div>
+        <div class="stat-lbl">AI Agents<br>in Production</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">7+</div>
+        <div class="stat-lbl">Languages<br>Supported</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">1M+</div>
+        <div class="stat-lbl">Real Clinical<br>Data Points</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">99%+</div>
+        <div class="stat-lbl">Extraction<br>Accuracy</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta" id="cta">
+  <div class="container">
+    <h2>Ready to power your healthcare<br>with Zyvelor AI?</h2>
+    <p>Explore our capabilities, see live demos, or discuss custom AI projects with our team.</p>
+    <div class="cta-btns">
+      <a href="#" class="btn btn-w">Request a Demo &nbsp;→</a>
+      <a href="#" class="btn btn-zy">Talk to our AI team</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="fl"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 3600 648" style="height:22px;width:auto;display:block;"><defs><style>.tc1{fill:url(#lg2)}.tc2{fill:#4b4ad5}</style><linearGradient id="lg2" x1="2711.5" y1="902.59" x2="1117.71" y2="-213.4" gradientUnits="userSpaceOnUse"><stop offset=".09" stop-color="#b122ff"/><stop offset=".24" stop-color="#9f28f7"/><stop offset=".52" stop-color="#733ae5"/><stop offset=".75" stop-color="#4b4ad5"/></linearGradient></defs><path class="tc2" d="M1072.99,165.85v-51.02c0-14.16-10.7-26-22.79-24.67-40.93,4.5-62.06,22.04-70.14,28.8v-41.19c0-17.48-5.25-31.14-20.23-31.14h-52.5v184.18c-24.24-15.77-34.23-28.47-55.18-37.4-22.94-9.77-57.8-13.87-76.35-10.26-6.1,1.18-17.97,6.49-26.05,26.2v49.52c44.44-8.29,74.15,11.67,88.67,18.79,14.53,7.11,29.84,17.25,40.61,29.82,8.61,10.06,14.96,21.75,20.59,34.64,6.41-30.04,18.74-68.36,49.2-103.63,77.18-85.25,124.16-72.63,124.16-72.63Z"/><path class="tc2" d="M1105.17,558.62c-.79-2.35-.27-1.86-3.2-2.32-2.38-.38-4.8-.61-7.2-.87-3.35-.37-6.72-.65-10.07-.96-2.87-.27-5.74-.55-8.6-.94-20.4-2.99-38.94-12.33-55.21-24.26-14.66-10.75-25.72-24.98-30.69-42.22-7.21-25.01-8.39-50.21-7.99-75.95.73-47.49-3.21-94.87-2.22-142.32.07-1.68-2.4-2.63-4-1.56-16.07,10.65-26.42,27.65-34.54,44.35-9.14,18.8-16.93,38.51-22.92,58.45-6.05,20.14-9.01,41.06-9.35,62.01-.34,20.79.31,42.54,5.58,62.78,1.94,7.45,3.59,15.09,7.04,22.01,15.51,31.09,38.36,59.12,68.88,77.58,23.99,14.53,51.95,22.6,80.26,22.95,10.64.13,20.92-1.2,31.43-2.73.52-.08,2.03-.51,2.03-.51"/><g><path class="tc1" d="M1116.28,298.31h-65.04c7.82-47.92,41.56-71.39,101.23-71.39,71.4,0,107.58,23.47,109.05,71.39v88.02c0,71.4-43.03,103.19-112.96,108.08-62.1,4.89-105.14-23.97-105.14-81.18,1.47-62.11,46.46-78.74,111.98-85.09,27.87-3.43,42.05-11.74,42.05-25.92-1.47-14.67-15.16-22-42.05-22-22.98,0-35.7,5.87-39.12,18.09ZM1198.43,383.4v-23.96c-15.16,6.35-32.76,11.74-51.84,15.65-25.92,4.89-39.12,17.11-39.12,36.19,1.47,20.54,12.22,30.32,32.76,30.32,36.19,0,58.19-21.51,58.19-58.19Z"/><path class="tc1" d="M1374.47,277.28h-6.85v143.27c0,10.76,6.36,16.63,19.07,16.63h20.05v49.39c-21.03,1.96-44.01,1.96-68.46-.49-24.45-2.44-36.19-17.6-35.7-46.45V156.99h33.74c17.12,0,31.3,15.65,31.3,32.76v41.08h39.12v14.19c0,18.58-14.18,32.27-32.27,32.27Z"/><path class="tc1" d="M1680.59,230.82l-91.44,258.69h-68.95l-90.96-258.69h71.89l52.32,181.43,44.99-158.44c4.89-15.16,15.65-22.99,31.79-22.99h50.37Z"/><path class="tc1" d="M1762.26,298.31h-65.04c7.83-47.92,41.57-71.39,101.23-71.39,71.4,0,107.58,23.47,109.05,71.39v88.02c0,71.4-43.03,103.19-112.96,108.08-62.11,4.89-105.14-23.97-105.14-81.18,1.47-62.11,46.46-78.74,111.98-85.09,27.87-3.43,42.06-11.74,42.06-25.92-1.47-14.67-15.16-22-42.06-22-22.98,0-35.7,5.87-39.12,18.09ZM1844.42,383.4v-23.96c-15.16,6.35-32.76,11.74-51.84,15.65-25.92,4.89-39.12,17.11-39.12,36.19,1.47,20.54,12.22,30.32,32.76,30.32,36.19,0,58.19-21.51,58.19-58.19Z"/><path class="tc1" d="M2057.14,495.38c-78.24,0-118.34-44.99-120.3-133.99,0-88.51,39.61-133.01,119.32-134.48,62.59,0,99.76,27.88,111.01,84.11h-70.91c-7.82-17.6-21.51-26.89-42.05-26.89-34.23,0-51.35,25.91-51.35,77.26s18.09,77.26,54.28,76.77c15.16,0,28.36-6.35,39.12-18.58,6.36-6.35,13.69-9.28,22.01-9.28h48.91c-11.74,52.81-49.88,86.55-110.03,85.09Z"/><path class="tc1" d="M2268.39,298.31h-65.04c7.83-47.92,41.57-71.39,101.23-71.39,71.4,0,107.58,23.47,109.05,71.39v88.02c0,71.4-43.03,103.19-112.96,108.08-62.1,4.89-105.14-23.97-105.14-81.18,1.47-62.11,46.46-78.74,111.98-85.09,27.88-3.43,42.06-11.74,42.06-25.92-1.47-14.67-15.16-22-42.06-22-22.98,0-35.7,5.87-39.12,18.09ZM2350.54,383.4v-23.96c-15.16,6.35-32.76,11.74-51.84,15.65-25.92,4.89-39.12,17.11-39.12,36.19,1.47,20.54,12.22,30.32,32.76,30.32,36.19,0,58.19-21.51,58.19-58.19Z"/><path class="tc1" d="M2444.92,356.01c1.95-83.62,46.45-125.19,133.01-125.19h9.29v67.48h-22.01c-36.19,0-54.28,19.08-54.28,56.73v134.48h-66.02v-133.51Z"/><path class="tc1" d="M2732.95,495.38c-78.25-2.45-117.36-47.93-117.36-135.95s39.61-132.03,118.34-132.53c82.16,0,120.78,50.37,115.9,151.59h-167.24c2.44,39.61,19.56,59.66,51.35,59.66,15.16,0,29.34-6.35,42.06-18.58,5.87-6.35,13.2-9.28,22.01-9.28h47.92c-14.18,54.77-49.39,85.09-112.96,85.09ZM2683.56,332.05h97.32c-3.91-34.23-20.05-51.84-47.93-51.84s-44.5,17.6-49.39,51.84Z"/></g></svg></div>
+        <p>The AI Operating System for Healthcare.<br>Digicare Health Solutions Pvt. Ltd.<br>Bangalore · Ahmedabad</p>
+      </div>
+      <div class="foot-col">
+        <h5>Products</h5>
+        <a href="products-tatvapractice.html">TatvaPractice</a>
+        <a href="products-goodflip.html">GoodFlip</a>
+        <a href="products-evalus.html">Evalus</a>
+      </div>
+      <div class="foot-col">
+        <h5>Zyvelor AI</h5>
+        <a href="zyvelor-ai.html">Capabilities</a>
+        <a href="zyvelor-ai.html">Document Extractor</a>
+        <a href="zyvelor-ai.html">Velora</a>
+      </div>
+      <div class="foot-col">
+        <h5>Solutions</h5>
+        <a href="solutions-doctors.html">For Doctors</a>
+        <a href="solutions-hospitals.html">For Hospitals</a>
+        <a href="solutions-pharma.html">For Pharma</a>
+        <a href="solutions-payors.html">For Payors</a>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <a href="about.html">About</a>
+        <a href="#">Leadership</a>
+        <a href="#">Careers</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Digicare Health Solutions Pvt. Ltd.</span>
+      <span><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Security</a></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

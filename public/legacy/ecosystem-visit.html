@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visit — Insurance-Powered Digital Clinics | TatvaCare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  /* ============ RESET & BASE ============ */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Mulish', sans-serif; color: #000;
+    background: #ffffff; -webkit-font-smoothing: antialiased;
+  }
+
+  :root {
+    --bg: #f6f0fb;
+    --white: #ffffff;
+    --a1: #703b95;
+    --a2: #442c84;
+    --a3: #a19fcf;
+    --black: #000000;
+    --g6: #3a3a4a;
+    --g4: #6a6a7a;
+    --g3: #8a8a9a;
+    --g2: #d0d0da;
+    --g1: #f5f5f8;
+    --max: 1140px;
+  }
+
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+
+  /* ============ NAV ============ */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,.92); backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,.04);
+  }
+  .nav-inner {
+    max-width: var(--max); margin: 0 auto; padding: 0 32px;
+    display: flex; align-items: center; justify-content: space-between; height: 64px;
+  }
+  .nav-logo { text-decoration: none; display: inline-flex; align-items: center; }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    font-size: 13.5px; font-weight: 600; color: var(--g6); text-decoration: none;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--a1); }
+  .nav-links .dropdown { position: relative; cursor: pointer; }
+  .nav-links .dropdown::after { content: ' ▾'; font-size: 10px; color: var(--g3); }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 28px; border-radius: 8px; font-family: 'Mulish', sans-serif;
+    font-size: 13.5px; font-weight: 700; text-decoration: none; border: none;
+    cursor: pointer; transition: all .2s ease;
+  }
+  .btn-p { background: var(--a1); color: #fff; }
+  .btn-p:hover { background: var(--a2); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(112,59,149,.25); }
+  .btn-o { background: transparent; color: var(--a1); border: 2px solid rgba(112,59,149,.2); }
+  .btn-o:hover { background: rgba(112,59,149,.04); border-color: var(--a1); }
+  .btn-w { background: #fff; color: var(--a2); }
+  .btn-w:hover { background: #f8f4fc; }
+  .nav-cta { padding: 9px 22px; font-size: 12.5px; border-radius: 6px; color: #fff !important; }
+
+  /* ============ MEGA MENU ============ */
+  .nav-item { position: relative; }
+  .nav-item > a {
+    font-size: 13.5px; font-weight: 600; color: var(--g6); text-decoration: none;
+    transition: color .2s; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;
+    padding: 20px 0;
+  }
+  .nav-item > a:hover { color: var(--a1); }
+  .nav-item > a .chevron {
+    font-size: 9px; color: var(--g3); transition: transform .2s;
+  }
+  .nav-item:hover > a .chevron { transform: rotate(180deg); }
+  .nav-item:hover > a { color: var(--a1); }
+
+  /* The dropdown panel */
+  .mega-menu {
+    position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+    width: 720px; background: var(--white);
+    border-radius: 14px; box-shadow: 0 20px 60px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.04);
+    border: 1px solid rgba(0,0,0,.05);
+    padding: 0; opacity: 0; visibility: hidden;
+    transition: opacity .2s ease, transform .2s ease, visibility .2s;
+    transform: translateX(-50%) translateY(8px);
+    z-index: 200;
+  }
+  .nav-item:hover .mega-menu {
+    opacity: 1; visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+  /* Invisible bridge to prevent hover gap */
+  .mega-menu::before {
+    content: ''; position: absolute; top: -16px; left: 0; right: 0; height: 16px;
+  }
+
+  .mega-inner {
+    display: grid; grid-template-columns: 280px 1fr; min-height: 280px;
+  }
+
+  /* Left: Featured section */
+  .mega-featured {
+    background: var(--g1); border-radius: 14px 0 0 14px;
+    padding: 28px 24px; display: flex; flex-direction: column; justify-content: center;
+  }
+  .mega-featured-visual {
+    width: 100%; height: 120px; border-radius: 10px; margin-bottom: 16px;
+    background: linear-gradient(135deg, #ede6f6, #d8ccf0);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .mega-featured-visual .mfv-icon {
+    font-size: 48px; opacity: .4;
+  }
+  .mega-featured h4 {
+    font-size: 17px; font-weight: 900; color: var(--black); line-height: 1.25; margin-bottom: 8px;
+  }
+  .mega-featured h4 em {
+    font-style: normal; color: var(--a1);
+  }
+  .mega-featured p {
+    font-size: 12px; color: var(--g4); line-height: 1.6; margin-bottom: 14px;
+  }
+  .mega-featured-link {
+    font-size: 12px; font-weight: 700; color: var(--a1); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .mega-featured-link:hover { color: var(--a2); gap: 8px; }
+
+  /* Right: Nav links */
+  .mega-links {
+    padding: 24px 28px;
+  }
+  .mega-links-label {
+    font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--g3); margin-bottom: 16px;
+  }
+  .mega-link-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 12px 14px; border-radius: 10px; text-decoration: none;
+    transition: background .15s;
+    margin-bottom: 2px;
+  }
+  .mega-link-item:hover { background: var(--g1); }
+  .mega-link-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+    background: rgba(112,59,149,.06);
+  }
+  .mega-link-text h5 {
+    font-size: 13.5px; font-weight: 800; color: var(--black); margin-bottom: 2px;
+  }
+  .mega-link-text p {
+    font-size: 11.5px; color: var(--g4); line-height: 1.45;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    padding: 140px 0 80px;
+    background: linear-gradient(172deg, #ffffff 0%, #f8f4fc 40%, #ede6f6 100%);
+    overflow: hidden;
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+  }
+  .hero-content { max-width: 520px; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(112,59,149,.06); color: var(--a1);
+    font-size: 11px; font-weight: 800; padding: 6px 14px; border-radius: 20px;
+    margin-bottom: 24px; letter-spacing: .6px; text-transform: uppercase;
+  }
+  .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--a1); }
+  .hero h1 {
+    font-size: 46px; font-weight: 900; line-height: 1.1;
+    color: var(--black); margin-bottom: 20px; letter-spacing: -1.2px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--a1), var(--a2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero .sub {
+    font-size: 16.5px; color: var(--g6); line-height: 1.7;
+    margin-bottom: 36px; font-weight: 400;
+  }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  /* Hero visual */
+  .hero-visual {
+    position: relative;
+  }
+  .hero-mockup {
+    background: var(--white); border-radius: 16px;
+    box-shadow: 0 24px 80px rgba(68,44,132,.1), 0 2px 8px rgba(0,0,0,.04);
+    padding: 20px; position: relative; overflow: hidden;
+    border: 1px solid rgba(112,59,149,.06);
+  }
+  .hm-bar {
+    display: flex; gap: 6px; margin-bottom: 16px;
+  }
+  .hm-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .hm-dot:nth-child(1) { background: #ff5f57; }
+  .hm-dot:nth-child(2) { background: #ffbd2e; }
+  .hm-dot:nth-child(3) { background: #28c840; }
+  .hm-screen {
+    background: linear-gradient(135deg, #f8f4fc, #ede6f6);
+    border-radius: 10px; padding: 24px; min-height: 280px;
+  }
+  .hm-rx {
+    background: var(--white); border-radius: 10px; padding: 16px; margin-bottom: 12px;
+    border-left: 3px solid var(--a1);
+  }
+  .hm-rx-label { font-size: 9px; font-weight: 800; color: var(--a1); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .hm-rx-line { height: 8px; background: rgba(112,59,149,.08); border-radius: 4px; margin-bottom: 6px; }
+  .hm-rx-line:nth-child(2) { width: 70%; }
+  .hm-rx-line:nth-child(3) { width: 85%; }
+  .hm-rx-line:last-child { width: 55%; }
+  .hm-ai-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: linear-gradient(135deg, var(--a1), var(--a2));
+    color: #fff; font-size: 9px; font-weight: 800; letter-spacing: .5px;
+    padding: 6px 14px; border-radius: 20px; margin-top: 8px;
+  }
+  .hm-ai-badge::before { content: '⚡'; }
+  .hm-metrics {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 12px;
+  }
+  .hm-met {
+    background: var(--white); border-radius: 8px; padding: 12px 10px; text-align: center;
+  }
+  .hm-met-num { font-size: 16px; font-weight: 900; color: var(--a2); }
+  .hm-met-lbl { font-size: 8px; font-weight: 600; color: var(--g3); text-transform: uppercase; letter-spacing: .5px; margin-top: 2px; }
+
+  /* floating badges */
+  .hero-float {
+    position: absolute; background: var(--white); border-radius: 10px;
+    padding: 10px 16px; box-shadow: 0 8px 24px rgba(0,0,0,.08);
+    font-size: 11px; font-weight: 700; color: var(--a2);
+    display: flex; align-items: center; gap: 8px;
+    animation: float 3s ease-in-out infinite;
+  }
+  .hero-float .hf-icon { font-size: 18px; }
+  .hf-1 { top: 20px; right: -20px; animation-delay: 0s; }
+  .hf-2 { bottom: 40px; left: -20px; animation-delay: 1.5s; }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  /* ============ USE-CASE SECTIONS ============ */
+  .usecase { padding: 100px 0; }
+  .usecase:nth-child(even) { background: var(--g1); }
+  .usecase:nth-child(odd) { background: var(--white); }
+  .uc-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+  }
+  .uc-grid.reverse .uc-visual { order: 2; }
+  .uc-grid.reverse .uc-text { order: 1; }
+  .uc-label {
+    font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--a1); margin-bottom: 14px;
+  }
+  .uc-category {
+    font-size: 12px; font-weight: 700; color: var(--g3);
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;
+  }
+  .uc-category::before { content: ''; width: 18px; height: 2px; background: var(--a3); display: inline-block; }
+  .uc-title { font-size: 32px; font-weight: 900; line-height: 1.15; color: var(--black); margin-bottom: 16px; letter-spacing: -.5px; }
+  .uc-body { font-size: 15px; color: var(--g6); line-height: 1.75; margin-bottom: 24px; }
+  .uc-points { list-style: none; margin-bottom: 28px; }
+  .uc-points li {
+    font-size: 14px; color: var(--g6); padding: 6px 0 6px 24px;
+    position: relative; line-height: 1.6;
+  }
+  .uc-points li::before {
+    content: '✓'; position: absolute; left: 0; top: 6px;
+    color: var(--a1); font-weight: 900; font-size: 13px;
+  }
+  .uc-link {
+    font-size: 13px; font-weight: 700; color: var(--a1);
+    text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .uc-link:hover { color: var(--a2); gap: 10px; }
+
+  /* Use-case visual */
+  .uc-visual {
+    background: linear-gradient(135deg, #f8f4fc 0%, #ede6f6 100%);
+    border-radius: 16px; padding: 32px; position: relative;
+    box-shadow: 0 2px 16px rgba(68,44,132,.04);
+    border: 1px solid rgba(112,59,149,.04);
+  }
+  .uc-screenshot {
+    background: var(--white); border-radius: 12px; padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.04);
+  }
+  .uc-ss-header {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+    padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,.04);
+  }
+  .uc-ss-icon {
+    width: 32px; height: 32px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; color: #fff;
+  }
+  .uc-ss-name { font-size: 13px; font-weight: 800; color: var(--black); }
+  .uc-ss-desc { font-size: 10px; color: var(--g3); }
+  .uc-ss-body { min-height: 140px; }
+  .uc-ss-row {
+    display: flex; gap: 8px; margin-bottom: 8px;
+  }
+  .uc-ss-block {
+    background: rgba(112,59,149,.04); border-radius: 6px;
+    height: 10px; flex: 1;
+  }
+  .uc-ss-block.short { flex: .6; }
+  .uc-ss-block.long { flex: 1.4; }
+  .uc-ss-block.accent { background: rgba(112,59,149,.12); }
+  .uc-ss-pill {
+    display: inline-block; background: rgba(112,59,149,.06);
+    color: var(--a1); font-size: 9px; font-weight: 800;
+    padding: 4px 10px; border-radius: 12px; margin: 4px 4px 0 0;
+    letter-spacing: .3px;
+  }
+
+  /* ============ DARK PLATFORM SECTION ============ */
+  .platform {
+    background: linear-gradient(135deg, var(--a2), var(--a1));
+    color: #fff; padding: 100px 0;
+  }
+  .platform-header { text-align: center; margin-bottom: 64px; }
+  .platform-title { font-size: 34px; font-weight: 900; color: #fff; margin-bottom: 12px; letter-spacing: -.3px; }
+  .platform-sub { font-size: 15px; color: rgba(255,255,255,.65); max-width: 460px; margin: 0 auto; }
+  .platform-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  }
+  .platform-card {
+    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+    border-radius: 14px; padding: 32px; backdrop-filter: blur(10px);
+  }
+  .platform-card h3 {
+    font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 12px;
+  }
+  .platform-card p {
+    font-size: 13.5px; color: rgba(255,255,255,.75); line-height: 1.7;
+  }
+
+  /* ============ STATS ============ */
+  .stats { padding: 100px 0; background: var(--white); }
+  .stats-header { text-align: center; margin-bottom: 56px; }
+  .stats-headline { font-size: 30px; font-weight: 900; color: var(--black); margin-bottom: 12px; letter-spacing: -.3px; }
+  .stats-sub { font-size: 15px; color: var(--g4); }
+  .stats-bar {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+  }
+  .stat-card {
+    text-align: center; background: var(--g1); border-radius: 14px;
+    padding: 32px 16px; border: 1px solid rgba(0,0,0,.02);
+  }
+  .stat-num { font-size: 36px; font-weight: 900; color: var(--a2); letter-spacing: -1px; }
+  .stat-lbl { font-size: 12px; color: var(--g4); font-weight: 600; margin-top: 4px; line-height: 1.5; }
+
+  /* ============ CTA ============ */
+  .cta {
+    background: linear-gradient(135deg, var(--a1), var(--a2));
+    text-align: center; padding: 80px 0;
+  }
+  .cta h2 { font-size: 34px; font-weight: 900; color: #fff; margin-bottom: 14px; letter-spacing: -.3px; }
+  .cta p { font-size: 15px; color: rgba(255,255,255,.65); margin-bottom: 32px; max-width: 460px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+  .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .cta .btn-w { padding: 14px 32px; }
+
+  /* ============ FOOTER ============ */
+  footer { background: #130f24; color: rgba(255,255,255,.4); padding: 56px 0 28px; }
+  .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 28px; margin-bottom: 36px; }
+  .foot-brand .fl { font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 8px; }
+  .foot-brand .fl span { color: var(--a3); }
+  .foot-brand p { font-size: 11px; line-height: 1.6; }
+  .foot-col h5 { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: var(--a3); margin-bottom: 12px; }
+  .foot-col a { display: block; font-size: 12px; color: rgba(255,255,255,.4); text-decoration: none; padding: 3px 0; transition: color .2s; }
+  .foot-col a:hover { color: #fff; }
+  .foot-bottom {
+    border-top: 1px solid rgba(255,255,255,.05); padding-top: 20px;
+    display: flex; justify-content: space-between; font-size: 10px;
+  }
+  .foot-bottom a { color: rgba(255,255,255,.3); text-decoration: none; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px) {
+    .mega-menu { display: none; }
+    .nav-item > a .chevron { display: none; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .hero h1 { font-size: 34px; }
+    .uc-grid { grid-template-columns: 1fr; gap: 36px; }
+    .uc-grid.reverse .uc-visual { order: 1; }
+    .uc-grid.reverse .uc-text { order: 2; }
+    .platform-grid { grid-template-columns: 1fr; }
+    .stats-bar { grid-template-columns: 1fr 1fr; }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <div class="nav-inner">
+    <a href="homepage-v3.html" class="nav-logo"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 3600 648" style="height:28px;width:auto;display:block;"><defs><style>.tc1{fill:url(#lg)}.tc2{fill:#4b4ad5}</style><linearGradient id="lg" x1="2711.5" y1="902.59" x2="1117.71" y2="-213.4" gradientUnits="userSpaceOnUse"><stop offset=".09" stop-color="#b122ff"/><stop offset=".24" stop-color="#9f28f7"/><stop offset=".52" stop-color="#733ae5"/><stop offset=".75" stop-color="#4b4ad5"/></linearGradient></defs><path class="tc2" d="M1072.99,165.85v-51.02c0-14.16-10.7-26-22.79-24.67-40.93,4.5-62.06,22.04-70.14,28.8v-41.19c0-17.48-5.25-31.14-20.23-31.14h-52.5v184.18c-24.24-15.77-34.23-28.47-55.18-37.4-22.94-9.77-57.8-13.87-76.35-10.26-6.1,1.18-17.97,6.49-26.05,26.2v49.52c44.44-8.29,74.15,11.67,88.67,18.79,14.53,7.11,29.84,17.25,40.61,29.82,8.61,10.06,14.96,21.75,20.59,34.64,6.41-30.04,18.74-68.36,49.2-103.63,77.18-85.25,124.16-72.63,124.16-72.63Z"/><path class="tc2" d="M1105.17,558.62c-.79-2.35-.27-1.86-3.2-2.32-2.38-.38-4.8-.61-7.2-.87-3.35-.37-6.72-.65-10.07-.96-2.87-.27-5.74-.55-8.6-.94-20.4-2.99-38.94-12.33-55.21-24.26-14.66-10.75-25.72-24.98-30.69-42.22-7.21-25.01-8.39-50.21-7.99-75.95.73-47.49-3.21-94.87-2.22-142.32.07-1.68-2.4-2.63-4-1.56-16.07,10.65-26.42,27.65-34.54,44.35-9.14,18.8-16.93,38.51-22.92,58.45-6.05,20.14-9.01,41.06-9.35,62.01-.34,20.79.31,42.54,5.58,62.78,1.94,7.45,3.59,15.09,7.04,22.01,15.51,31.09,38.36,59.12,68.88,77.58,23.99,14.53,51.95,22.6,80.26,22.95,10.64.13,20.92-1.2,31.43-2.73.52-.08,2.03-.51,2.03-.51"/><g><path class="tc1" d="M1116.28,298.31h-65.04c7.82-47.92,41.56-71.39,101.23-71.39,71.4,0,107.58,23.47,109.05,71.39v88.02c0,71.4-43.03,103.19-112.96,108.08-62.1,4.89-105.14-23.97-105.14-81.18,1.47-62.11,46.46-78.74,111.98-85.09,27.87-3.43,42.05-11.74,42.05-25.92-1.47-14.67-15.16-22-42.05-22-22.98,0-35.7,5.87-39.12,18.09ZM1198.43,383.4v-23.96c-15.16,6.35-32.76,11.74-51.84,15.65-25.92,4.89-39.12,17.11-39.12,36.19,1.47,20.54,12.22,30.32,32.76,30.32,36.19,0,58.19-21.51,58.19-58.19Z"/><path class="tc1" d="M1374.47,277.28h-6.85v143.27c0,10.76,6.36,16.63,19.07,16.63h20.05v49.39c-21.03,1.96-44.01,1.96-68.46-.49-24.45-2.44-36.19-17.6-35.7-46.45V156.99h33.74c17.12,0,31.3,15.65,31.3,32.76v41.08h39.12v14.19c0,18.58-14.18,32.27-32.27,32.27Z"/><path class="tc1" d="M1680.59,230.82l-91.44,258.69h-68.95l-90.96-258.69h71.89l52.32,181.43,44.99-158.44c4.89-15.16,15.65-22.99,31.79-22.99h50.37Z"/><path class="tc1" d="M1762.26,298.31h-65.04c7.83-47.92,41.57-71.39,101.23-71.39,71.4,0,107.58,23.47,109.05,71.39v88.02c0,71.4-43.03,103.19-112.96,108.08-62.11,4.89-105.14-23.97-105.14-81.18,1.47-62.11,46.46-78.74,111.98-85.09,27.87-3.43,42.06-11.74,42.06-25.92-1.47-14.67-15.16-22-42.06-22-22.98,0-35.7,5.87-39.12,18.09ZM1844.42,383.4v-23.96c-15.16,6.35-32.76,11.74-51.84,15.65-25.92,4.89-39.12,17.11-39.12,36.19,1.47,20.54,12.22,30.32,32.76,30.32,36.19,0,58.19-21.51,58.19-58.19Z"/><path class="tc1" d="M2057.14,495.38c-78.24,0-118.34-44.99-120.3-133.99,0-88.51,39.61-133.01,119.32-134.48,62.59,0,99.76,27.88,111.01,84.11h-70.91c-7.82-17.6-21.51-26.89-42.05-26.89-34.23,0-51.35,25.91-51.35,77.26s18.09,77.26,54.28,76.77c15.16,0,28.36-6.35,39.12-18.58,6.36-6.35,13.69-9.28,22.01-9.28h48.91c-11.74,52.81-49.88,86.55-110.03,85.09Z"/><path class="tc1" d="M2268.39,298.31h-65.04c7.83-47.92,41.57-71.39,101.23-71.39,71.4,0,107.58,23.47,109.05,71.39v88.02c0,71.4-43.03,103.19-112.96,108.08-62.1,4.89-105.14-23.97-105.14-81.18,1.47-62.11,46.46-78.74,111.98-85.09,27.88-3.43,42.06-11.74,42.06-25.92-1.47-14.67-15.16-22-42.06-22-22.98,0-35.7,5.87-39.12,18.09ZM2350.54,383.4v-23.96c-15.16,6.35-32.76,11.74-51.84,15.65-25.92,4.89-39.12,17.11-39.12,36.19,1.47,20.54,12.22,30.32,32.76,30.32,36.19,0,58.19-21.51,58.19-58.19Z"/><path class="tc1" d="M2444.92,356.01c1.95-83.62,46.45-125.19,133.01-125.19h9.29v67.48h-22.01c-36.19,0-54.28,19.08-54.28,56.73v134.48h-66.02v-133.51Z"/><path class="tc1" d="M2732.95,495.38c-78.25-2.45-117.36-47.93-117.36-135.95s39.61-132.03,118.34-132.53c82.16,0,120.78,50.37,115.9,151.59h-167.24c2.44,39.61,19.56,59.66,51.35,59.66,15.16,0,29.34-6.35,42.06-18.58,5.87-6.35,13.2-9.28,22.01-9.28h47.92c-14.18,54.77-49.39,85.09-112.96,85.09ZM2683.56,332.05h97.32c-3.91-34.23-20.05-51.84-47.93-51.84s-44.5,17.6-49.39,51.84Z"/></g></svg></a>
+    <div class="nav-links">
+
+      <!-- PRODUCTS dropdown -->
+      <div class="nav-item">
+        <a href="#products">Products <span class="chevron">▾</span></a>
+        <div class="mega-menu">
+          <div class="mega-inner">
+            <div class="mega-featured">
+              <div class="mega-featured-visual"><span class="mfv-icon">🏥</span></div>
+              <h4>The full care continuum, <em>connected.</em></h4>
+              <p>Three products that span doctors, patients, and pharma — powered by a shared AI layer that learns from every interaction.</p>
+              <a href="products-tatvapractice.html" class="mega-featured-link">Explore all products &rarr;</a>
+            </div>
+            <div class="mega-links">
+              <div class="mega-links-label">Products</div>
+              <a href="products-tatvapractice.html" class="mega-link-item">
+                <div class="mega-link-icon">💊</div>
+                <div class="mega-link-text">
+                  <h5>TatvaPractice</h5>
+                  <p>AI-powered Cloud EMR for doctors and hospitals</p>
+                </div>
+              </a>
+              <a href="products-goodflip.html" class="mega-link-item">
+                <div class="mega-link-icon">🍎</div>
+                <div class="mega-link-text">
+                  <h5>GoodFlip</h5>
+                  <p>Health & wellness app with AI coaching</p>
+                </div>
+              </a>
+              <a href="products-evalus.html" class="mega-link-item">
+                <div class="mega-link-icon">📊</div>
+                <div class="mega-link-text">
+                  <h5>Evalus</h5>
+                  <p>Real-world evidence and clinical research</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ZYVELOR AI dropdown -->
+      <div class="nav-item">
+        <a href="#zyvelor">Zyvelor AI <span class="chevron">▾</span></a>
+        <div class="mega-menu">
+          <div class="mega-inner">
+            <div class="mega-featured">
+              <div class="mega-featured-visual" style="background: linear-gradient(135deg, #2d1a54, #442c84);"><span class="mfv-icon" style="filter: brightness(2);">🧠</span></div>
+              <h4>Healthcare-native AI, <em>in production.</em></h4>
+              <p>20+ AI agents trained on real clinical data from real Indian healthcare workflows. Not synthetic. Not simulated.</p>
+              <a href="zyvelor-ai.html" class="mega-featured-link">Learn about Zyvelor &rarr;</a>
+            </div>
+            <div class="mega-links">
+              <div class="mega-links-label">Capabilities</div>
+              <a href="zyvelor-ai.html" class="mega-link-item">
+                <div class="mega-link-icon">🎤</div>
+                <div class="mega-link-text">
+                  <h5>Voice & Clinical AI</h5>
+                  <p>VoiceRx, SnapRx, AmbientRx, multilingual input</p>
+                </div>
+              </a>
+              <a href="zyvelor-ai.html" class="mega-link-item">
+                <div class="mega-link-icon">🧬</div>
+                <div class="mega-link-text">
+                  <h5>Clinical Decision</h5>
+                  <p>DDx, lab analysis, differential diagnosis</p>
+                </div>
+              </a>
+              <a href="zyvelor-ai.html" class="mega-link-item">
+                <div class="mega-link-icon">📄</div>
+                <div class="mega-link-text">
+                  <h5>Document Intelligence</h5>
+                  <p>Prescription OCR, claims extraction</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOLUTIONS dropdown -->
+      <div class="nav-item">
+        <a href="#solutions">Solutions <span class="chevron">▾</span></a>
+        <div class="mega-menu">
+          <div class="mega-inner">
+            <div class="mega-featured">
+              <div class="mega-featured-visual"><span class="mfv-icon">🎯</span></div>
+              <h4>Built for every stakeholder, <em>integrated.</em></h4>
+              <p>Doctors, hospitals, pharma, and now payors. Each with their own success metrics, all powered by the same underlying platform.</p>
+              <a href="#" class="mega-featured-link">View all solutions &rarr;</a>
+            </div>
+            <div class="mega-links">
+              <div class="mega-links-label">Solutions</div>
+              <a href="#" class="mega-link-item">
+                <div class="mega-link-icon">👨‍⚕️</div>
+                <div class="mega-link-text">
+                  <h5>For Doctors</h5>
+                  <p>TatvaPractice EMR and clinical AI</p>
+                </div>
+              </a>
+              <a href="#" class="mega-link-item">
+                <div class="mega-link-icon">🏨</div>
+                <div class="mega-link-text">
+                  <h5>For Hospitals</h5>
+                  <p>Multi-specialty operations and analytics</p>
+                </div>
+              </a>
+              <a href="solutions-pharma.html" class="mega-link-item">
+                <div class="mega-link-icon">💊</div>
+                <div class="mega-link-text">
+                  <h5>For Pharma</h5>
+                  <p>Real-world evidence and physician engagement</p>
+                </div>
+              </a>
+              <a href="#" class="mega-link-item">
+                <div class="mega-link-icon">🛡️</div>
+                <div class="mega-link-text">
+                  <h5>For Payors</h5>
+                  <p>Visit: Insurance-powered digital clinics</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="ecosystem-visit.html" style="font-size:13.5px; font-weight:600; color:var(--g6); text-decoration:none;">Ecosystem</a>
+
+
+      <a href="about.html" style="font-size:13.5px; font-weight:600; color:var(--g6); text-decoration:none;">About</a>
+      <a href="#cta" class="btn btn-p nav-cta">Request a Demo</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-tag">For Payors & Employers</div>
+        <h1>Care Access, <em>Reimagined Through Insurance</em></h1>
+        <p class="sub">Visit: A patient-facing clinic app enabling insurance companies and employers to connect members with quality care. Separate P&L. Digital-first model. Real-time outcomes visibility.</p>
+        <div class="hero-btns">
+          <a href="#cta" class="btn btn-p">Partner with Visit &nbsp;&rarr;</a>
+          <a href="#" class="btn btn-o">Explore as Patient</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-mockup">
+          <div class="hm-bar"><span class="hm-dot"></span><span class="hm-dot"></span><span class="hm-dot"></span></div>
+          <div class="hm-screen">
+            <div class="hm-rx">
+              <div class="hm-rx-label">Visit Clinic Booking</div>
+              <div class="hm-rx-line"></div>
+              <div class="hm-rx-line"></div>
+              <div class="hm-rx-line"></div>
+              <div class="hm-rx-line"></div>
+            </div>
+            <div class="hm-ai-badge">Member Network Active</div>
+            <div class="hm-metrics">
+              <div class="hm-met"><div class="hm-met-num">1000+</div><div class="hm-met-lbl">Clinics</div></div>
+              <div class="hm-met"><div class="hm-met-num">15m</div><div class="hm-met-lbl">Avg Wait</div></div>
+              <div class="hm-met"><div class="hm-met-num">98%</div><div class="hm-met-lbl">Satisfaction</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-float hf-1">
+          <span class="hf-icon">📱</span>
+          <span>Digital-First</span>
+        </div>
+        <div class="hero-float hf-2">
+          <span class="hf-icon">📊</span>
+          <span>Real-time Data</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISIT'S MODEL ============ -->
+<section class="usecase">
+  <div class="container">
+    <div class="uc-grid">
+      <div class="uc-visual">
+        <div class="uc-screenshot">
+          <div class="uc-ss-header">
+            <div class="uc-ss-icon" style="background: linear-gradient(135deg, var(--a1), var(--a2));">🔄</div>
+            <div>
+              <div class="uc-ss-name">Visit Ecosystem</div>
+              <div class="uc-ss-desc">Separate P&L, Integrated Platform</div>
+            </div>
+          </div>
+          <div class="uc-ss-body">
+            <div class="uc-ss-row"><div class="uc-ss-block long accent"></div><div class="uc-ss-block short"></div></div>
+            <div class="uc-ss-row"><div class="uc-ss-block"></div><div class="uc-ss-block long"></div></div>
+            <div class="uc-ss-row"><div class="uc-ss-block short accent"></div><div class="uc-ss-block"></div><div class="uc-ss-block short"></div></div>
+            <div style="margin-top: 12px;">
+              <span class="uc-ss-pill">TatvaPractice EMR</span>
+              <span class="uc-ss-pill">Member Portal</span>
+              <span class="uc-ss-pill">Real-time Analytics</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="uc-text">
+        <div class="uc-label">Visit Model</div>
+        <div class="uc-title">Separate P&L, integrated ecosystem.</div>
+        <div class="uc-body">Visit operates as a distinct business unit with its own P&L, while leveraging TatvaCare's core platform. Patients access digital-first clinics through their insurance. Clinics run on TatvaPractice EMR. Payors get member data and outcomes visibility in real time.</div>
+        <ul class="uc-points">
+          <li>Patients discover and book clinics through Visit app</li>
+          <li>Clinics use TatvaPractice as integrated EMR foundation</li>
+          <li>Payors access member utilization and outcomes dashboards</li>
+          <li>Claims and payments fully streamlined within ecosystem</li>
+        </ul>
+        <a href="#" class="uc-link">Learn about Visit's architecture &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOR PATIENTS ============ -->
+<section class="usecase">
+  <div class="container">
+    <div class="uc-grid reverse">
+      <div class="uc-visual">
+        <div class="uc-screenshot">
+          <div class="uc-ss-header">
+            <div class="uc-ss-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">👥</div>
+            <div>
+              <div class="uc-ss-name">Patient Experience</div>
+              <div class="uc-ss-desc">Easy, Integrated Care Access</div>
+            </div>
+          </div>
+          <div class="uc-ss-body">
+            <div class="uc-ss-row"><div class="uc-ss-block accent"></div><div class="uc-ss-block long"></div></div>
+            <div class="uc-ss-row"><div class="uc-ss-block long"></div><div class="uc-ss-block short accent"></div></div>
+            <div class="uc-ss-row"><div class="uc-ss-block short"></div><div class="uc-ss-block"></div></div>
+            <div style="margin-top: 12px;">
+              <span class="uc-ss-pill">Clinic Discovery</span>
+              <span class="uc-ss-pill">Video + In-Person</span>
+              <span class="uc-ss-pill">ABDM Linked</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="uc-text">
+        <div class="uc-label">For Patients</div>
+        <div class="uc-title">Quality care, one tap away.</div>
+        <div class="uc-body">Patients browse certified clinics in their network, book instant or scheduled appointments, choose video or in-person visits, and access their full medical history through ABDM integration. No paperwork. No fragmentation. Just care.</div>
+        <ul class="uc-points">
+          <li>Easy clinic discovery and real-time availability</li>
+          <li>Video consultations and in-person visits</li>
+          <li>Insurance coverage handled seamlessly</li>
+          <li>Medical records continuity via ABDM certification</li>
+        </ul>
+        <a href="#" class="uc-link">See Visit from a patient's perspective &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOR PAYORS & EMPLOYERS ============ -->
+<section class="usecase">
+  <div class="container">
+    <div class="uc-grid">
+      <div class="uc-visual">
+        <div class="uc-screenshot">
+          <div class="uc-ss-header">
+            <div class="uc-ss-icon" style="background: linear-gradient(135deg, #ec4899, #db2777);">📊</div>
+            <div>
+              <div class="uc-ss-name">Payor Dashboard</div>
+              <div class="uc-ss-desc">Member & Outcomes Analytics</div>
+            </div>
+          </div>
+          <div class="uc-ss-body">
+            <div class="uc-ss-row"><div class="uc-ss-block"></div><div class="uc-ss-block long accent"></div></div>
+            <div class="uc-ss-row"><div class="uc-ss-block short accent"></div><div class="uc-ss-block"></div><div class="uc-ss-block short"></div></div>
+            <div class="uc-ss-row"><div class="uc-ss-block long"></div><div class="uc-ss-block short"></div></div>
+            <div style="margin-top: 12px;">
+              <span class="uc-ss-pill">Utilization Data</span>
+              <span class="uc-ss-pill">Cost Analytics</span>
+              <span class="uc-ss-pill">Member Satisfaction</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="uc-text">
+        <div class="uc-label">For Payors & Employers</div>
+        <div class="uc-title">Network without contracts. Insights without delays.</div>
+        <div class="uc-body">Visit eliminates long onboarding cycles. Payors instantly expand network reach across Bangalore and Ahmedabad. Real-time dashboards show member utilization, costs per encounter, outcomes, and satisfaction — enabling smarter interventions and better ROI.</div>
+        <ul class="uc-points">
+          <li>Expand network reach without complex contracting</li>
+          <li>Real-time member utilization and cost analytics</li>
+          <li>Outcomes data integrated with claims and payments</li>
+          <li>Reduce cost-per-encounter via digital-first model</li>
+          <li>Improve member retention through better care access</li>
+        </ul>
+        <a href="#" class="uc-link">Explore payor benefits &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOR CLINICS ============ -->
+<section class="usecase">
+  <div class="container">
+    <div class="uc-grid reverse">
+      <div class="uc-visual">
+        <div class="uc-screenshot">
+          <div class="uc-ss-header">
+            <div class="uc-ss-icon" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">🏥</div>
+            <div>
+              <div class="uc-ss-name">Clinic Portal</div>
+              <div class="uc-ss-desc">Operations & EMR</div>
+            </div>
+          </div>
+          <div class="uc-ss-body">
+            <div class="uc-ss-row"><div class="uc-ss-block accent"></div><div class="uc-ss-block long"></div></div>
+            <div class="uc-ss-row"><div class="uc-ss-block long"></div><div class="uc-ss-block short accent"></div></div>
+            <div class="uc-ss-row"><div class="uc-ss-block short"></div><div class="uc-ss-block"></div></div>
+            <div style="margin-top: 12px;">
+              <span class="uc-ss-pill">TatvaPractice EMR</span>
+              <span class="uc-ss-pill">Streamlined Claims</span>
+              <span class="uc-ss-pill">Patient Queue Mgmt</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="uc-text">
+        <div class="uc-label">For Clinics</div>
+        <div class="uc-title">Access to insurance-funded patients. Built-in EMR. Automated payments.</div>
+        <div class="uc-body">Clinics gain access to a pre-qualified patient pool funded by major insurers and employers. They use TatvaPractice (the same EMR Tatva's doctors use) for unified operations. Claims generation and payments are fully automated within the Visit ecosystem.</div>
+        <ul class="uc-points">
+          <li>Access to insurance-funded patient pool</li>
+          <li>TatvaPractice EMR as foundation for operations</li>
+          <li>Automated claims generation and claim submissions</li>
+          <li>Real-time payment reconciliation and settlements</li>
+        </ul>
+        <a href="#" class="uc-link">Learn how clinics benefit &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIGITAL-FIRST CLINIC MODEL ============ -->
+<section class="platform">
+  <div class="container">
+    <div class="platform-header">
+      <h2 class="platform-title">Digital-First Clinic Model</h2>
+      <p class="platform-sub">Hardware + software integrated clinics designed for scalability, efficiency, and access.</p>
+    </div>
+    <div class="platform-grid">
+      <div class="platform-card">
+        <h3>Scalable Infrastructure</h3>
+        <p>Visit clinics are lean, efficient, and built to scale. Integrated hardware and software design reduces operational overhead while maintaining quality standards across all locations.</p>
+      </div>
+      <div class="platform-card">
+        <h3>Patient-Centric Design</h3>
+        <p>From booking to follow-up, every interaction is optimized for simplicity. Digital-first workflows mean faster appointments, real-time availability, and continuity of care through integrated records.</p>
+      </div>
+      <div class="platform-card">
+        <h3>Data-Driven Operations</h3>
+        <p>Every Visit clinic operates with embedded analytics. Payors, clinics, and patients all benefit from real-time visibility into utilization, outcomes, and costs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GEOGRAPHIC PRESENCE ============ -->
+<section class="usecase">
+  <div class="container">
+    <div class="uc-grid">
+      <div class="uc-visual">
+        <div class="uc-screenshot">
+          <div class="uc-ss-header">
+            <div class="uc-ss-icon" style="background: linear-gradient(135deg, var(--a1), var(--a2));">🗺️</div>
+            <div>
+              <div class="uc-ss-name">Visit Presence</div>
+              <div class="uc-ss-desc">Growing Across India</div>
+            </div>
+          </div>
+          <div class="uc-ss-body">
+            <div class="uc-ss-row"><div class="uc-ss-block long accent"></div><div class="uc-ss-block short"></div></div>
+            <div class="uc-ss-row"><div class="uc-ss-block"></div><div class="uc-ss-block long"></div></div>
+            <div class="uc-ss-row"><div class="uc-ss-block short accent"></div><div class="uc-ss-block"></div><div class="uc-ss-block short"></div></div>
+            <div style="margin-top: 12px;">
+              <span class="uc-ss-pill">Bangalore</span>
+              <span class="uc-ss-pill">Ahmedabad</span>
+              <span class="uc-ss-pill">Expanding</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="uc-text">
+        <div class="uc-label">Geographic Expansion</div>
+        <div class="uc-title">Present in major metros. Expanding nationwide.</div>
+        <div class="uc-body">Visit currently operates in Bangalore and Ahmedabad with significant clinic networks. We're rapidly expanding to tier-2 and tier-3 cities to bring quality, insured care access to more members across India.</div>
+        <ul class="uc-points">
+          <li>Current presence: Bangalore, Ahmedabad</li>
+          <li>1000+ partner clinics across network</li>
+          <li>50,000+ active members served</li>
+          <li>Rapid expansion to new cities planned</li>
+        </ul>
+        <a href="#" class="uc-link">Explore available clinics in your city &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-header">
+      <div class="stats-headline">Visit by the numbers.</div>
+      <div class="stats-sub">Real impact for patients, payors, and healthcare systems.</div>
+    </div>
+    <div class="stats-bar">
+      <div class="stat-card">
+        <div class="stat-num">1000+</div>
+        <div class="stat-lbl">Partner Clinics</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">50K+</div>
+        <div class="stat-lbl">Active Members</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">98%</div>
+        <div class="stat-lbl">Member Satisfaction</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">40%</div>
+        <div class="stat-lbl">Cost Reduction vs. Traditional</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta" id="cta">
+  <div class="container">
+    <h2>Ready to transform your member experience?</h2>
+    <p>Whether you're an insurer, employer, or clinic, Visit offers the infrastructure to deliver quality, affordable care at scale.</p>
+    <div class="cta-btns">
+      <a href="ecosystem-visit.html" class="btn btn-w">Partner with Visit &nbsp;&rarr;</a>
+      <a href="#" class="btn btn-w" style="background: rgba(255,255,255,.15); color: #fff;">Explore as Patient</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="fl"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 3600 648" style="height:22px;width:auto;display:block;"><defs><style>.tc1{fill:url(#lg2)}.tc2{fill:#4b4ad5}</style><linearGradient id="lg2" x1="2711.5" y1="902.59" x2="1117.71" y2="-213.4" gradientUnits="userSpaceOnUse"><stop offset=".09" stop-color="#b122ff"/><stop offset=".24" stop-color="#9f28f7"/><stop offset=".52" stop-color="#733ae5"/><stop offset=".75" stop-color="#4b4ad5"/></linearGradient></defs><path class="tc2" d="M1072.99,165.85v-51.02c0-14.16-10.7-26-22.79-24.67-40.93,4.5-62.06,22.04-70.14,28.8v-41.19c0-17.48-5.25-31.14-20.23-31.14h-52.5v184.18c-24.24-15.77-34.23-28.47-55.18-37.4-22.94-9.77-57.8-13.87-76.35-10.26-6.1,1.18-17.97,6.49-26.05,26.2v49.52c44.44-8.29,74.15,11.67,88.67,18.79,14.53,7.11,29.84,17.25,40.61,29.82,8.61,10.06,14.96,21.75,20.59,34.64,6.41-30.04,18.74-68.36,49.2-103.63,77.18-85.25,124.16-72.63,124.16-72.63Z"/><path class="tc2" d="M1105.17,558.62c-.79-2.35-.27-1.86-3.2-2.32-2.38-.38-4.8-.61-7.2-.87-3.35-.37-6.72-.65-10.07-.96-2.87-.27-5.74-.55-8.6-.94-20.4-2.99-38.94-12.33-55.21-24.26-14.66-10.75-25.72-24.98-30.69-42.22-7.21-25.01-8.39-50.21-7.99-75.95.73-47.49-3.21-94.87-2.22-142.32.07-1.68-2.4-2.63-4-1.56-16.07,10.65-26.42,27.65-34.54,44.35-9.14,18.8-16.93,38.51-22.92,58.45-6.05,20.14-9.01,41.06-9.35,62.01-.34,20.79.31,42.54,5.58,62.78,1.94,7.45,3.59,15.09,7.04,22.01,15.51,31.09,38.36,59.12,68.88,77.58,23.99,14.53,51.95,22.6,80.26,22.95,10.64.13,20.92-1.2,31.43-2.73.52-.08,2.03-.51,2.03-.51"/><g><path class="tc1" d="M1116.28,298.31h-65.04c7.82-47.92,41.56-71.39,101.23-71.39,71.4,0,107.58,23.47,109.05,71.39v88.02c0,71.4-43.03,103.19-112.96,108.08-62.1,4.89-105.14-23.97-105.14-81.18,1.47-62.11,46.46-78.74,111.98-85.09,27.87-3.43,42.05-11.74,42.05-25.92-1.47-14.67-15.16-22-42.05-22-22.98,0-35.7,5.87-39.12,18.09ZM1198.43,383.4v-23.96c-15.16,6.35-32.76,11.74-51.84,15.65-25.92,4.89-39.12,17.11-39.12,36.19,1.47,20.54,12.22,30.32,32.76,30.32,36.19,0,58.19-21.51,58.19-58.19Z"/><path class="tc1" d="M1374.47,277.28h-6.85v143.27c0,10.76,6.36,16.63,19.07,16.63h20.05v49.39c-21.03,1.96-44.01,1.96-68.46-.49-24.45-2.44-36.19-17.6-35.7-46.45V156.99h33.74c17.12,0,31.3,15.65,31.3,32.76v41.08h39.12v14.19c0,18.58-14.18,32.27-32.27,32.27Z"/><path class="tc1" d="M1680.59,230.82l-91.44,258.69h-68.95l-90.96-258.69h71.89l52.32,181.43,44.99-158.44c4.89-15.16,15.65-22.99,31.79-22.99h50.37Z"/><path class="tc1" d="M1762.26,298.31h-65.04c7.83-47.92,41.57-71.39,101.23-71.39,71.4,0,107.58,23.47,109.05,71.39v88.02c0,71.4-43.03,103.19-112.96,108.08-62.11,4.89-105.14-23.97-105.14-81.18,1.47-62.11,46.46-78.74,111.98-85.09,27.87-3.43,42.06-11.74,42.06-25.92-1.47-14.67-15.16-22-42.06-22-22.98,0-35.7,5.87-39.12,18.09ZM1844.42,383.4v-23.96c-15.16,6.35-32.76,11.74-51.84,15.65-25.92,4.89-39.12,17.11-39.12,36.19,1.47,20.54,12.22,30.32,32.76,30.32,36.19,0,58.19-21.51,58.19-58.19Z"/><path class="tc1" d="M2057.14,495.38c-78.24,0-118.34-44.99-120.3-133.99,0-88.51,39.61-133.01,119.32-134.48,62.59,0,99.76,27.88,111.01,84.11h-70.91c-7.82-17.6-21.51-26.89-42.05-26.89-34.23,0-51.35,25.91-51.35,77.26s18.09,77.26,54.28,76.77c15.16,0,28.36-6.35,39.12-18.58,6.36-6.35,13.69-9.28,22.01-9.28h48.91c-11.74,52.81-49.88,86.55-110.03,85.09Z"/><path class="tc1" d="M2268.39,298.31h-65.04c7.83-47.92,41.57-71.39,101.23-71.39,71.4,0,107.58,23.47,109.05,71.39v88.02c0,71.4-43.03,103.19-112.96,108.08-62.1,4.89-105.14-23.97-105.14-81.18,1.47-62.11,46.46-78.74,111.98-85.09,27.88-3.43,42.06-11.74,42.06-25.92-1.47-14.67-15.16-22-42.06-22-22.98,0-35.7,5.87-39.12,18.09ZM2350.54,383.4v-23.96c-15.16,6.35-32.76,11.74-51.84,15.65-25.92,4.89-39.12,17.11-39.12,36.19,1.47,20.54,12.22,30.32,32.76,30.32,36.19,0,58.19-21.51,58.19-58.19Z"/><path class="tc1" d="M2444.92,356.01c1.95-83.62,46.45-125.19,133.01-125.19h9.29v67.48h-22.01c-36.19,0-54.28,19.08-54.28,56.73v134.48h-66.02v-133.51Z"/><path class="tc1" d="M2732.95,495.38c-78.25-2.45-117.36-47.93-117.36-135.95s39.61-132.03,118.34-132.53c82.16,0,120.78,50.37,115.9,151.59h-167.24c2.44,39.61,19.56,59.66,51.35,59.66,15.16,0,29.34-6.35,42.06-18.58,5.87-6.35,13.2-9.28,22.01-9.28h47.92c-14.18,54.77-49.39,85.09-112.96,85.09ZM2683.56,332.05h97.32c-3.91-34.23-20.05-51.84-47.93-51.84s-44.5,17.6-49.39,51.84Z"/></g></svg></div>
+        <p>The AI Operating System for Healthcare.<br>Digicare Health Solutions Pvt. Ltd.<br>Bangalore · Ahmedabad</p>
+      </div>
+      <div class="foot-col">
+        <h5>Products</h5>
+        <a href="products-tatvapractice.html">TatvaPractice</a>
+        <a href="products-goodflip.html">GoodFlip</a>
+        <a href="products-evalus.html">Evalus</a>
+      </div>
+      <div class="foot-col">
+        <h5>Zyvelor AI</h5>
+        <a href="zyvelor-ai.html">Capabilities</a>
+        <a href="zyvelor-ai.html">Document Extractor</a>
+        <a href="zyvelor-ai.html">Velora</a>
+      </div>
+      <div class="foot-col">
+        <h5>Solutions</h5>
+        <a href="solutions-doctors.html">For Doctors</a>
+        <a href="solutions-hospitals.html">For Hospitals</a>
+        <a href="solutions-pharma.html">For Pharma</a>
+        <a href="solutions-payors.html">For Payors</a>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+      <a href="ecosystem-visit.html" style="font-size:13.5px; font-weight:600; color:var(--g6); text-decoration:none;">Ecosystem</a>
+
+        <a href="about.html">About</a>
+        <a href="#">Leadership</a>
+        <a href="#">Careers</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Digicare Health Solutions Pvt. Ltd.</span>
+      <span><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Security</a></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
