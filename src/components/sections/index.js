@@ -7,4 +7,8 @@ export { default as SolutionsGrid } from './SolutionsGrid';
 export { default as CTASection } from './CTASection';
 export { default as SectionHeader } from './SectionHeader';
 export { default as SolutionPage } from './SolutionPage';
+export { default as FAQSection } from './FAQSection';
+export { default as TestimonialsSection } from './TestimonialsSection';
+export { default as FeatureGrid } from './FeatureGrid';
+export { default as PracticeSizeSection } from './PracticeSizeSection';
 export { HomepageHeroVisual, ProductHeroVisual } from './HeroVisuals';
