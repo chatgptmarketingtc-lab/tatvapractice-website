@@ -3,25 +3,19 @@ import { Logo } from '@/components/ui';
 
 export default function Footer() {
   const cols = [
-    { title: 'Products', links: [
-      { name: 'TatvaPractice', to: '/products/tatvapractice' },
-      { name: 'GoodFlip', to: '/products/goodflip' },
-      { name: 'Evalus', to: '/products/evalus' },
-    ]},
-    { title: 'Zyvelor AI', links: [
-      { name: 'Capabilities', to: '/zyvelor' },
-      { name: 'Document Extractor', to: '/zyvelor' },
-      { name: 'Velora', to: '/zyvelor' },
+    { title: 'Features', links: [
+      { name: 'VoiceRx', to: '/features/voicerx' },
+      { name: 'SnapRx', to: '/features/snaprx' },
+      { name: 'SmartSync', to: '/features/smartsync' },
+      { name: 'Doctor Agent', to: '/features/doctor-agent' },
+      { name: 'Receptionist AI', to: '/features/receptionist-ai' },
     ]},
     { title: 'Solutions', links: [
-      { name: 'For Doctors', to: '/solutions/doctors' },
+      { name: 'For Clinics', to: '/solutions/clinics' },
       { name: 'For Hospitals', to: '/solutions/hospitals' },
-      { name: 'For Pharma', to: '/solutions/pharma' },
-      { name: 'For Payors', to: '/solutions/payors' },
     ]},
     { title: 'Company', links: [
       { name: 'About', to: '/about' },
-      { name: 'Ecosystem', to: '/ecosystem/visit' },
       { name: 'Careers', to: '/about' },
       { name: 'Contact', to: '/about' },
     ]},
@@ -29,10 +23,10 @@ export default function Footer() {
   return (
     <footer className="bg-dark-900 text-white/70 pt-16 pb-8">
       <div className="max-w-container mx-auto px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           <div className="col-span-2">
             <div className="mb-4 opacity-80"><Logo height={22} /></div>
-            <p className="text-sm leading-relaxed">The AI Operating System for Healthcare.<br/>Digicare Health Solutions Pvt. Ltd.<br/>Bangalore · Ahmedabad</p>
+            <p className="text-sm leading-relaxed">AI-Powered Practice Management.<br/>Digicare Health Solutions Pvt. Ltd.<br/>Bangalore · Ahmedabad</p>
           </div>
           {cols.map((col, i) => (
             <div key={i}>

@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Logo, Button } from '@/components/ui';
-import { NAV_PRODUCTS, NAV_ZYVELOR, NAV_SOLUTIONS } from '@/lib/data';
+import { NAV_FEATURES, NAV_SOLUTIONS } from '@/lib/data';
 
 function MegaMenu({ items, featured }) {
   return (
@@ -59,44 +59,31 @@ export default function Navigation() {
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-8">
           <div className="nav-item relative">
-            <Link href="/products/tatvapractice" className="text-[13.5px] font-semibold text-g-6 no-underline hover:text-brand-500 transition-colors py-5 inline-flex items-center gap-1">
-              Products <span className="chevron text-[9px] text-g-3 transition-transform duration-200">▾</span>
-            </Link>
-            <MegaMenu items={NAV_PRODUCTS} featured={{
-              icon: '🏥', bg: 'linear-gradient(135deg, #ede6f6, #d8ccf0)',
-              title: 'The full care continuum, <em class="not-italic text-brand-500">connected.</em>',
-              desc: 'Three products that span doctors, patients, and pharma — powered by a shared AI layer.',
-              link: '/products/tatvapractice', linkText: 'Explore all products', label: 'Products'
+            <button className="text-[13.5px] font-semibold text-g-6 hover:text-brand-500 transition-colors py-5 inline-flex items-center gap-1">
+              Features <span className="chevron text-[9px] text-g-3 transition-transform duration-200">▾</span>
+            </button>
+            <MegaMenu items={NAV_FEATURES} featured={{
+              icon: '⚡', bg: 'linear-gradient(135deg, #ede6f6, #d8ccf0)',
+              title: 'AI-powered features for <em class="not-italic text-brand-500">modern practices.</em>',
+              desc: 'From voice prescriptions to AI-driven clinical workflows — everything built for speed.',
+              link: '/features/voicerx', linkText: 'Explore all features', label: 'Features'
             }} />
           </div>
 
           <div className="nav-item relative">
-            <Link href="/zyvelor" className="text-[13.5px] font-semibold text-g-6 no-underline hover:text-brand-500 transition-colors py-5 inline-flex items-center gap-1">
-              Zyvelor AI <span className="chevron text-[9px] text-g-3 transition-transform duration-200">▾</span>
-            </Link>
-            <MegaMenu items={NAV_ZYVELOR} featured={{
-              icon: '🧠', bg: 'linear-gradient(135deg, #2d1a54, #442c84)',
-              title: 'Healthcare-native AI, <em class="not-italic text-brand-500">in production.</em>',
-              desc: '20+ AI agents trained on real clinical data from real Indian healthcare workflows.',
-              link: '/zyvelor', linkText: 'Learn about Zyvelor', label: 'Capabilities'
-            }} />
-          </div>
-
-          <div className="nav-item relative">
-            <Link href="/solutions/doctors" className="text-[13.5px] font-semibold text-g-6 no-underline hover:text-brand-500 transition-colors py-5 inline-flex items-center gap-1">
+            <button className="text-[13.5px] font-semibold text-g-6 hover:text-brand-500 transition-colors py-5 inline-flex items-center gap-1">
               Solutions <span className="chevron text-[9px] text-g-3 transition-transform duration-200">▾</span>
-            </Link>
+            </button>
             <MegaMenu items={NAV_SOLUTIONS} featured={{
               icon: '🎯', bg: 'linear-gradient(135deg, #e8e4f4, #d8ccf0)',
-              title: 'Built for <em class="not-italic text-brand-500">your world.</em>',
-              desc: 'Whether you run a clinic, lead pharma programs, or fund healthcare — we have a solution.',
-              link: '/solutions/doctors', linkText: 'See all solutions', label: 'By Stakeholder'
+              title: 'Built for <em class="not-italic text-brand-500">your practice.</em>',
+              desc: 'Whether you run a solo clinic or manage a hospital network — we have you covered.',
+              link: '/solutions/clinics', linkText: 'See all solutions', label: 'By Practice Type'
             }} />
           </div>
 
-          <Link href="/ecosystem/visit" className="text-[13.5px] font-semibold text-g-6 no-underline hover:text-brand-500 transition-colors">Ecosystem</Link>
           <Link href="/about" className="text-[13.5px] font-semibold text-g-6 no-underline hover:text-brand-500 transition-colors">About</Link>
-          <Button variant="primary" to="/" className="!py-2.5 !px-5 !text-[12.5px] !rounded-md">Request a Demo</Button>
+          <Button variant="primary" to="/" className="!py-2.5 !px-5 !text-[12.5px] !rounded-md">Start Free Trial</Button>
         </div>
 
         {/* Mobile hamburger */}
@@ -110,14 +97,18 @@ export default function Navigation() {
       {/* Mobile Menu */}
       <div className={`lg:hidden bg-white border-t border-black/5 overflow-hidden transition-all duration-300 ${mobileOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
         <div className="max-w-container mx-auto px-8 py-6 flex flex-col gap-4">
-          {[...NAV_PRODUCTS, ...NAV_SOLUTIONS].map((item, i) => (
+          <div className="text-[10px] font-extrabold uppercase tracking-[2px] text-g-3">Features</div>
+          {NAV_FEATURES.map((item, i) => (
             <Link key={i} href={item.path} onClick={() => setMobileOpen(false)}
-              className="text-sm font-semibold text-g-6 no-underline hover:text-brand-500">{item.name}</Link>
+              className="text-sm font-semibold text-g-6 no-underline hover:text-brand-500 pl-2">{item.name}</Link>
           ))}
-          <Link href="/zyvelor" onClick={() => setMobileOpen(false)} className="text-sm font-semibold text-g-6 no-underline hover:text-brand-500">Zyvelor AI</Link>
-          <Link href="/ecosystem/visit" onClick={() => setMobileOpen(false)} className="text-sm font-semibold text-g-6 no-underline hover:text-brand-500">Ecosystem</Link>
-          <Link href="/about" onClick={() => setMobileOpen(false)} className="text-sm font-semibold text-g-6 no-underline hover:text-brand-500">About</Link>
-          <Button variant="primary" to="/" className="self-start mt-2">Request a Demo</Button>
+          <div className="text-[10px] font-extrabold uppercase tracking-[2px] text-g-3 mt-2">Solutions</div>
+          {NAV_SOLUTIONS.map((item, i) => (
+            <Link key={i} href={item.path} onClick={() => setMobileOpen(false)}
+              className="text-sm font-semibold text-g-6 no-underline hover:text-brand-500 pl-2">{item.name}</Link>
+          ))}
+          <Link href="/about" onClick={() => setMobileOpen(false)} className="text-sm font-semibold text-g-6 no-underline hover:text-brand-500 mt-2">About</Link>
+          <Button variant="primary" to="/" className="self-start mt-2">Start Free Trial</Button>
         </div>
       </div>
     </nav>

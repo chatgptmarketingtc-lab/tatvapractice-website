@@ -3,12 +3,12 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
 export const metadata = {
-  title: 'TatvaCare — The AI Operating System for Healthcare',
-  description: 'From a single prescription to a lifetime of care — TatvaCare builds AI that powers every touchpoint across doctors, patients, pharma, and payors.',
-  keywords: 'healthcare AI, EMR, electronic medical records, TatvaPractice, GoodFlip, Evalus, Zyvelor, India healthcare',
+  title: 'TatvaPractice — AI-Powered Practice Management',
+  description: 'TatvaPractice is the AI-powered practice management system that helps doctors write prescriptions in seconds, manage appointments, and grow their practice.',
+  keywords: 'practice management, AI EMR, electronic medical records, TatvaPractice, VoiceRx, SnapRx, cloud EMR, India healthcare',
   openGraph: {
-    title: 'TatvaCare — The AI Operating System for Healthcare',
-    description: 'From a single prescription to a lifetime of care — we build the AI that powers every touchpoint across doctors, patients, pharma, and payors.',
+    title: 'TatvaPractice — AI-Powered Practice Management',
+    description: 'The complete AI-first practice management system for doctors, clinics, and hospitals.',
     type: 'website',
   },
 };

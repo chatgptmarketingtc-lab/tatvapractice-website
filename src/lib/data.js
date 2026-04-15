@@ -1,30 +1,23 @@
 export const LOGO_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3600 648"><defs><style>.tc1{fill:url(#lg)}.tc2{fill:#4b4ad5}</style><linearGradient id="lg" x1="2711.5" y1="902.59" x2="1117.71" y2="-213.4" gradientUnits="userSpaceOnUse"><stop offset=".09" stop-color="#b122ff"/><stop offset=".24" stop-color="#9f28f7"/><stop offset=".52" stop-color="#733ae5"/><stop offset=".75" stop-color="#4b4ad5"/></linearGradient></defs><path class="tc2" d="M1072.99,165.85v-51.02c0-14.16-10.7-26-22.79-24.67-40.93,4.5-62.06,22.04-70.14,28.8v-41.19c0-17.48-5.25-31.14-20.23-31.14h-52.5v184.18c-24.24-15.77-34.23-28.47-55.18-37.4-22.94-9.77-57.8-13.87-76.35-10.26-6.1,1.18-17.97,6.49-26.05,26.2v49.52c44.44-8.29,74.15,11.67,88.67,18.79,14.53,7.11,29.84,17.25,40.61,29.82,8.61,10.06,14.96,21.75,20.59,34.64,6.41-30.04,18.74-68.36,49.2-103.63,77.18-85.25,124.16-72.63,124.16-72.63Z"/><path class="tc2" d="M1105.17,558.62c-.79-2.35-.27-1.86-3.2-2.32-2.38-.38-4.8-.61-7.2-.87-3.35-.37-6.72-.65-10.07-.96-2.87-.27-5.74-.55-8.6-.94-20.4-2.99-38.94-12.33-55.21-24.26-14.66-10.75-25.72-24.98-30.69-42.22-7.21-25.01-8.39-50.21-7.99-75.95.73-47.49-3.21-94.87-2.22-142.32.07-1.68-2.4-2.63-4-1.56-16.07,10.65-26.42,27.65-34.54,44.35-9.14,18.8-16.93,38.51-22.92,58.45-6.05,20.14-9.01,41.06-9.35,62.01-.34,20.79.31,42.54,5.58,62.78,1.94,7.45,3.59,15.09,7.04,22.01,15.51,31.09,38.36,59.12,68.88,77.58,23.99,14.53,51.95,22.6,80.26,22.95,10.64.13,20.92-1.2,31.43-2.73.52-.08,2.03-.51,2.03-.51"/><g><path class="tc1" d="M1116.28,298.31h-65.04c7.82-47.92,41.56-71.39,101.23-71.39,71.4,0,107.58,23.47,109.05,71.39v88.02c0,71.4-43.03,103.19-112.96,108.08-62.1,4.89-105.14-23.97-105.14-81.18,1.47-62.11,46.46-78.74,111.98-85.09,27.87-3.43,42.05-11.74,42.05-25.92-1.47-14.67-15.16-22-42.05-22-22.98,0-35.7,5.87-39.12,18.09ZM1198.43,383.4v-23.96c-15.16,6.35-32.76,11.74-51.84,15.65-25.92,4.89-39.12,17.11-39.12,36.19,1.47,20.54,12.22,30.32,32.76,30.32,36.19,0,58.19-21.51,58.19-58.19Z"/><path class="tc1" d="M1374.47,277.28h-6.85v143.27c0,10.76,6.36,16.63,19.07,16.63h20.05v49.39c-21.03,1.96-44.01,1.96-68.46-.49-24.45-2.44-36.19-17.6-35.7-46.45V156.99h33.74c17.12,0,31.3,15.65,31.3,32.76v41.08h39.12v14.19c0,18.58-14.18,32.27-32.27,32.27Z"/><path class="tc1" d="M1680.59,230.82l-91.44,258.69h-68.95l-90.96-258.69h71.89l52.32,181.43,44.99-158.44c4.89-15.16,15.65-22.99,31.79-22.99h50.37Z"/><path class="tc1" d="M1762.26,298.31h-65.04c7.83-47.92,41.57-71.39,101.23-71.39,71.4,0,107.58,23.47,109.05,71.39v88.02c0,71.4-43.03,103.19-112.96,108.08-62.11,4.89-105.14-23.97-105.14-81.18,1.47-62.11,46.46-78.74,111.98-85.09,27.87-3.43,42.06-11.74,42.06-25.92-1.47-14.67-15.16-22-42.06-22-22.98,0-35.7,5.87-39.12,18.09ZM1844.42,383.4v-23.96c-15.16,6.35-32.76,11.74-51.84,15.65-25.92,4.89-39.12,17.11-39.12,36.19,1.47,20.54,12.22,30.32,32.76,30.32,36.19,0,58.19-21.51,58.19-58.19Z"/><path class="tc1" d="M2057.14,495.38c-78.24,0-118.34-44.99-120.3-133.99,0-88.51,39.61-133.01,119.32-134.48,62.59,0,99.76,27.88,111.01,84.11h-70.91c-7.82-17.6-21.51-26.89-42.05-26.89-34.23,0-51.35,25.91-51.35,77.26s18.09,77.26,54.28,76.77c15.16,0,28.36-6.35,39.12-18.58,6.36-6.35,13.69-9.28,22.01-9.28h48.91c-11.74,52.81-49.88,86.55-110.03,85.09Z"/><path class="tc1" d="M2268.39,298.31h-65.04c7.83-47.92,41.57-71.39,101.23-71.39,71.4,0,107.58,23.47,109.05,71.39v88.02c0,71.4-43.03,103.19-112.96,108.08-62.1,4.89-105.14-23.97-105.14-81.18,1.47-62.11,46.46-78.74,111.98-85.09,27.88-3.43,42.06-11.74,42.06-25.92-1.47-14.67-15.16-22-42.06-22-22.98,0-35.7,5.87-39.12,18.09ZM2350.54,383.4v-23.96c-15.16,6.35-32.76,11.74-51.84,15.65-25.92,4.89-39.12,17.11-39.12,36.19,1.47,20.54,12.22,30.32,32.76,30.32,36.19,0,58.19-21.51,58.19-58.19Z"/><path class="tc1" d="M2444.92,356.01c1.95-83.62,46.45-125.19,133.01-125.19h9.29v67.48h-22.01c-36.19,0-54.28,19.08-54.28,56.73v134.48h-66.02v-133.51Z"/><path class="tc1" d="M2732.95,495.38c-78.25-2.45-117.36-47.93-117.36-135.95s39.61-132.03,118.34-132.53c82.16,0,120.78,50.37,115.9,151.59h-167.24c2.44,39.61,19.56,59.66,51.35,59.66,15.16,0,29.34-6.35,42.06-18.58,5.87-6.35,13.2-9.28,22.01-9.28h47.92c-14.18,54.77-49.39,85.09-112.96,85.09ZM2683.56,332.05h97.32c-3.91-34.23-20.05-51.84-47.93-51.84s-44.5,17.6-49.39,51.84Z"/></g></svg>`;
 
-export const NAV_PRODUCTS = [
-  { icon: '💊', name: 'TatvaPractice', desc: 'AI-powered Cloud EMR for doctors and hospitals', path: '/products/tatvapractice' },
-  { icon: '🍎', name: 'GoodFlip', desc: 'Health & wellness app with AI coaching', path: '/products/goodflip' },
-  { icon: '📊', name: 'Evalus', desc: 'Real-world evidence and clinical research', path: '/products/evalus' },
-];
-
-export const NAV_ZYVELOR = [
-  { icon: '🎤', name: 'Voice & Clinical AI', desc: 'VoiceRx, SnapRx, AmbientRx, multilingual input', path: '/zyvelor' },
-  { icon: '🧬', name: 'Clinical Decision Support', desc: 'DDx scoring, lab analysis, dose checks', path: '/zyvelor' },
-  { icon: '📄', name: 'Document Extractor API', desc: 'Healthcare-grade OCR, available as standalone API', path: '/zyvelor' },
-  { icon: '📈', name: 'Velora', desc: 'Enterprise natural language querying platform', path: '/zyvelor' },
+export const NAV_FEATURES = [
+  { icon: '🎤', name: 'VoiceRx', desc: 'Voice-to-prescription in any language', path: '/features/voicerx' },
+  { icon: '📸', name: 'SnapRx', desc: 'Photo-to-prescription with AI OCR', path: '/features/snaprx' },
+  { icon: '🔄', name: 'SmartSync', desc: 'Seamless data sync across devices', path: '/features/smartsync' },
+  { icon: '🤖', name: 'Doctor Agent', desc: 'AI assistant for clinical workflows', path: '/features/doctor-agent' },
+  { icon: '📞', name: 'Receptionist AI', desc: 'Automated front-desk management', path: '/features/receptionist-ai' },
 ];
 
 export const NAV_SOLUTIONS = [
-  { icon: '🩺', name: 'For Doctors', desc: 'AI-powered prescriptions, practice growth tools', path: '/solutions/doctors' },
-  { icon: '🏥', name: 'For Hospitals & Clinics', desc: 'Enterprise EMR, digital clinic infrastructure', path: '/solutions/hospitals' },
-  { icon: '💊', name: 'For Pharma', desc: 'PSP programs, RWE, commercial analytics', path: '/solutions/pharma' },
-  { icon: '🏦', name: 'For Payors & Insurers', desc: 'Benefits management, outcomes tracking, connected care', path: '/solutions/payors' },
+  { icon: '🏥', name: 'For Clinics', desc: 'Complete practice management for solo & small clinics', path: '/solutions/clinics' },
+  { icon: '🏢', name: 'For Hospitals', desc: 'Enterprise-grade EMR for multi-location networks', path: '/solutions/hospitals' },
 ];
 
 export const CLIENT_LOGOS = ['Zydus', 'Cliantha Research', 'Guardian Health', 'Zydus Wellness', 'Sentiss Pharma', 'AliveCor'];
 
 export const HOMEPAGE_STATS = [
   { value: 50000, suffix: '+', label: 'Registered Doctors' },
-  { value: 4.6, suffix: 'x', label: 'YoY Revenue Growth', decimals: 1 },
-  { value: 20, suffix: '+', label: 'AI Agents in Production' },
-  { value: 200, suffix: '+', label: 'Team Members' },
+  { value: 20, suffix: '+', label: 'Specialties Supported' },
+  { value: 12, suffix: 's', label: 'Avg Prescription Time' },
+  { value: 19, suffix: '', label: 'Feature Modules' },
 ];
