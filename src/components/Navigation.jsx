@@ -34,7 +34,7 @@ export default function Navigation() {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-4">
-      <nav className={`w-full max-w-[900px] rounded-full px-6 py-3 flex items-center justify-between transition-all duration-300 ${scrolled ? 'bg-white/95 shadow-lg shadow-black/5 backdrop-blur-xl' : 'bg-white/70 backdrop-blur-md shadow-md shadow-black/5'}`}>
+      <nav className={`w-full max-w-[900px] rounded-full px-6 py-3 flex items-center justify-between transition-all duration-300 ${scrolled ? 'bg-white/90 shadow-lg shadow-black/5 backdrop-blur-xl' : 'bg-white/30 backdrop-blur-xl shadow-lg shadow-purple-900/10 border border-white/20'}`}>
         {/* Logo */}
         <Link href="/" className="no-underline flex items-center gap-1.5 shrink-0">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">

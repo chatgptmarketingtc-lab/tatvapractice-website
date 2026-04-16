@@ -84,9 +84,9 @@ export default function HomePage() {
   return (
     <>
       {/* Hero — Center Aligned, Figma-exact */}
-      <section className="pt-36 lg:pt-44 pb-20 lg:pb-28 relative overflow-hidden" style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(91,46,145,0.12) 0%, rgba(91,46,145,0.05) 40%, rgba(255,255,255,1) 70%)' }}>
-        {/* Subtle purple glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] opacity-30" style={{ background: 'radial-gradient(ellipse, rgba(124,77,188,0.3) 0%, transparent 70%)' }} />
+      <section className="pt-36 lg:pt-44 pb-20 lg:pb-28 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #7C4DBC 0%, #B88DD4 25%, #D4BCE6 45%, #EDE0F5 60%, #FFFFFF 85%)' }}>
+        {/* Geometric grid pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: 'linear-gradient(45deg, #fff 1px, transparent 1px), linear-gradient(-45deg, #fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px), linear-gradient(0deg, #fff 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
         <div className="max-w-[900px] mx-auto px-6 relative z-10 text-center">
           {/* Tag Pill */}
@@ -161,33 +161,66 @@ export default function HomePage() {
       </section>
 
       {/* Our Scale */}
-      <StatsBar stats={[
-        { value: 50000, suffix: '+', label: 'Doctors Registered' },
-        { value: 20, suffix: '+', label: 'Specialties Supported' },
-        { value: 12, suffix: 's', label: 'Avg Prescription Time' },
-        { value: 19, suffix: '', label: 'Feature Modules' },
-      ]} />
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="max-w-container mx-auto px-8">
+          <h2 className="text-3xl lg:text-[40px] font-extrabold text-center mb-14 text-gray-900">Our Scale</h2>
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { value: '10 Lakh+', label: 'Patients Served' },
+              { value: '12 Lakh+', label: 'Digital Rx created' },
+              { value: '10,000+', label: 'Doctors onboarded' },
+              { value: '10+', label: 'Language support' },
+              { value: '25+', label: 'Specialities' },
+              { value: '200+', label: 'Cities Servicable' },
+            ].map((s, i) => (
+              <div key={i} className="relative bg-gradient-to-br from-purple-50/50 to-white rounded-2xl p-6 text-center border border-purple-100/30 overflow-hidden">
+                <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 30% 40%, #7C4DBC 0.5px, transparent 0.5px)', backgroundSize: '16px 16px' }} />
+                <div className="relative z-10">
+                  <div className="text-xl lg:text-2xl font-extrabold text-[#5B2E91] mb-1">{s.value}</div>
+                  <div className="text-[13px] text-gray-500 font-medium">{s.label}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      {/* Built-in AI to Supercharge Your Workflow */}
-      <UseCaseSection
-        icon="🤖"
-        name="TatvaRx"
-        desc="AI Prescription Engine"
-        category="Built-in AI"
-        title="Built-in AI to Supercharge Your Workflow"
-        body="TatvaPractice comes with AI built in — powering four distinct prescription modes, clinical decision support, and smart automation across your entire workflow."
-        points={['VoiceRx — Speak prescriptions in any language', 'SnapRx — Photograph and digitize handwritten Rx', 'AmbientRx — Auto-generate notes from conversations', 'DDx Engine — AI-powered differential diagnosis']}
-        link="/features/voicerx"
-        linkText="Explore AI features →"
-      />
-
-      {/* AI Features Grid */}
-      <FeatureGrid
-        title="Four AI Prescription Modes"
-        subtitle="Write prescriptions your way — by voice, camera, ambient listening, or traditional entry."
-        features={AI_FEATURES}
-        columns={4}
-      />
+      {/* Built-In AI to Supercharge Your Workflow — Tabbed */}
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="max-w-container mx-auto px-8">
+          <h2 className="text-3xl lg:text-[40px] font-extrabold text-center mb-3 text-gray-900">
+            Built-In <span className="text-[#5B2E91]">AI to<br />Supercharge</span> Your Workflow
+          </h2>
+          <div className="flex flex-wrap justify-center gap-2 mt-10 mb-10">
+            {['VoiceRx', 'SmartSync', 'SnapRx', 'Receptionist Agent', 'Doctor Agent'].map((tab, i) => (
+              <a key={i} href={`/features/${tab.toLowerCase().replace(' ', '-').replace('agent', 'agent')}`}
+                className={`no-underline text-[13px] font-semibold px-5 py-2.5 rounded-full transition-colors ${i === 0 ? 'bg-[#5B2E91] text-white' : 'text-gray-500 hover:text-[#5B2E91] hover:bg-purple-50'}`}>
+                {tab}
+              </a>
+            ))}
+          </div>
+          <div className="bg-gradient-to-br from-[#2D1B54] via-[#3B2566] to-[#1E1240] rounded-3xl p-8 lg:p-12 text-white">
+            <div className="grid lg:grid-cols-2 gap-10 items-center">
+              <div>
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-xl">🎤</div>
+                  <h3 className="text-2xl font-extrabold">VoiceRx</h3>
+                </div>
+                <p className="text-white/70 text-[15px] leading-relaxed mb-6">
+                  Whether you&apos;re <strong className="text-white">dictating</strong> or naturally <strong className="text-white">conversing with your patient</strong>, VoiceRx <strong className="text-white">captures</strong> your clinical speech and instantly turns it into a <strong className="text-white">structured Rx.</strong>
+                </p>
+                <a href="/features/voicerx" className="text-[14px] text-white/60 underline underline-offset-4 hover:text-white transition-colors">Learn More</a>
+              </div>
+              <div className="bg-white/5 rounded-2xl p-4 border border-white/10 min-h-[260px] flex items-center justify-center">
+                <div className="text-center text-white/30 text-sm">
+                  <div className="text-4xl mb-3">📱</div>
+                  Product Screenshot
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* EHR Section */}
       <section className="py-16 lg:py-24 bg-g-1">
