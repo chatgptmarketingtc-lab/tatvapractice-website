@@ -1,10 +1,19 @@
-import { HeroSection, LogoCarousel, UseCaseSection, StatsBar, CTASection, ProductHeroVisual } from '@/components/sections';
+import { ScrollReveal, GradientBlob, Button } from '@/components/ui';
 import FAQSection from '@/components/sections/FAQSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import FeatureGrid from '@/components/sections/FeatureGrid';
 import PracticeSizeSection from '@/components/sections/PracticeSizeSection';
+import { StatsBar, CTASection, UseCaseSection, LogoCarousel } from '@/components/sections';
 
-export const metadata = { title: 'TatvaPractice — AI-Powered Practice Management | TatvaCare' };
+export const metadata = { title: 'TatvaPractice — AI-Powered Practice Management' };
+
+const COMPLIANCE = [
+  { label: 'HIPAA Compliant', icon: '🛡️' },
+  { label: 'NHA Approved', icon: '🏛️' },
+  { label: 'ABDM Certified', icon: '✅' },
+  { label: 'ISO 27001', icon: '🔒' },
+  { label: 'GDPR Compliant', icon: '🌐' },
+];
 
 const MANAGEMENT_FEATURES = [
   { icon: '📋', title: 'Appointments', description: 'Smart scheduling with automated reminders and calendar sync for seamless patient management.' },
@@ -63,37 +72,90 @@ const TESTIMONIALS = [
 ];
 
 const FAQS = [
-  { question: 'What is TatvaPractice?', answer: 'TatvaPractice is an AI-powered cloud-based practice management and EMR system designed for Indian doctors, clinics, and hospitals. It includes smart prescriptions, appointment management, billing, patient records, and 20+ integrated modules — all powered by Zyvelor AI.' },
-  { question: 'How does AI-powered prescription work?', answer: 'TatvaPractice offers four AI prescription modes: VoiceRx (voice-to-prescription), SnapRx (photo-to-prescription), AmbientRx (conversation-to-notes), and manual entry. Each mode uses Zyvelor AI to structure, validate, and auto-populate prescriptions in seconds.' },
+  { question: 'What is TatvaPractice?', answer: 'TatvaPractice is an AI-powered cloud-based practice management and EMR system designed for Indian doctors, clinics, and hospitals. It includes smart prescriptions, appointment management, billing, patient records, and 20+ integrated modules.' },
+  { question: 'How does AI-powered prescription work?', answer: 'TatvaPractice offers four AI prescription modes: VoiceRx (voice-to-prescription), SnapRx (photo-to-prescription), AmbientRx (conversation-to-notes), and manual entry. Each mode uses AI to structure, validate, and auto-populate prescriptions in seconds.' },
   { question: 'Is TatvaPractice ABDM compliant?', answer: 'Yes. TatvaPractice is fully integrated with ABDM (Ayushman Bharat Digital Mission) and supports ABHA ID creation, health record linking, and consent-based data sharing as per government guidelines.' },
   { question: 'Can I use it for my hospital or chain of clinics?', answer: 'Absolutely. TatvaPractice supports multi-location, multi-department setups with role-based access, centralized reporting, and enterprise-grade security. Contact our sales team for custom plans.' },
   { question: 'Is there a free trial?', answer: 'Yes — we offer a 7-day free trial with full access to all features including AI prescription modes, appointment management, and billing. No credit card required.' },
   { question: 'What support do you provide?', answer: 'We provide dedicated onboarding support, in-app chat, email, and phone support. Enterprise clients get a dedicated account manager and priority SLA-based support.' },
 ];
 
-export default function TatvaPracticePage() {
+export default function HomePage() {
   return (
     <>
-      {/* Hero */}
-      <HeroSection
-        tag="AI-Powered Practice Management"
-        title='Everything you need to run<br/><em class="not-italic bg-gradient-to-r from-brand-500 to-brand-700 bg-clip-text text-transparent">a faster practice.</em>'
-        subtitle="TatvaPractice is the complete AI-first practice management system that helps doctors see more patients, write prescriptions in seconds, and grow their practice — all in one platform."
-        buttons={[{ text: 'Get Started →' }, { text: 'Watch Demo', variant: 'outline' }]}
-        visual={<ProductHeroVisual icon="💊" name="TatvaPractice" desc="Cloud EMR · Practice Management" pills={['VoiceRx', 'SnapRx', 'Billing', 'EHR']} />}
-      />
+      {/* Hero — Center Aligned */}
+      <section className="pt-32 lg:pt-40 pb-16 lg:pb-20 bg-gradient-to-b from-brand-50 via-white to-white overflow-hidden relative">
+        <GradientBlob className="-top-40 left-1/4" size={500} />
+        <GradientBlob className="top-20 right-0" size={350} color1="#a19fcf" color2="#703b95" />
+        <div className="max-w-container mx-auto px-8 relative z-10 text-center">
+          <ScrollReveal variant="fadeUp">
+            <div className="inline-flex items-center gap-2 bg-brand-500/8 text-brand-500 text-[12px] font-bold px-5 py-2 rounded-full mb-8 border border-brand-500/10">
+              Trusted AI-First EMR Platform
+            </div>
+          </ScrollReveal>
+          <ScrollReveal variant="fadeUp">
+            <h1 className="text-4xl md:text-5xl lg:text-[56px] font-black leading-[1.1] tracking-tight mb-6 max-w-3xl mx-auto">
+              Everything you need to run<br />a <span className="bg-gradient-to-r from-brand-500 to-brand-700 bg-clip-text text-transparent">faster practice.</span>
+            </h1>
+          </ScrollReveal>
+          <ScrollReveal variant="fadeUp">
+            <p className="text-base lg:text-lg text-g-4 leading-relaxed mb-10 max-w-xl mx-auto">
+              TatvaPractice automates your clinical workflow so you can focus on delivering better patient care.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal variant="fadeUp">
+            <div className="flex flex-wrap justify-center gap-4 mb-12">
+              <Button variant="outline" to="/">Book Demo</Button>
+              <Button variant="primary" to="/">Start Free Trial</Button>
+            </div>
+          </ScrollReveal>
 
-      {/* Logo Carousel */}
-      <LogoCarousel label="Trusted by leading healthcare organizations" />
+          {/* Compliance Badges */}
+          <ScrollReveal variant="fadeUp">
+            <div className="flex flex-wrap justify-center gap-6 mb-8">
+              {COMPLIANCE.map((c, i) => (
+                <div key={i} className="flex items-center gap-2 text-g-3">
+                  <span className="text-lg">{c.icon}</span>
+                  <span className="text-[11px] font-bold uppercase tracking-wide">{c.label}</span>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
 
-      {/* Complete AI-First Practice Management */}
-      <FeatureGrid
-        tag="All-in-One Platform"
-        title="Complete AI-First Practice Management in One System"
-        subtitle="From appointments to prescriptions to billing — everything your practice needs, powered by AI and built for India."
-        features={MANAGEMENT_FEATURES}
-        columns={3}
-      />
+          {/* Scroll Indicator */}
+          <div className="flex justify-center mt-4">
+            <svg className="w-6 h-6 text-g-3 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      {/* Complete AI-First Practice Management — Dark Section */}
+      <section className="py-16 lg:py-24 bg-gradient-to-br from-dark-700 via-dark-800 to-dark-900 text-white relative overflow-hidden rounded-t-[40px] -mt-6">
+        <div className="max-w-container mx-auto px-8 text-center">
+          <ScrollReveal variant="fadeUp">
+            <h2 className="text-2xl lg:text-[36px] font-black mb-4 text-white">
+              Complete AI-First<br />Practice Management in One System
+            </h2>
+            <p className="text-white/60 text-[15px] max-w-2xl mx-auto mb-12">
+              From appointments to prescriptions to billing — everything your practice needs, powered by AI and built for India.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal variant="stagger">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {MANAGEMENT_FEATURES.map((f, i) => (
+                <div key={i} className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-colors text-left">
+                  <div className="w-12 h-12 rounded-xl bg-brand-500/20 flex items-center justify-center text-2xl mb-4">{f.icon}</div>
+                  <h3 className="text-[15px] font-extrabold text-white mb-2">{f.title}</h3>
+                  <p className="text-[13px] text-white/50 leading-relaxed">{f.description}</p>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
 
       {/* Our Scale */}
       <StatsBar stats={[
@@ -110,16 +172,16 @@ export default function TatvaPracticePage() {
         desc="AI Prescription Engine"
         category="Built-in AI"
         title="Built-in AI to Supercharge Your Workflow"
-        body="TatvaPractice comes with Zyvelor AI built in — powering four distinct prescription modes, clinical decision support, and smart automation across your entire workflow."
+        body="TatvaPractice comes with AI built in — powering four distinct prescription modes, clinical decision support, and smart automation across your entire workflow."
         points={['VoiceRx — Speak prescriptions in any language', 'SnapRx — Photograph and digitize handwritten Rx', 'AmbientRx — Auto-generate notes from conversations', 'DDx Engine — AI-powered differential diagnosis']}
-        link="/zyvelor"
-        linkText="Learn about Zyvelor AI →"
+        link="/features/voicerx"
+        linkText="Explore AI features →"
       />
 
       {/* AI Features Grid */}
       <FeatureGrid
         title="Four AI Prescription Modes"
-        subtitle="Write prescriptions your way — by voice, camera, ambient listening, or traditional entry. All powered by Zyvelor AI."
+        subtitle="Write prescriptions your way — by voice, camera, ambient listening, or traditional entry."
         features={AI_FEATURES}
         columns={4}
       />
