@@ -83,50 +83,53 @@ const FAQS = [
 export default function HomePage() {
   return (
     <>
-      {/* Hero — Center Aligned */}
-      <section className="pt-32 lg:pt-40 pb-16 lg:pb-20 bg-gradient-to-b from-brand-50 via-white to-white overflow-hidden relative">
-        <GradientBlob className="-top-40 left-1/4" size={500} />
-        <GradientBlob className="top-20 right-0" size={350} color1="#a19fcf" color2="#703b95" />
-        <div className="max-w-container mx-auto px-8 relative z-10 text-center">
-          <ScrollReveal variant="fadeUp">
-            <div className="inline-flex items-center gap-2 bg-brand-500/8 text-brand-500 text-[12px] font-bold px-5 py-2 rounded-full mb-8 border border-brand-500/10">
-              Trusted AI-First EMR Platform
-            </div>
-          </ScrollReveal>
-          <ScrollReveal variant="fadeUp">
-            <h1 className="text-4xl md:text-5xl lg:text-[56px] font-black leading-[1.1] tracking-tight mb-6 max-w-3xl mx-auto">
-              Everything you need to run<br />a <span className="bg-gradient-to-r from-brand-500 to-brand-700 bg-clip-text text-transparent">faster practice.</span>
-            </h1>
-          </ScrollReveal>
-          <ScrollReveal variant="fadeUp">
-            <p className="text-base lg:text-lg text-g-4 leading-relaxed mb-10 max-w-xl mx-auto">
-              TatvaPractice automates your clinical workflow so you can focus on delivering better patient care.
-            </p>
-          </ScrollReveal>
-          <ScrollReveal variant="fadeUp">
-            <div className="flex flex-wrap justify-center gap-4 mb-12">
-              <Button variant="outline" to="/">Book Demo</Button>
-              <Button variant="primary" to="/">Start Free Trial</Button>
-            </div>
-          </ScrollReveal>
+      {/* Hero — Center Aligned, Figma-exact */}
+      <section className="pt-36 lg:pt-44 pb-20 lg:pb-28 relative overflow-hidden" style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(91,46,145,0.12) 0%, rgba(91,46,145,0.05) 40%, rgba(255,255,255,1) 70%)' }}>
+        {/* Subtle purple glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] opacity-30" style={{ background: 'radial-gradient(ellipse, rgba(124,77,188,0.3) 0%, transparent 70%)' }} />
+
+        <div className="max-w-[900px] mx-auto px-6 relative z-10 text-center">
+          {/* Tag Pill */}
+          <div className="inline-flex items-center bg-white/60 backdrop-blur-sm border border-gray-200/60 text-gray-500 text-[13px] font-medium px-6 py-2.5 rounded-full mb-10">
+            Trusted AI-First EMR Platform
+          </div>
+
+          {/* Headline */}
+          <h1 className="text-[40px] md:text-[52px] lg:text-[64px] font-extrabold leading-[1.05] tracking-[-0.02em] text-gray-900 mb-6">
+            Everything you need to run<br />
+            a <span className="text-[#5B2E91]">faster practice.</span>
+          </h1>
+
+          {/* Subtitle */}
+          <p className="text-[16px] lg:text-[18px] text-gray-400 leading-relaxed mb-10 max-w-lg mx-auto font-normal">
+            TatvaPractice automates your clinical workflow so you can focus on delivering better patient care.
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap justify-center gap-4 mb-14">
+            <a href="/" className="no-underline text-[15px] font-semibold text-gray-700 bg-white border border-gray-300 rounded-full px-10 py-3.5 hover:border-[#5B2E91] hover:text-[#5B2E91] transition-colors min-w-[180px]">Book Demo</a>
+            <a href="/" className="no-underline text-[15px] font-semibold text-white bg-[#5B2E91] border border-[#5B2E91] rounded-full px-10 py-3.5 hover:bg-[#4A2377] transition-colors min-w-[180px]">Start Free Trial</a>
+          </div>
 
           {/* Compliance Badges */}
-          <ScrollReveal variant="fadeUp">
-            <div className="flex flex-wrap justify-center gap-6 mb-8">
-              {COMPLIANCE.map((c, i) => (
-                <div key={i} className="flex items-center gap-2 text-g-3">
-                  <span className="text-lg">{c.icon}</span>
-                  <span className="text-[11px] font-bold uppercase tracking-wide">{c.label}</span>
+          <div className="flex flex-wrap justify-center gap-4 mb-10">
+            {COMPLIANCE.map((c, i) => (
+              <div key={i} className="flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-gray-100 rounded-lg px-3.5 py-2">
+                <div className="w-7 h-7 rounded-md bg-gray-100 flex items-center justify-center">
+                  <span className="text-sm">{c.icon}</span>
                 </div>
-              ))}
-            </div>
-          </ScrollReveal>
+                <div className="text-left">
+                  <span className="text-[10px] font-semibold text-gray-600 leading-tight block">{c.label}</span>
+                </div>
+              </div>
+            ))}
+          </div>
 
-          {/* Scroll Indicator */}
-          <div className="flex justify-center mt-4">
-            <svg className="w-6 h-6 text-g-3 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7-7-7" />
+          {/* Scroll Indicator — Double Chevron */}
+          <div className="flex justify-center">
+            <svg className="w-6 h-8 text-gray-300 animate-bounce" viewBox="0 0 24 32" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M7 8l5 5 5-5" />
+              <path d="M7 16l5 5 5-5" />
             </svg>
           </div>
         </div>
