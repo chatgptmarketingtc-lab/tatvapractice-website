@@ -34,7 +34,9 @@ export default function Navigation() {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-4">
-      <nav className={`w-full max-w-[900px] rounded-full px-6 py-3 flex items-center justify-between transition-all duration-300 ${scrolled ? 'bg-white/90 shadow-lg shadow-black/5 backdrop-blur-xl' : 'bg-white/30 backdrop-blur-xl shadow-lg shadow-purple-900/10 border border-white/20'}`}>
+      <nav className={`relative w-full max-w-[1000px] rounded-3xl px-7 py-3.5 flex items-center justify-between transition-all duration-300 ${scrolled ? 'bg-white/90 shadow-lg shadow-black/5 backdrop-blur-xl border border-white/40' : 'backdrop-blur-2xl shadow-2xl shadow-purple-900/20 border border-white/40'}`} style={!scrolled ? { background: 'linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.2) 100%)' } : {}}>
+        {/* Inner highlight at top */}
+        {!scrolled && <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/60 to-transparent" />}
         {/* Logo */}
         <Link href="/" className="no-underline flex items-center gap-1.5 shrink-0">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -61,8 +63,8 @@ export default function Navigation() {
 
         {/* CTA Buttons */}
         <div className="hidden lg:flex items-center gap-2.5 shrink-0">
-          <Link href="/" className="no-underline text-[13px] font-semibold text-gray-700 border border-gray-300 rounded-full px-5 py-2 hover:border-[#5B2E91] hover:text-[#5B2E91] transition-colors">Book Demo</Link>
-          <Link href="/" className="no-underline text-[13px] font-semibold text-white bg-[#5B2E91] rounded-full px-5 py-2 hover:bg-[#4A2377] transition-colors">Start Free Trial</Link>
+          <Link href="/" className="no-underline text-[12.5px] font-bold text-[#4F46E5] border-[1.5px] border-[#4F46E5] rounded-xl px-5 py-2 hover:bg-[#F5F4FF] transition-colors">Book Demo</Link>
+          <Link href="/" className="no-underline text-[12.5px] font-bold text-white rounded-xl px-5 py-2 shadow-sm" style={{ background: 'linear-gradient(135deg, #5046E5 0%, #3730A3 100%)' }}>Start Free Trial</Link>
         </div>
 
         {/* Mobile hamburger */}

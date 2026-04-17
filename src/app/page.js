@@ -84,9 +84,12 @@ export default function HomePage() {
   return (
     <>
       {/* Hero — Center Aligned, Figma-exact */}
-      <section className="pt-36 lg:pt-44 pb-20 lg:pb-28 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #7C4DBC 0%, #B88DD4 25%, #D4BCE6 45%, #EDE0F5 60%, #FFFFFF 85%)' }}>
-        {/* Geometric grid pattern overlay */}
-        <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: 'linear-gradient(45deg, #fff 1px, transparent 1px), linear-gradient(-45deg, #fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px), linear-gradient(0deg, #fff 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+      <section className="pt-36 lg:pt-44 pb-20 lg:pb-28 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #6B47BF 0%, #8B6BC7 20%, #B597D6 40%, #D4BCE6 60%, #EDE0F5 80%, #F5EFFA 100%)' }}>
+        {/* Grain/Noise texture overlay */}
+        <div className="absolute inset-0 opacity-[0.35] mix-blend-overlay pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
+
+        {/* Subtle geometric grid pattern */}
+        <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ backgroundImage: 'linear-gradient(45deg, #fff 1px, transparent 1px), linear-gradient(-45deg, #fff 1px, transparent 1px)', backgroundSize: '80px 80px' }} />
 
         <div className="max-w-[900px] mx-auto px-6 relative z-10 text-center">
           {/* Tag Pill */}
@@ -106,9 +109,9 @@ export default function HomePage() {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap justify-center gap-4 mb-14">
-            <a href="/" className="no-underline text-[15px] font-semibold text-gray-700 bg-white border border-gray-300 rounded-full px-10 py-3.5 hover:border-[#5B2E91] hover:text-[#5B2E91] transition-colors min-w-[180px]">Book Demo</a>
-            <a href="/" className="no-underline text-[15px] font-semibold text-white bg-[#5B2E91] border border-[#5B2E91] rounded-full px-10 py-3.5 hover:bg-[#4A2377] transition-colors min-w-[180px]">Start Free Trial</a>
+          <div className="flex flex-wrap justify-center gap-5 mb-14">
+            <a href="/" className="no-underline text-[16px] font-bold text-[#4F46E5] bg-white border-[1.5px] border-[#4F46E5] rounded-2xl px-12 py-4 hover:bg-[#F5F4FF] transition-colors min-w-[200px] shadow-sm">Book Demo</a>
+            <a href="/" className="no-underline text-[16px] font-bold text-white rounded-2xl px-12 py-4 transition-all min-w-[200px] shadow-lg shadow-indigo-900/30 hover:shadow-xl" style={{ background: 'linear-gradient(135deg, #5046E5 0%, #3730A3 50%, #1E1B4B 100%)' }}>Start Free Trial</a>
           </div>
 
           {/* Compliance Badges */}
@@ -191,30 +194,42 @@ export default function HomePage() {
           <h2 className="text-3xl lg:text-[40px] font-extrabold text-center mb-3 text-gray-900">
             Built-In <span className="text-[#5B2E91]">AI to<br />Supercharge</span> Your Workflow
           </h2>
-          <div className="flex flex-wrap justify-center gap-2 mt-10 mb-10">
+          <div className="flex flex-wrap justify-center gap-2 mt-12 mb-10 bg-white border border-gray-100 rounded-full p-1.5 max-w-2xl mx-auto shadow-sm">
             {['VoiceRx', 'SmartSync', 'SnapRx', 'Receptionist Agent', 'Doctor Agent'].map((tab, i) => (
-              <a key={i} href={`/features/${tab.toLowerCase().replace(' ', '-').replace('agent', 'agent')}`}
-                className={`no-underline text-[13px] font-semibold px-5 py-2.5 rounded-full transition-colors ${i === 0 ? 'bg-[#5B2E91] text-white' : 'text-gray-500 hover:text-[#5B2E91] hover:bg-purple-50'}`}>
+              <a key={i} href={`/features/${tab.toLowerCase().replace(' ', '-')}`}
+                className={`no-underline text-[13px] font-semibold px-5 py-2.5 rounded-full transition-colors ${i === 0 ? 'text-white shadow-md' : 'text-gray-500 hover:text-[#5B2E91]'}`}
+                style={i === 0 ? { background: 'linear-gradient(135deg, #7C4DBC 0%, #5B2E91 100%)' } : {}}>
                 {tab}
               </a>
             ))}
           </div>
-          <div className="bg-gradient-to-br from-[#2D1B54] via-[#3B2566] to-[#1E1240] rounded-3xl p-8 lg:p-12 text-white">
-            <div className="grid lg:grid-cols-2 gap-10 items-center">
+          <div className="relative rounded-3xl p-8 lg:p-14 text-white overflow-hidden" style={{ background: 'linear-gradient(135deg, #2D1B54 0%, #3B2566 50%, #1E1240 100%)' }}>
+            {/* Grid pattern overlay */}
+            <div className="absolute inset-0 opacity-[0.07] pointer-events-none" style={{ backgroundImage: 'linear-gradient(45deg, #fff 1px, transparent 1px), linear-gradient(-45deg, #fff 1px, transparent 1px)', backgroundSize: '50px 50px' }} />
+
+            <div className="relative grid lg:grid-cols-2 gap-10 items-center">
               <div>
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-xl">🎤</div>
-                  <h3 className="text-2xl font-extrabold">VoiceRx</h3>
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-3xl font-extrabold">VoiceRx</h3>
                 </div>
-                <p className="text-white/70 text-[15px] leading-relaxed mb-6">
-                  Whether you&apos;re <strong className="text-white">dictating</strong> or naturally <strong className="text-white">conversing with your patient</strong>, VoiceRx <strong className="text-white">captures</strong> your clinical speech and instantly turns it into a <strong className="text-white">structured Rx.</strong>
+                <p className="text-white/80 text-[16px] leading-relaxed mb-6">
+                  Whether you&apos;re <strong className="text-white font-bold">dictating</strong> or naturally <strong className="text-white font-bold">conversing with your patient</strong>, VoiceRx <strong className="text-white font-bold">captures</strong> your clinical speech and instantly turns it into a <strong className="text-white font-bold">structured Rx.</strong>
                 </p>
-                <a href="/features/voicerx" className="text-[14px] text-white/60 underline underline-offset-4 hover:text-white transition-colors">Learn More</a>
+                <a href="/features/voicerx" className="text-[14px] text-white/80 underline underline-offset-4 hover:text-white transition-colors font-medium">Learn More</a>
               </div>
-              <div className="bg-white/5 rounded-2xl p-4 border border-white/10 min-h-[260px] flex items-center justify-center">
-                <div className="text-center text-white/30 text-sm">
-                  <div className="text-4xl mb-3">📱</div>
-                  Product Screenshot
+              <div className="relative">
+                <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 min-h-[320px] flex items-center justify-center">
+                  <div className="text-center text-white/30 text-sm">
+                    <svg className="w-16 h-16 mx-auto mb-3 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
+                    </svg>
+                    <div className="text-xs">Product Screenshot</div>
+                  </div>
                 </div>
               </div>
             </div>
