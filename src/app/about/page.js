@@ -9,12 +9,15 @@ import { ScrollReveal, GradientBlob } from '@/components/ui';
 import { useModal } from '@/components/ModalProvider';
 
 const LEADERSHIP = [
-  { name: 'Chirag Patel', role: 'Founder & CEO', bio: 'Leading the vision to digitize 500,000+ doctors across India with AI-powered healthcare solutions.' },
-  { name: 'Harish Y', role: 'Head of Product', bio: 'Driving product strategy and design for TatvaPractice, ensuring every feature solves real clinical problems.' },
-  { name: 'Dr. Mehul Shah', role: 'Chief Medical Officer', bio: 'Bridging clinical expertise with technology to ensure TatvaPractice meets real-world healthcare needs.' },
-  { name: 'Ankit Jain', role: 'CTO', bio: 'Architecting the AI and cloud infrastructure that powers TatvaPractice across thousands of clinics.' },
-  { name: 'Priya Sharma', role: 'VP Engineering', bio: 'Leading engineering teams to build scalable, secure, and reliable healthcare software.' },
-  { name: 'Rajesh Kumar', role: 'VP Sales & Partnerships', bio: 'Building relationships with hospitals, pharma, and healthcare networks across India.' },
+  { name: 'Manoj Balaji', role: 'CEO', linkedin: '#' },
+  { name: 'Javed Khan', role: 'CTO', linkedin: '#' },
+  { name: 'Siddharth Rajagopal', role: 'Head - Product', linkedin: '#' },
+  { name: 'Abhishek Verma', role: 'Head - Business', linkedin: '#' },
+  { name: 'Russell Mascarenhas', role: 'Head - Marketing', linkedin: '#' },
+  { name: 'Dr. Mihir Gharia', role: 'Head - Medical Affairs', linkedin: '#' },
+  { name: 'Somraj Keshori', role: 'Head - Operations', linkedin: '#' },
+  { name: 'Dharmesh Ratanghayra', role: 'Head - Finance', linkedin: '#' },
+  { name: 'Nutan Mishra', role: 'Head: Human Resources', linkedin: '#' },
 ];
 
 export default function AboutPage() {
@@ -77,7 +80,7 @@ export default function AboutPage() {
       />
 
       {/* Leadership Team */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-16 lg:py-24" style={{ background: 'linear-gradient(135deg, #E8E0F0 0%, #D8D0E8 50%, #E0D8EC 100%)' }}>
         <div className="max-w-container mx-auto px-8">
           <ScrollReveal variant="fadeUp">
             <div className="text-center mb-14">
@@ -86,15 +89,21 @@ export default function AboutPage() {
             </div>
           </ScrollReveal>
           <ScrollReveal variant="stagger">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
               {LEADERSHIP.map((person, i) => (
-                <div key={i} className="bg-white rounded-2xl border border-gray-100 p-6 hover:shadow-lg transition-shadow">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#5B2E91] to-[#7C4DBC] flex items-center justify-center text-white text-2xl font-bold mb-4">
+                <div key={i} className="bg-white rounded-2xl p-6 text-center hover:shadow-lg transition-shadow">
+                  {/* Circular photo placeholder */}
+                  <div className="w-28 h-28 mx-auto mb-5 rounded-full border-[3px] border-gray-200 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center text-3xl font-bold text-gray-400">
                     {person.name.charAt(0)}
                   </div>
-                  <h3 className="text-lg font-extrabold text-gray-900 mb-1">{person.name}</h3>
-                  <div className="text-[13px] font-semibold text-[#5B2E91] mb-3">{person.role}</div>
-                  <p className="text-[13px] text-gray-500 leading-relaxed">{person.bio}</p>
+                  <h3 className="text-[16px] font-extrabold text-gray-900 mb-2">{person.name}</h3>
+                  <div className="w-8 h-[2px] bg-gray-900 mx-auto mb-2" />
+                  <div className="text-[13px] text-gray-500 italic mb-4">{person.role}</div>
+                  {person.linkedin && (
+                    <a href={person.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#2D2D8A] text-white hover:bg-[#1E1E6A] transition-colors">
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                  )}
                 </div>
               ))}
             </div>
