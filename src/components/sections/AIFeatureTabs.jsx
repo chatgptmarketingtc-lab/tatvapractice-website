@@ -14,6 +14,7 @@ const FEATURES = [
     ),
     description: <>Whether you&apos;re <strong className="text-white">dictating</strong> or naturally <strong className="text-white">conversing with your patient</strong>, VoiceRx <strong className="text-white">captures</strong> your clinical speech and instantly turns it into a <strong className="text-white">structured Rx.</strong></>,
     path: '/features/voicerx',
+    screenshots: ['/images/features/voicerx-main.png', '/images/features/voicerx-popup.png'],
   },
   {
     id: 'smartsync',
@@ -25,6 +26,7 @@ const FEATURES = [
     ),
     description: <>With SmartSync, your <strong className="text-white">clinical data stays in sync</strong> across all devices in real-time. Whether you&apos;re at the <strong className="text-white">clinic, home, or on the go</strong> — your records are always up to date.</>,
     path: '/features/smartsync',
+    screenshots: [],
   },
   {
     id: 'snaprx',
@@ -37,6 +39,7 @@ const FEATURES = [
     ),
     description: <>Point your phone at any <strong className="text-white">handwritten prescription</strong>. SnapRx uses <strong className="text-white">healthcare-grade OCR</strong> to extract medication names, dosages, and instructions — converting messy handwriting into <strong className="text-white">structured digital data.</strong></>,
     path: '/features/snaprx',
+    screenshots: ['/images/features/snaprx-main.png'],
   },
   {
     id: 'receptionist-agent',
@@ -48,6 +51,7 @@ const FEATURES = [
     ),
     description: <>Receptionist Agent handles <strong className="text-white">appointment scheduling</strong>, sends automated <strong className="text-white">patient reminders</strong>, manages <strong className="text-white">digital queues</strong>, and runs <strong className="text-white">follow-up campaigns</strong> — so your front desk runs itself.</>,
     path: '/features/receptionist-ai',
+    screenshots: [],
   },
   {
     id: 'doctor-agent',
@@ -59,8 +63,41 @@ const FEATURES = [
     ),
     description: <>Doctor Agent provides <strong className="text-white">AI-powered clinical decision support</strong> — from <strong className="text-white">differential diagnoses</strong> and <strong className="text-white">drug interaction alerts</strong> to <strong className="text-white">evidence-based suggestions</strong> that think alongside you.</>,
     path: '/features/doctor-agent',
+    screenshots: [],
   },
 ];
+
+function ScreenshotPlaceholder() {
+  return (
+    <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 min-h-[320px] flex items-center justify-center">
+      <div className="text-center text-white/20">
+        <svg className="w-16 h-16 mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
+        </svg>
+        <div className="text-xs">Product Screenshot</div>
+      </div>
+    </div>
+  );
+}
+
+function FeatureScreenshots({ screenshots }) {
+  if (!screenshots || screenshots.length === 0) return <ScreenshotPlaceholder />;
+
+  return (
+    <div className="relative min-h-[320px]">
+      {/* Main screenshot */}
+      <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/30">
+        <img src={screenshots[0]} alt="Product screenshot" className="w-full h-auto" onError={(e) => { e.target.style.display = 'none'; e.target.parentElement.innerHTML = '<div class="min-h-[280px] bg-white/5 flex items-center justify-center text-white/20 text-xs">Product Screenshot</div>'; }} />
+      </div>
+      {/* Overlay popup screenshot */}
+      {screenshots[1] && (
+        <div className="absolute -bottom-4 left-4 w-[45%] rounded-xl overflow-hidden border border-white/20 shadow-2xl shadow-black/40">
+          <img src={screenshots[1]} alt="Feature popup" className="w-full h-auto" onError={(e) => { e.target.parentElement.style.display = 'none'; }} />
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function AIFeatureTabs() {
   const [active, setActive] = useState(0);
@@ -110,14 +147,7 @@ export default function AIFeatureTabs() {
               </Link>
             </div>
             <div className="relative">
-              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 min-h-[320px] flex items-center justify-center">
-                <div className="text-center text-white/20">
-                  <svg className="w-16 h-16 mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
-                  </svg>
-                  <div className="text-xs">Product Screenshot</div>
-                </div>
-              </div>
+              <FeatureScreenshots screenshots={feature.screenshots} />
             </div>
           </div>
         </div>
