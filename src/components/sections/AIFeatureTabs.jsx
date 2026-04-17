@@ -84,14 +84,14 @@ function FeatureScreenshots({ screenshots }) {
   if (!screenshots || screenshots.length === 0) return <ScreenshotPlaceholder />;
 
   return (
-    <div className="relative min-h-[320px]">
-      {/* Main screenshot */}
-      <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/30">
+    <div className="relative min-h-[360px]">
+      {/* Main screenshot — positioned top-right, slightly overlapping */}
+      <div className="absolute top-0 right-0 w-[85%] rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/30">
         <img src={screenshots[0]} alt="Product screenshot" className="w-full h-auto" onError={(e) => { e.target.style.display = 'none'; e.target.parentElement.innerHTML = '<div class="min-h-[280px] bg-white/5 flex items-center justify-center text-white/20 text-xs">Product Screenshot</div>'; }} />
       </div>
-      {/* Overlay popup screenshot */}
+      {/* Overlay popup screenshot — centered, overlapping the main */}
       {screenshots[1] && (
-        <div className="absolute -bottom-4 left-4 w-[45%] rounded-xl overflow-hidden border border-white/20 shadow-2xl shadow-black/40">
+        <div className="absolute bottom-0 left-[10%] w-[50%] rounded-xl overflow-hidden border-2 border-white/20 shadow-2xl shadow-black/50 z-10">
           <img src={screenshots[1]} alt="Feature popup" className="w-full h-auto" onError={(e) => { e.target.parentElement.style.display = 'none'; }} />
         </div>
       )}
