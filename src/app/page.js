@@ -85,8 +85,8 @@ export default function HomePage() {
     <>
       {/* Hero — Center Aligned, Figma-exact */}
       <section className="pt-36 lg:pt-44 pb-20 lg:pb-28 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #6B47BF 0%, #8B6BC7 20%, #B597D6 40%, #D4BCE6 60%, #EDE0F5 80%, #F5EFFA 100%)' }}>
-        {/* Grain/Noise texture overlay */}
-        <div className="absolute inset-0 opacity-[0.35] mix-blend-overlay pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
+        {/* Grain/Noise texture overlay — coarser spots */}
+        <div className="absolute inset-0 opacity-[0.18] mix-blend-overlay pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.45' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")` }} />
 
         {/* Subtle geometric grid pattern */}
         <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ backgroundImage: 'linear-gradient(45deg, #fff 1px, transparent 1px), linear-gradient(-45deg, #fff 1px, transparent 1px)', backgroundSize: '80px 80px' }} />
