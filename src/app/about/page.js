@@ -9,15 +9,17 @@ import { ScrollReveal, GradientBlob } from '@/components/ui';
 import { useModal } from '@/components/ModalProvider';
 
 const LEADERSHIP = [
-  { name: 'Manoj Balaji', role: 'CEO', linkedin: '#' },
-  { name: 'Javed Khan', role: 'CTO', linkedin: '#' },
-  { name: 'Siddharth Rajagopal', role: 'Head - Product', linkedin: '#' },
-  { name: 'Abhishek Verma', role: 'Head - Business', linkedin: '#' },
-  { name: 'Russell Mascarenhas', role: 'Head - Marketing', linkedin: '#' },
-  { name: 'Dr. Mihir Gharia', role: 'Head - Medical Affairs', linkedin: '#' },
-  { name: 'Somraj Keshori', role: 'Head - Operations', linkedin: '#' },
-  { name: 'Dharmesh Ratanghayra', role: 'Head - Finance', linkedin: '#' },
-  { name: 'Nutan Mishra', role: 'Head: Human Resources', linkedin: '#' },
+  { name: 'Dr. Amit Shah', role: 'CEO & CO-FOUNDER', bio: 'Former clinician with 15 years in healthcare technology', linkedin: '#' },
+  { name: 'Javed Khan', role: 'CHIEF TECHNOLOGY OFFICER', bio: 'AI/ML expert, previously at Microsoft and Amazon', linkedin: '#' },
+  { name: 'Dr. Priya Desai', role: 'CHIEF MEDICAL OFFICER', bio: 'Practicing physician leading clinical product development', linkedin: '#' },
+  { name: 'Manoj Balaji', role: 'CHIEF EXECUTIVE OFFICER', bio: 'Building scalable healthcare platforms for emerging markets', linkedin: '#' },
+  { name: 'Siddharth Rajagopal', role: 'HEAD - PRODUCT', bio: 'Product leader with deep expertise in SaaS and health-tech', linkedin: '#' },
+  { name: 'Abhishek Verma', role: 'HEAD - BUSINESS', bio: 'Driving growth and partnerships across India', linkedin: '#' },
+  { name: 'Russell Mascarenhas', role: 'HEAD - MARKETING', bio: 'Brand strategist with healthcare and consumer tech background', linkedin: '#' },
+  { name: 'Dr. Mihir Gharia', role: 'HEAD - MEDICAL AFFAIRS', bio: 'Ensuring clinical accuracy across all AI-powered features', linkedin: '#' },
+  { name: 'Somraj Keshori', role: 'HEAD - OPERATIONS', bio: 'Scaling operations across 200+ cities in India', linkedin: '#' },
+  { name: 'Dharmesh Ratanghayra', role: 'HEAD - FINANCE', bio: 'Financial strategy and governance for rapid growth', linkedin: '#' },
+  { name: 'Nutan Mishra', role: 'HEAD - HUMAN RESOURCES', bio: 'Building and nurturing a 200+ member team', linkedin: '#' },
 ];
 
 export default function AboutPage() {
@@ -83,25 +85,27 @@ export default function AboutPage() {
       <section className="py-16 lg:py-24" style={{ background: 'linear-gradient(135deg, #E8E0F0 0%, #D8D0E8 50%, #E0D8EC 100%)' }}>
         <div className="max-w-container mx-auto px-8">
           <ScrollReveal variant="fadeUp">
-            <div className="text-center mb-14">
-              <div className="text-[11px] font-extrabold text-[#5B2E91] uppercase tracking-widest mb-3">Leadership</div>
-              <h2 className="text-3xl lg:text-[36px] font-extrabold text-gray-900">Meet our team</h2>
+            <div className="text-center mb-4">
+              <h2 className="text-3xl lg:text-[42px] font-extrabold text-gray-900">Meet Our Team</h2>
             </div>
+            <p className="text-center text-gray-500 text-[15px] max-w-2xl mx-auto mb-14">
+              A team of 50+ including practicing physicians, healthcare veterans, and AI technologists — working together to solve healthcare&apos;s toughest workflow challenges.
+            </p>
           </ScrollReveal>
           <ScrollReveal variant="stagger">
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {LEADERSHIP.map((person, i) => (
-                <div key={i} className="bg-white rounded-2xl p-6 text-center hover:shadow-lg transition-shadow">
-                  {/* Circular photo placeholder */}
-                  <div className="w-28 h-28 mx-auto mb-5 rounded-full border-[3px] border-gray-200 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center text-3xl font-bold text-gray-400">
-                    {person.name.charAt(0)}
+                <div key={i} className="group">
+                  {/* Photo placeholder — rounded top corners */}
+                  <div className="w-full aspect-[4/3] rounded-2xl bg-gradient-to-br from-gray-200 to-gray-300 mb-5 flex items-center justify-center overflow-hidden">
+                    <span className="text-6xl font-bold text-gray-400/50">{person.name.charAt(0)}</span>
                   </div>
-                  <h3 className="text-[16px] font-extrabold text-gray-900 mb-2">{person.name}</h3>
-                  <div className="w-8 h-[2px] bg-gray-900 mx-auto mb-2" />
-                  <div className="text-[13px] text-gray-500 italic mb-4">{person.role}</div>
+                  <h3 className="text-xl font-extrabold text-gray-900 mb-1">{person.name}</h3>
+                  <div className="text-[11px] font-bold text-[#5B2E91] uppercase tracking-wider mb-2">{person.role}</div>
+                  <p className="text-[13px] text-gray-500 leading-relaxed mb-3">{person.bio}</p>
                   {person.linkedin && (
-                    <a href={person.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#2D2D8A] text-white hover:bg-[#1E1E6A] transition-colors">
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    <a href={person.linkedin} target="_blank" rel="noopener noreferrer" className="inline-block text-gray-900 hover:text-[#5B2E91] transition-colors">
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                     </a>
                   )}
                 </div>
