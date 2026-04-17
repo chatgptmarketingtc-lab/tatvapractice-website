@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { NAV_FEATURES, NAV_SOLUTIONS } from '@/lib/data';
+import { useModal } from './ModalProvider';
 
 function DropdownMenu({ items }) {
   return (
@@ -25,6 +26,7 @@ function DropdownMenu({ items }) {
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { openDemo } = useModal();
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
@@ -35,9 +37,7 @@ export default function Navigation() {
   return (
     <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-4">
       <nav className={`relative w-full max-w-[1000px] rounded-3xl px-7 py-3.5 flex items-center justify-between transition-all duration-300 ${scrolled ? 'bg-white/90 shadow-lg shadow-black/5 backdrop-blur-xl border border-white/40' : 'backdrop-blur-2xl shadow-2xl shadow-purple-900/20 border border-white/40'}`} style={!scrolled ? { background: 'linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.2) 100%)' } : {}}>
-        {/* Inner highlight at top */}
         {!scrolled && <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/60 to-transparent" />}
-        {/* Logo */}
         <Link href="/" className="no-underline flex items-center gap-1.5 shrink-0">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path d="M4 12L12 4L20 12L12 8L4 12Z" fill="#5B2E91"/>
@@ -46,7 +46,6 @@ export default function Navigation() {
           <span className="text-lg font-bold text-[#5B2E91]">TatvaPractice</span>
         </Link>
 
-        {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-6">
           <div className="nav-item relative">
             <button className="text-[13px] font-medium text-gray-600 hover:text-[#5B2E91] transition-colors py-4">Solution</button>
@@ -58,16 +57,14 @@ export default function Navigation() {
           </div>
           <Link href="/" className="text-[13px] font-medium text-gray-600 no-underline hover:text-[#5B2E91] transition-colors">Pricing</Link>
           <Link href="/about" className="text-[13px] font-medium text-gray-600 no-underline hover:text-[#5B2E91] transition-colors">About Us</Link>
-          <Link href="/about" className="text-[13px] font-medium text-gray-600 no-underline hover:text-[#5B2E91] transition-colors">Contact</Link>
+          <Link href="/contact" className="text-[13px] font-medium text-gray-600 no-underline hover:text-[#5B2E91] transition-colors">Contact</Link>
         </div>
 
-        {/* CTA Buttons */}
         <div className="hidden lg:flex items-center gap-2.5 shrink-0">
-          <Link href="/" className="no-underline text-[12.5px] font-bold text-[#4F46E5] border-[1.5px] border-[#4F46E5] rounded-xl px-5 py-2 hover:bg-[#F5F4FF] transition-colors">Book Demo</Link>
-          <Link href="/" className="no-underline text-[12.5px] font-bold text-white rounded-xl px-5 py-2 shadow-sm" style={{ background: 'linear-gradient(135deg, #5046E5 0%, #3730A3 100%)' }}>Start Free Trial</Link>
+          <button onClick={openDemo} className="text-[12.5px] font-bold text-[#4F46E5] border-[1.5px] border-[#4F46E5] rounded-xl px-5 py-2 hover:bg-[#F5F4FF] transition-colors bg-transparent cursor-pointer">Book Demo</button>
+          <a href="https://health.tatvacare.in/login" target="_blank" rel="noopener noreferrer" className="no-underline text-[12.5px] font-bold text-white rounded-xl px-5 py-2 shadow-sm cursor-pointer" style={{ background: 'linear-gradient(135deg, #5046E5 0%, #3730A3 100%)' }}>Start Free Trial</a>
         </div>
 
-        {/* Mobile hamburger */}
         <button className="lg:hidden flex flex-col gap-1.5 p-2" onClick={() => setMobileOpen(!mobileOpen)}>
           <span className={`w-5 h-0.5 bg-gray-600 transition-all ${mobileOpen ? 'rotate-45 translate-y-2' : ''}`} />
           <span className={`w-5 h-0.5 bg-gray-600 transition-all ${mobileOpen ? 'opacity-0' : ''}`} />
@@ -75,7 +72,6 @@ export default function Navigation() {
         </button>
       </nav>
 
-      {/* Mobile Menu */}
       {mobileOpen && (
         <div className="lg:hidden fixed top-20 left-4 right-4 bg-white rounded-2xl shadow-xl border border-black/5 p-6 z-50">
           <div className="flex flex-col gap-3">
@@ -85,11 +81,11 @@ export default function Navigation() {
             {NAV_FEATURES.map((item, i) => (
               <Link key={`f${i}`} href={item.path} onClick={() => setMobileOpen(false)} className="text-sm font-medium text-gray-600 no-underline hover:text-[#5B2E91] py-1">{item.name}</Link>
             ))}
-            <Link href="/" onClick={() => setMobileOpen(false)} className="text-sm font-medium text-gray-600 no-underline hover:text-[#5B2E91] py-1">Pricing</Link>
+            <Link href="/contact" onClick={() => setMobileOpen(false)} className="text-sm font-medium text-gray-600 no-underline hover:text-[#5B2E91] py-1">Contact</Link>
             <Link href="/about" onClick={() => setMobileOpen(false)} className="text-sm font-medium text-gray-600 no-underline hover:text-[#5B2E91] py-1">About Us</Link>
             <div className="flex gap-2 mt-3">
-              <Link href="/" className="no-underline text-sm font-semibold text-gray-700 border border-gray-300 rounded-full px-5 py-2.5 flex-1 text-center">Book Demo</Link>
-              <Link href="/" className="no-underline text-sm font-semibold text-white bg-[#5B2E91] rounded-full px-5 py-2.5 flex-1 text-center">Start Free Trial</Link>
+              <button onClick={() => { setMobileOpen(false); openDemo(); }} className="text-sm font-semibold text-[#4F46E5] border border-[#4F46E5] rounded-full px-5 py-2.5 flex-1 bg-transparent cursor-pointer">Book Demo</button>
+              <a href="https://health.tatvacare.in/login" target="_blank" rel="noopener noreferrer" className="no-underline text-sm font-semibold text-white bg-[#5B2E91] rounded-full px-5 py-2.5 flex-1 text-center">Start Free Trial</a>
             </div>
           </div>
         </div>

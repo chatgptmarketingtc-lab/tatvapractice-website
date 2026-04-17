@@ -1,6 +1,7 @@
 import './globals.css';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import ModalProvider from '@/components/ModalProvider';
 
 export const metadata = {
   title: 'TatvaPractice — AI-Powered Practice Management',
@@ -17,9 +18,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="font-sans text-black bg-white">
-        <Navigation />
-        <main>{children}</main>
-        <Footer />
+        <ModalProvider>
+          <Navigation />
+          <main>{children}</main>
+          <Footer />
+        </ModalProvider>
       </body>
     </html>
   );
