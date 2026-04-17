@@ -26,19 +26,32 @@ function DropdownMenu({ items }) {
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { openDemo } = useModal();
   const pathname = usePathname();
   const isHome = pathname === '/';
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 20);
+    const handler = () => {
+      const currentY = window.scrollY;
+      setScrolled(currentY > 20);
+      if (currentY < 80) {
+        setVisible(true);
+      } else if (currentY < lastScrollY) {
+        setVisible(true);
+      } else if (currentY > lastScrollY + 5) {
+        setVisible(false);
+      }
+      setLastScrollY(currentY);
+    };
     window.addEventListener('scroll', handler, { passive: true });
     return () => window.removeEventListener('scroll', handler);
-  }, []);
+  }, [lastScrollY]);
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-4">
+    <div className={`fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-4 transition-transform duration-300 ${visible ? 'translate-y-0' : '-translate-y-full'}`}>
       <nav className={`relative w-full max-w-[1000px] rounded-3xl px-7 py-3.5 flex items-center justify-between transition-all duration-300 ${(scrolled || !isHome) ? 'bg-white shadow-lg shadow-black/5 border border-gray-100' : 'backdrop-blur-2xl shadow-2xl shadow-purple-900/20 border border-white/40'}`} style={(!scrolled && isHome) ? { background: 'linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.2) 100%)' } : {}}>
         {!scrolled && isHome && <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/60 to-transparent" />}
         <Link href="/" className="no-underline flex items-center gap-1.5 shrink-0">
