@@ -84,14 +84,14 @@ function FeatureScreenshots({ screenshots }) {
   if (!screenshots || screenshots.length === 0) return <ScreenshotPlaceholder />;
 
   return (
-    <div className="relative min-h-[360px]">
-      {/* Main screenshot — positioned top-right, slightly overlapping */}
-      <div className="absolute top-0 right-0 w-[85%] rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/30">
-        <img src={screenshots[0]} alt="Product screenshot" className="w-full h-auto" onError={(e) => { e.target.style.display = 'none'; e.target.parentElement.innerHTML = '<div class="min-h-[280px] bg-white/5 flex items-center justify-center text-white/20 text-xs">Product Screenshot</div>'; }} />
+    <div className="absolute inset-0">
+      {/* Main screenshot — bleeds to right and top edges */}
+      <div className="absolute top-6 right-0 bottom-0 w-[90%] rounded-tl-2xl overflow-hidden shadow-2xl shadow-black/30">
+        <img src={screenshots[0]} alt="Product screenshot" className="w-full h-full object-cover object-top" onError={(e) => { e.target.style.display = 'none'; e.target.parentElement.innerHTML = '<div class="w-full h-full bg-white/5 flex items-center justify-center text-white/20 text-xs">Product Screenshot</div>'; }} />
       </div>
-      {/* Overlay popup screenshot — centered, overlapping the main */}
+      {/* Overlay popup — overlaps center-bottom, bleeds past bottom edge */}
       {screenshots[1] && (
-        <div className="absolute bottom-0 left-[10%] w-[50%] rounded-xl overflow-hidden border-2 border-white/20 shadow-2xl shadow-black/50 z-10">
+        <div className="absolute bottom-[-20px] left-[5%] w-[55%] rounded-xl overflow-hidden border-2 border-white/20 shadow-2xl shadow-black/50 z-10">
           <img src={screenshots[1]} alt="Feature popup" className="w-full h-auto" onError={(e) => { e.target.parentElement.style.display = 'none'; }} />
         </div>
       )}
@@ -127,12 +127,12 @@ export default function AIFeatureTabs() {
         </div>
 
         {/* Feature Card */}
-        <div className="relative rounded-3xl p-8 lg:p-14 text-white overflow-hidden" style={{ background: 'linear-gradient(135deg, #2D1B54 0%, #3B2566 50%, #1E1240 100%)' }}>
+        <div className="relative rounded-3xl text-white overflow-hidden" style={{ background: 'linear-gradient(135deg, #2D1B54 0%, #3B2566 50%, #1E1240 100%)' }}>
           {/* Grid pattern */}
           <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'linear-gradient(45deg, #fff 1px, transparent 1px), linear-gradient(-45deg, #fff 1px, transparent 1px)', backgroundSize: '50px 50px' }} />
 
-          <div className="relative grid lg:grid-cols-2 gap-10 items-center">
-            <div>
+          <div className="relative grid lg:grid-cols-2 gap-0 items-stretch min-h-[420px]">
+            <div className="p-8 lg:p-14 flex flex-col justify-center">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
                   {feature.icon}
@@ -146,7 +146,7 @@ export default function AIFeatureTabs() {
                 Learn More
               </Link>
             </div>
-            <div className="relative">
+            <div className="relative min-h-[360px]">
               <FeatureScreenshots screenshots={feature.screenshots} />
             </div>
           </div>
