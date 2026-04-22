@@ -26,7 +26,7 @@ const FEATURES = [
     ),
     description: <>With SmartSync, your <strong className="text-white">clinical data stays in sync</strong> across all devices in real-time. Whether you&apos;re at the <strong className="text-white">clinic, home, or on the go</strong> — your records are always up to date.</>,
     path: '/features/smartsync',
-    screenshots: [],
+    screenshots: ['/images/features/SmartSync MAIN.png', '/images/features/SmartSync popup.png'],
   },
   {
     id: 'snaprx',
@@ -39,31 +39,19 @@ const FEATURES = [
     ),
     description: <>Point your phone at any <strong className="text-white">handwritten prescription</strong>. SnapRx uses <strong className="text-white">healthcare-grade OCR</strong> to extract medication names, dosages, and instructions — converting messy handwriting into <strong className="text-white">structured digital data.</strong></>,
     path: '/features/snaprx',
-    screenshots: ['/images/features/snaprx-main.png'],
+    screenshots: ['/images/features/SnapRx Main.png', '/images/features/SnapRx popup.png'],
   },
   {
-    id: 'receptionist-agent',
-    name: 'Receptionist Agent',
-    icon: (
-      <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-      </svg>
-    ),
-    description: <>Receptionist Agent handles <strong className="text-white">appointment scheduling</strong>, sends automated <strong className="text-white">patient reminders</strong>, manages <strong className="text-white">digital queues</strong>, and runs <strong className="text-white">follow-up campaigns</strong> — so your front desk runs itself.</>,
-    path: '/features/receptionist-ai',
-    screenshots: [],
-  },
-  {
-    id: 'doctor-agent',
-    name: 'Doctor Agent',
+    id: 'ai-agent',
+    name: 'AI Agent',
     icon: (
       <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
       </svg>
     ),
-    description: <>Doctor Agent provides <strong className="text-white">AI-powered clinical decision support</strong> — from <strong className="text-white">differential diagnoses</strong> and <strong className="text-white">drug interaction alerts</strong> to <strong className="text-white">evidence-based suggestions</strong> that think alongside you.</>,
+    description: <>AI Agent combines <strong className="text-white">Receptionist AI</strong> and <strong className="text-white">Doctor Agent</strong> — handling <strong className="text-white">appointment scheduling, patient reminders, clinical decision support</strong>, drug interaction alerts, and <strong className="text-white">differential diagnosis</strong> all in one intelligent assistant.</>,
     path: '/features/doctor-agent',
-    screenshots: [],
+    screenshots: ['/images/features/AI agent Main.png', '/images/features/AI agent.png'],
   },
 ];
 
