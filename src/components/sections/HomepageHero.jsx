@@ -3,11 +3,11 @@ import { useModal } from '@/components/ModalProvider';
 import { ShieldCheck, Landmark, BadgeCheck, Lock, Globe } from 'lucide-react';
 
 const COMPLIANCE = [
-  { label: 'HIPAA Compliant', icon: <ShieldCheck size={18} strokeWidth={2} className="text-[#6D28D9]" /> },
-  { label: 'NHA Approved', icon: <Landmark size={18} strokeWidth={2} className="text-[#6D28D9]" /> },
-  { label: 'ABDM Certified', icon: <BadgeCheck size={18} strokeWidth={2} className="text-[#6D28D9]" /> },
-  { label: 'ISO 27001', icon: <Lock size={18} strokeWidth={2} className="text-[#6D28D9]" /> },
-  { label: 'GDPR Compliant', icon: <Globe size={18} strokeWidth={2} className="text-[#6D28D9]" /> },
+  { label: 'HIPAA Compliant', icon: <ShieldCheck size={16} strokeWidth={1.5} className="text-[#6D28D9]" /> },
+  { label: 'NHA Approved', icon: <Landmark size={16} strokeWidth={1.5} className="text-[#6D28D9]" /> },
+  { label: 'ABDM Certified', icon: <BadgeCheck size={16} strokeWidth={1.5} className="text-[#6D28D9]" /> },
+  { label: 'ISO 27001', icon: <Lock size={16} strokeWidth={1.5} className="text-[#6D28D9]" /> },
+  { label: 'GDPR Compliant', icon: <Globe size={16} strokeWidth={1.5} className="text-[#6D28D9]" /> },
 ];
 
 export default function HomepageHero() {

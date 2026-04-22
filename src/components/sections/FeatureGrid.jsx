@@ -3,7 +3,7 @@ import { ScrollReveal, TiltCard } from '@/components/ui';
 function FeatureCard({ icon, title, description }) {
   return (
     <TiltCard className="bg-white rounded-2xl p-6 border border-black/5 shadow-sm hover:shadow-lg transition-shadow">
-      <div className="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center text-2xl mb-4">{icon}</div>
+      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-100 to-purple-50 flex items-center justify-center text-2xl mb-4">{icon}</div>
       <h3 className="text-[15px] font-extrabold text-g-6 mb-2">{title}</h3>
       <p className="text-[13px] text-g-3 leading-relaxed">{description}</p>
     </TiltCard>
