@@ -2,8 +2,19 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Mic, Camera, RefreshCw, Bot, Phone, Stethoscope, Building2 } from 'lucide-react';
 import { NAV_FEATURES, NAV_SOLUTIONS } from '@/lib/data';
 import { useModal } from './ModalProvider';
+
+const NAV_ICON_MAP = {
+  'VoiceRx': <Mic size={18} strokeWidth={1.5} className="text-purple-600" />,
+  'SnapRx': <Camera size={18} strokeWidth={1.5} className="text-purple-600" />,
+  'SmartSync': <RefreshCw size={18} strokeWidth={1.5} className="text-purple-600" />,
+  'Doctor Agent': <Bot size={18} strokeWidth={1.5} className="text-purple-600" />,
+  'Receptionist AI': <Phone size={18} strokeWidth={1.5} className="text-purple-600" />,
+  'For Clinics': <Stethoscope size={18} strokeWidth={1.5} className="text-purple-600" />,
+  'For Hospitals': <Building2 size={18} strokeWidth={1.5} className="text-purple-600" />,
+};
 
 function DropdownMenu({ items }) {
   return (
@@ -13,7 +24,7 @@ function DropdownMenu({ items }) {
       {items.map((item, i) => (
         <Link key={i} href={item.path}
           className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors no-underline group">
-          <span className="text-base">{item.icon}</span>
+          <span className="flex items-center justify-center">{NAV_ICON_MAP[item.name] || item.icon}</span>
           <div>
             <div className="text-sm font-semibold text-gray-900 group-hover:text-[#5B2E91]">{item.name}</div>
             <div className="text-[11px] text-gray-400">{item.desc}</div>
