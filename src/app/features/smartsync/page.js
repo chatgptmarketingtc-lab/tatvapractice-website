@@ -5,12 +5,12 @@ import { RefreshCw, WifiOff, Landmark, Database, Lock, Hospital, Shield, Home, A
 export const metadata = { title: 'SmartSync — Seamless Data Synchronization | TatvaPractice' };
 
 const CORE_FEATURES = [
-  { icon: <RefreshCw className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Real-Time Sync', description: 'Changes propagate instantly across all connected devices. Update a patient record on your phone, and it appears on your desktop within milliseconds.' },
-  { icon: <WifiOff className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Offline-First Architecture', description: 'Work without internet — SmartSync queues all changes locally and resolves conflicts intelligently when connectivity returns. Zero data loss, guaranteed.' },
-  { icon: <Landmark className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'ABDM Integration', description: 'Seamlessly syncs patient records with the Ayushman Bharat Digital Mission ecosystem, including ABHA IDs, health lockers, and consent-based data exchange.' },
-  { icon: <Database className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Auto-Backup & Recovery', description: 'Continuous encrypted backups to the cloud with point-in-time recovery. Restore your entire practice data from any moment in the last 90 days.' },
-  { icon: <Lock className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'End-to-End Encryption', description: 'AES-256 encryption at rest and TLS 1.3 in transit. Your patient data is encrypted before it leaves the device and remains encrypted in the cloud.' },
-  { icon: <Hospital className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Multi-Location Support', description: 'Sync data across multiple clinic branches seamlessly. Staff at one location can access shared patient records from any other branch in real-time.' },
+  { icon: <RefreshCw className="text-purple-600" size={22} strokeWidth={1.5} />, title: 'Real-Time Sync', description: 'Changes propagate instantly across all connected devices. Update a patient record on your phone, and it appears on your desktop within milliseconds.' },
+  { icon: <WifiOff className="text-purple-600" size={22} strokeWidth={1.5} />, title: 'Offline-First Architecture', description: 'Work without internet — SmartSync queues all changes locally and resolves conflicts intelligently when connectivity returns. Zero data loss, guaranteed.' },
+  { icon: <Landmark className="text-purple-600" size={22} strokeWidth={1.5} />, title: 'ABDM Integration', description: 'Seamlessly syncs patient records with the Ayushman Bharat Digital Mission ecosystem, including ABHA IDs, health lockers, and consent-based data exchange.' },
+  { icon: <Database className="text-purple-600" size={22} strokeWidth={1.5} />, title: 'Auto-Backup & Recovery', description: 'Continuous encrypted backups to the cloud with point-in-time recovery. Restore your entire practice data from any moment in the last 90 days.' },
+  { icon: <Lock className="text-purple-600" size={22} strokeWidth={1.5} />, title: 'End-to-End Encryption', description: 'AES-256 encryption at rest and TLS 1.3 in transit. Your patient data is encrypted before it leaves the device and remains encrypted in the cloud.' },
+  { icon: <Hospital className="text-purple-600" size={22} strokeWidth={1.5} />, title: 'Multi-Location Support', description: 'Sync data across multiple clinic branches seamlessly. Staff at one location can access shared patient records from any other branch in real-time.' },
 ];
 
 const HOW_IT_WORKS_STEPS = [
@@ -43,7 +43,7 @@ export default function SmartSyncPage() {
         title='Your data,<br/><em class="not-italic bg-gradient-to-r from-brand-500 to-brand-700 bg-clip-text text-transparent">everywhere.</em>'
         subtitle="SmartSync ensures your patient records, prescriptions, and practice data are always up-to-date across every device — even when you are offline. Seamless, encrypted, and ABDM-ready."
         buttons={[{ text: 'Get Started Free →' }, { text: 'View Architecture', variant: 'outline' }]}
-        visual={<ProductHeroVisual icon={<RefreshCw className="text-white" size={24} strokeWidth={2} />} name="SmartSync" desc="Seamless Data Synchronization" pills={['Real-Time', 'Offline-First', 'Encrypted', 'ABDM Ready']} />}
+        visual={<ProductHeroVisual icon={<RefreshCw className="text-white" size={22} strokeWidth={1.5} />} name="SmartSync" desc="Seamless Data Synchronization" pills={['Real-Time', 'Offline-First', 'Encrypted', 'ABDM Ready']} />}
       />
 
       {/* Stats */}
@@ -65,7 +65,7 @@ export default function SmartSyncPage() {
 
       {/* How It Works */}
       <UseCaseSection
-        icon={<RefreshCw className="text-white" size={24} strokeWidth={2} />}
+        icon={<RefreshCw className="text-white" size={22} strokeWidth={1.5} />}
         name="SmartSync"
         desc="Data Synchronization"
         category="How It Works"
@@ -80,7 +80,7 @@ export default function SmartSyncPage() {
       {/* Infrastructure Section */}
       <UseCaseSection
         reverse
-        icon={<Shield className="text-white" size={24} strokeWidth={2} />}
+        icon={<Shield className="text-white" size={22} strokeWidth={1.5} />}
         name="Infrastructure"
         desc="Security & Compliance"
         iconBg="linear-gradient(135deg, #3b82f6, #1d4ed8)"
@@ -102,9 +102,9 @@ export default function SmartSyncPage() {
           <ScrollReveal variant="stagger">
             <div className="grid md:grid-cols-3 gap-6">
               {[
-                { icon: <Home className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Solo Practitioners', desc: 'Sync between your clinic desktop and personal phone. Access patient records on the go, even during home visits without internet.' },
-                { icon: <Hospital className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Multi-Branch Clinics', desc: 'Shared patient database across branches with centralized reporting. Staff at any location can pull up records instantly.' },
-                { icon: <Ambulance className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Field & Camp Settings', desc: 'Offline-first design ensures full functionality at health camps, rural outreach, and mobile clinics with intermittent connectivity.' },
+                { icon: <Home className="text-purple-600" size={22} strokeWidth={1.5} />, title: 'Solo Practitioners', desc: 'Sync between your clinic desktop and personal phone. Access patient records on the go, even during home visits without internet.' },
+                { icon: <Hospital className="text-purple-600" size={22} strokeWidth={1.5} />, title: 'Multi-Branch Clinics', desc: 'Shared patient database across branches with centralized reporting. Staff at any location can pull up records instantly.' },
+                { icon: <Ambulance className="text-purple-600" size={22} strokeWidth={1.5} />, title: 'Field & Camp Settings', desc: 'Offline-first design ensures full functionality at health camps, rural outreach, and mobile clinics with intermittent connectivity.' },
               ].map((item, i) => (
                 <div key={i} className="bg-white rounded-2xl p-6 border border-black/5 shadow-sm hover:shadow-md transition-shadow text-center stagger-child">
                   <div className="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center text-2xl mx-auto mb-4">{item.icon}</div>
