@@ -108,17 +108,17 @@ function FeatureScreenshots({ screenshots }) {
   if (!screenshots || screenshots.length === 0) return <ScreenshotPlaceholder />;
 
   return (
-    <div className="absolute inset-0 overflow-visible">
-      {/* Main screenshot — bleeds out top-right of card */}
-      <div className="absolute -top-8 right-[-20px] w-[95%] rounded-2xl overflow-hidden shadow-2xl shadow-black/30 z-10">
-        <img src={screenshots[0]} alt="Product screenshot" className="w-full h-auto" onError={(e) => { e.target.style.display = 'none'; e.target.parentElement.innerHTML = '<div class="min-h-[300px] bg-white/5 flex items-center justify-center text-white/20 text-xs">Product Screenshot</div>'; }} />
+    <div className="relative w-full h-full p-4 lg:p-6 lg:pl-0">
+      <div className="relative w-full aspect-[16/10] overflow-hidden rounded-2xl">
+        {/* Main screenshot — fills the wrapper */}
+        <img src={screenshots[0]} alt="Product screenshot" className="w-full h-full object-cover object-top rounded-2xl" onError={(e) => { e.target.style.display = 'none'; }} />
+        {/* Overlay popup — anchored bottom-left of the mockup composite */}
+        {screenshots[1] && (
+          <div className="absolute bottom-5 left-5 w-[45%] rounded-xl overflow-hidden shadow-2xl shadow-black/50 border-2 border-white/20 z-10">
+            <img src={screenshots[1]} alt="Feature popup" className="w-full h-auto" onError={(e) => { e.target.parentElement.style.display = 'none'; }} />
+          </div>
+        )}
       </div>
-      {/* Overlay popup — overlaps at center-bottom */}
-      {screenshots[1] && (
-        <div className="absolute bottom-4 left-[5%] w-[50%] rounded-xl overflow-hidden border-2 border-white/20 shadow-2xl shadow-black/50 z-20">
-          <img src={screenshots[1]} alt="Feature popup" className="w-full h-auto" onError={(e) => { e.target.parentElement.style.display = 'none'; }} />
-        </div>
-      )}
     </div>
   );
 }
@@ -155,12 +155,13 @@ export default function AIFeatureTabs() {
           </div>
 
           {/* Feature Card */}
-          <div className="relative rounded-[32px] text-white overflow-visible" style={{ background: 'linear-gradient(135deg, #2D1B54 0%, #3B2566 50%, #1E1240 100%)' }}>
+          <div className="relative rounded-[32px] text-white overflow-hidden" style={{ background: 'linear-gradient(135deg, #2D1B54 0%, #3B2566 50%, #1E1240 100%)' }}>
             {/* Grid pattern */}
-            <div className="absolute inset-0 rounded-[32px] overflow-hidden opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'linear-gradient(45deg, #fff 1px, transparent 1px), linear-gradient(-45deg, #fff 1px, transparent 1px)', backgroundSize: '50px 50px' }} />
+            <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'linear-gradient(45deg, #fff 1px, transparent 1px), linear-gradient(-45deg, #fff 1px, transparent 1px)', backgroundSize: '50px 50px' }} />
 
-            <div className="relative grid lg:grid-cols-2 gap-0 items-stretch min-h-[450px]">
-              <div className="p-8 pt-16 lg:p-14 lg:pt-20 flex flex-col justify-center">
+            <div className="relative grid lg:grid-cols-[2fr_3fr] gap-0 items-stretch min-h-[420px]">
+              {/* LEFT column ~40% — text content */}
+              <div className="p-8 pt-16 lg:p-10 lg:pt-20 flex flex-col justify-center">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
                     {feature.icon}
@@ -174,7 +175,8 @@ export default function AIFeatureTabs() {
                   Learn More
                 </Link>
               </div>
-              <div className="relative min-h-[380px]">
+              {/* RIGHT column ~60% — mockup composite */}
+              <div className="relative">
                 <FeatureScreenshots screenshots={feature.screenshots} />
               </div>
             </div>
