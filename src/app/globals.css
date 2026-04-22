@@ -22,6 +22,8 @@ body { -webkit-font-smoothing: antialiased; font-family: 'Mulish', sans-serif; }
 h1, h2, h3, h4, h5, h6, p, a, span, button, input, div { font-family: 'Mulish', sans-serif; }
 
 .tilt-card { transition: transform 0.15s ease-out; transform-style: preserve-3d; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
 .mega-menu { opacity:0; visibility:hidden; transform:translateX(-50%) translateY(8px); transition: all .2s ease; }
 .nav-item:hover .mega-menu { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
