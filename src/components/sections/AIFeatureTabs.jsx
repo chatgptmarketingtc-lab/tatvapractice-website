@@ -108,14 +108,14 @@ function FeatureScreenshots({ screenshots }) {
   if (!screenshots || screenshots.length === 0) return <ScreenshotPlaceholder />;
 
   return (
-    <div className="absolute inset-0">
-      {/* Main screenshot — bleeds to right and top edges */}
-      <div className="absolute top-6 right-0 bottom-0 w-[90%] rounded-tl-2xl overflow-hidden shadow-2xl shadow-black/30">
-        <img src={screenshots[0]} alt="Product screenshot" className="w-full h-full object-cover object-top" onError={(e) => { e.target.style.display = 'none'; e.target.parentElement.innerHTML = '<div class="w-full h-full bg-white/5 flex items-center justify-center text-white/20 text-xs">Product Screenshot</div>'; }} />
+    <div className="absolute inset-0 overflow-visible">
+      {/* Main screenshot — bleeds out top-right of card */}
+      <div className="absolute -top-8 right-[-20px] w-[95%] rounded-2xl overflow-hidden shadow-2xl shadow-black/30 z-10">
+        <img src={screenshots[0]} alt="Product screenshot" className="w-full h-auto" onError={(e) => { e.target.style.display = 'none'; e.target.parentElement.innerHTML = '<div class="min-h-[300px] bg-white/5 flex items-center justify-center text-white/20 text-xs">Product Screenshot</div>'; }} />
       </div>
-      {/* Overlay popup — overlaps center-bottom, bleeds past bottom edge */}
+      {/* Overlay popup — overlaps at center-bottom */}
       {screenshots[1] && (
-        <div className="absolute bottom-[-20px] left-[5%] w-[55%] rounded-xl overflow-hidden border-2 border-white/20 shadow-2xl shadow-black/50 z-10">
+        <div className="absolute bottom-4 left-[5%] w-[50%] rounded-xl overflow-hidden border-2 border-white/20 shadow-2xl shadow-black/50 z-20">
           <img src={screenshots[1]} alt="Feature popup" className="w-full h-auto" onError={(e) => { e.target.parentElement.style.display = 'none'; }} />
         </div>
       )}
@@ -136,44 +136,47 @@ export default function AIFeatureTabs() {
           </h2>
         </ScrollReveal>
 
-        {/* Tab Pills — scrollable */}
-        <div className="flex justify-center mt-12 mb-10">
-          <div className="flex gap-1.5 bg-gray-50 border border-gray-100 rounded-full p-1.5 overflow-x-auto max-w-full no-scrollbar">
-            {FEATURES.map((f, i) => (
-              <button
-                key={f.id}
-                onClick={() => setActive(i)}
-                className={`text-[13px] font-semibold px-5 py-2.5 rounded-full transition-all whitespace-nowrap shrink-0 ${active === i ? 'text-white shadow-md' : 'text-gray-500 hover:text-[#5B2E91]'}`}
-                style={active === i ? { background: 'linear-gradient(135deg, #7C4DBC 0%, #5B2E91 100%)' } : {}}
-              >
-                {f.name}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Feature Card */}
-        <div className="relative rounded-3xl text-white overflow-hidden" style={{ background: 'linear-gradient(135deg, #2D1B54 0%, #3B2566 50%, #1E1240 100%)' }}>
-          {/* Grid pattern */}
-          <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'linear-gradient(45deg, #fff 1px, transparent 1px), linear-gradient(-45deg, #fff 1px, transparent 1px)', backgroundSize: '50px 50px' }} />
-
-          <div className="relative grid lg:grid-cols-2 gap-0 items-stretch min-h-[420px]">
-            <div className="p-8 lg:p-14 flex flex-col justify-center">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
-                  {feature.icon}
-                </div>
-                <h3 className="text-3xl font-extrabold">{feature.name}</h3>
-              </div>
-              <p className="text-white/70 text-[16px] leading-relaxed mb-6">
-                {feature.description}
-              </p>
-              <Link href={feature.path} className="text-[14px] text-white/80 underline underline-offset-4 hover:text-white transition-colors font-medium">
-                Learn More
-              </Link>
+        {/* Card with embedded tabs */}
+        <div className="relative mt-12">
+          {/* Tab Pills — sits on top of the dark card */}
+          <div className="flex justify-center relative z-20 -mb-6">
+            <div className="flex gap-1.5 bg-white border border-gray-100 rounded-full p-1.5 overflow-x-auto max-w-full no-scrollbar shadow-sm">
+              {FEATURES.map((f, i) => (
+                <button
+                  key={f.id}
+                  onClick={() => setActive(i)}
+                  className={`text-[13px] font-semibold px-5 py-2.5 rounded-full transition-all whitespace-nowrap shrink-0 ${active === i ? 'text-white shadow-md' : 'text-gray-500 hover:text-[#5B2E91]'}`}
+                  style={active === i ? { background: 'linear-gradient(135deg, #7C4DBC 0%, #5B2E91 100%)' } : {}}
+                >
+                  {f.name}
+                </button>
+              ))}
             </div>
-            <div className="relative min-h-[360px]">
-              <FeatureScreenshots screenshots={feature.screenshots} />
+          </div>
+
+          {/* Feature Card */}
+          <div className="relative rounded-[32px] text-white overflow-visible" style={{ background: 'linear-gradient(135deg, #2D1B54 0%, #3B2566 50%, #1E1240 100%)' }}>
+            {/* Grid pattern */}
+            <div className="absolute inset-0 rounded-[32px] overflow-hidden opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'linear-gradient(45deg, #fff 1px, transparent 1px), linear-gradient(-45deg, #fff 1px, transparent 1px)', backgroundSize: '50px 50px' }} />
+
+            <div className="relative grid lg:grid-cols-2 gap-0 items-stretch min-h-[450px]">
+              <div className="p-8 pt-16 lg:p-14 lg:pt-20 flex flex-col justify-center">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-3xl font-extrabold">{feature.name}</h3>
+                </div>
+                <p className="text-white/70 text-[16px] leading-relaxed mb-6">
+                  {feature.description}
+                </p>
+                <Link href={feature.path} className="text-[14px] text-white/80 underline underline-offset-4 hover:text-white transition-colors font-medium">
+                  Learn More
+                </Link>
+              </div>
+              <div className="relative min-h-[380px]">
+                <FeatureScreenshots screenshots={feature.screenshots} />
+              </div>
             </div>
           </div>
         </div>
