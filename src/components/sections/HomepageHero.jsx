@@ -1,12 +1,13 @@
 'use client';
 import { useModal } from '@/components/ModalProvider';
+import { ShieldCheck, Landmark, BadgeCheck, Lock, Globe } from 'lucide-react';
 
 const COMPLIANCE = [
-  { label: 'HIPAA Compliant', icon: '🛡️' },
-  { label: 'NHA Approved', icon: '🏛️' },
-  { label: 'ABDM Certified', icon: '✅' },
-  { label: 'ISO 27001', icon: '🔒' },
-  { label: 'GDPR Compliant', icon: '🌐' },
+  { label: 'HIPAA Compliant', icon: <ShieldCheck size={18} strokeWidth={2} className="text-[#6D28D9]" /> },
+  { label: 'NHA Approved', icon: <Landmark size={18} strokeWidth={2} className="text-[#6D28D9]" /> },
+  { label: 'ABDM Certified', icon: <BadgeCheck size={18} strokeWidth={2} className="text-[#6D28D9]" /> },
+  { label: 'ISO 27001', icon: <Lock size={18} strokeWidth={2} className="text-[#6D28D9]" /> },
+  { label: 'GDPR Compliant', icon: <Globe size={18} strokeWidth={2} className="text-[#6D28D9]" /> },
 ];
 
 export default function HomepageHero() {
@@ -46,7 +47,7 @@ export default function HomepageHero() {
           {COMPLIANCE.map((c, i) => (
             <div key={i} className="flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-gray-100 rounded-lg px-3.5 py-2">
               <div className="w-7 h-7 rounded-md bg-gray-100 flex items-center justify-center">
-                <span className="text-sm">{c.icon}</span>
+                {c.icon}
               </div>
               <span className="text-[10px] font-semibold text-gray-600">{c.label}</span>
             </div>

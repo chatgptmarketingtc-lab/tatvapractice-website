@@ -1,4 +1,14 @@
 import {
+  CalendarCheck,
+  Pill,
+  Receipt,
+  ClipboardList,
+  BellRing,
+  BarChart3,
+  Stethoscope,
+  Rocket,
+} from 'lucide-react';
+import {
   HeroSection,
   ProductHeroVisual,
   FeatureGrid,
@@ -22,7 +32,7 @@ export default function ClinicsPage() {
         buttons={[{ text: 'Start Free Trial →' }, { text: 'Watch Demo', variant: 'outline' }]}
         visual={
           <ProductHeroVisual
-            icon="🏥"
+            icon={<Stethoscope className="text-white" size={24} strokeWidth={2} />}
             name="TatvaPractice"
             desc="Clinic Management · Made Simple"
             pills={['Scheduling', 'e-Rx', 'Billing', 'Reports']}
@@ -39,17 +49,17 @@ export default function ClinicsPage() {
         columns={3}
         features={[
           {
-            icon: '📅',
+            icon: <CalendarCheck className="text-[#6D28D9]" size={24} strokeWidth={2} />,
             title: 'Smart Scheduling',
             description: 'Online and walk-in appointment booking with slot management, queue view, and automatic wait-time estimation for patients.',
           },
           {
-            icon: '💊',
+            icon: <Pill className="text-[#6D28D9]" size={24} strokeWidth={2} />,
             title: 'AI Prescriptions',
             description: 'Generate structured digital prescriptions in seconds with VoiceRx, drug interaction alerts, and multi-language support.',
           },
           {
-            icon: '🧾',
+            icon: <Receipt className="text-[#6D28D9]" size={24} strokeWidth={2} />,
             title: 'Billing & Invoicing',
             description: 'Create GST-compliant invoices, track payments, manage outstanding dues, and generate revenue reports — all in one place.',
           },

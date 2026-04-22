@@ -1,15 +1,16 @@
 import { HeroSection, UseCaseSection, StatsBar, CTASection, FAQSection, FeatureGrid, ProductHeroVisual } from '@/components/sections';
 import { ScrollReveal, Button } from '@/components/ui';
+import { Camera, ScanLine, Pill, FileText, Link, LayoutGrid, RefreshCw, Brain, Hospital, ClipboardList } from 'lucide-react';
 
 export const metadata = { title: 'SnapRx — Photo-to-Prescription AI | TatvaPractice' };
 
 const CORE_FEATURES = [
-  { icon: '🔍', title: 'Healthcare-Grade OCR', description: 'Purpose-built optical character recognition trained on millions of handwritten Indian prescriptions — not generic document scanning, but clinical-grade extraction.' },
-  { icon: '💊', title: 'Drug Name Extraction', description: 'Identifies and maps drug names to a standardized pharmacopeia, resolving brand names, generics, and regional variants automatically.' },
-  { icon: '📝', title: 'Abbreviation Handling', description: 'Understands medical shorthand like BD, TDS, OD, SOS, HS, and hundreds of clinical abbreviations used across Indian medical practice.' },
-  { icon: '🔗', title: 'Cross-Referencing Engine', description: 'Every extracted drug is cross-referenced against a 100K+ drug database for dosage validation, interaction checks, and formulary verification.' },
-  { icon: '📐', title: 'Layout Intelligence', description: 'Understands prescription structure — headers, drug lists, dosage columns, instructions, and doctor signatures — regardless of formatting style.' },
-  { icon: '🔄', title: 'Instant Digitization', description: 'Converts scanned prescriptions into fully editable, structured digital records that integrate directly into the patient EHR timeline.' },
+  { icon: <ScanLine className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Healthcare-Grade OCR', description: 'Purpose-built optical character recognition trained on millions of handwritten Indian prescriptions — not generic document scanning, but clinical-grade extraction.' },
+  { icon: <Pill className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Drug Name Extraction', description: 'Identifies and maps drug names to a standardized pharmacopeia, resolving brand names, generics, and regional variants automatically.' },
+  { icon: <FileText className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Abbreviation Handling', description: 'Understands medical shorthand like BD, TDS, OD, SOS, HS, and hundreds of clinical abbreviations used across Indian medical practice.' },
+  { icon: <Link className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Cross-Referencing Engine', description: 'Every extracted drug is cross-referenced against a 100K+ drug database for dosage validation, interaction checks, and formulary verification.' },
+  { icon: <LayoutGrid className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Layout Intelligence', description: 'Understands prescription structure — headers, drug lists, dosage columns, instructions, and doctor signatures — regardless of formatting style.' },
+  { icon: <RefreshCw className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Instant Digitization', description: 'Converts scanned prescriptions into fully editable, structured digital records that integrate directly into the patient EHR timeline.' },
 ];
 
 const HOW_IT_WORKS_STEPS = [
@@ -42,7 +43,7 @@ export default function SnapRxPage() {
         title='Photograph it.<br/><em class="not-italic bg-gradient-to-r from-brand-500 to-brand-700 bg-clip-text text-transparent">Digitized.</em>'
         subtitle="Point your camera at any handwritten prescription. SnapRx uses healthcare-grade OCR to extract drug names, dosages, and instructions — converting paper to structured data in seconds."
         buttons={[{ text: 'Try SnapRx Free →' }, { text: 'See It in Action', variant: 'outline' }]}
-        visual={<ProductHeroVisual icon="📸" name="SnapRx" desc="Photo-to-Prescription AI" pills={['OCR Engine', 'Drug Extraction', 'Multi-Script', 'EHR Ready']} />}
+        visual={<ProductHeroVisual icon={<Camera className="text-white" size={24} strokeWidth={2} />} name="SnapRx" desc="Photo-to-Prescription AI" pills={['OCR Engine', 'Drug Extraction', 'Multi-Script', 'EHR Ready']} />}
       />
 
       {/* Stats */}
@@ -64,7 +65,7 @@ export default function SnapRxPage() {
 
       {/* How It Works */}
       <UseCaseSection
-        icon="📸"
+        icon={<Camera className="text-white" size={24} strokeWidth={2} />}
         name="SnapRx"
         desc="Photo-to-Prescription"
         category="How It Works"
@@ -79,7 +80,7 @@ export default function SnapRxPage() {
       {/* Clinical Accuracy Section */}
       <UseCaseSection
         reverse
-        icon="🧠"
+        icon={<Brain className="text-white" size={24} strokeWidth={2} />}
         name="Medical OCR"
         desc="Clinical Intelligence"
         iconBg="linear-gradient(135deg, #10b981, #059669)"
@@ -101,9 +102,9 @@ export default function SnapRxPage() {
           <ScrollReveal variant="stagger">
             <div className="grid md:grid-cols-3 gap-6">
               {[
-                { icon: '💊', title: 'Pharmacy Dispensing', desc: 'Pharmacists can scan incoming prescriptions to verify drug names and dosages instantly, reducing dispensing errors and improving turnaround.' },
-                { icon: '🏥', title: 'Hospital Intake', desc: 'Digitize referral prescriptions from outside doctors during hospital admissions, creating a complete medication history in the EHR.' },
-                { icon: '📋', title: 'Insurance & Claims', desc: 'Convert prescription documents into structured data for insurance claims processing, reducing rejection rates from illegibility.' },
+                { icon: <Pill className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Pharmacy Dispensing', desc: 'Pharmacists can scan incoming prescriptions to verify drug names and dosages instantly, reducing dispensing errors and improving turnaround.' },
+                { icon: <Hospital className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Hospital Intake', desc: 'Digitize referral prescriptions from outside doctors during hospital admissions, creating a complete medication history in the EHR.' },
+                { icon: <ClipboardList className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Insurance & Claims', desc: 'Convert prescription documents into structured data for insurance claims processing, reducing rejection rates from illegibility.' },
               ].map((item, i) => (
                 <div key={i} className="bg-white rounded-2xl p-6 border border-black/5 shadow-sm hover:shadow-md transition-shadow text-center stagger-child">
                   <div className="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center text-2xl mx-auto mb-4">{item.icon}</div>

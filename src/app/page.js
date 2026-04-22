@@ -1,4 +1,5 @@
 import { ScrollReveal } from '@/components/ui';
+import { CalendarCheck, Pill, Receipt, BarChart3, FolderHeart, BellRing, NotebookPen, Syringe, Microscope, Video, Stethoscope, Building2 } from 'lucide-react';
 import FAQSection from '@/components/sections/FAQSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import PracticeSizeSection from '@/components/sections/PracticeSizeSection';
@@ -9,26 +10,19 @@ import { CTASection, UseCaseSection } from '@/components/sections';
 export const metadata = { title: 'TatvaPractice — AI-Powered Practice Management' };
 
 const MANAGEMENT_FEATURES = [
-  { icon: '📋', title: 'Appointments', description: 'Smart scheduling with automated reminders and calendar sync for seamless patient management.' },
-  { icon: '💊', title: 'Prescriptions', description: 'AI-powered prescription writing in seconds with VoiceRx, SnapRx, and AmbientRx modes.' },
-  { icon: '🧾', title: 'Billing & Invoicing', description: 'Automated billing, GST invoicing, and payment tracking with integrated payment gateway.' },
-  { icon: '📊', title: 'Reports & Analytics', description: 'Comprehensive dashboards with patient trends, revenue insights, and practice performance.' },
-  { icon: '🗂️', title: 'Patient Records', description: 'Complete digital health records with ABDM integration and longitudinal patient history.' },
-  { icon: '🔔', title: 'Notifications & Recalls', description: 'Automated follow-up reminders, vaccination alerts, and patient engagement campaigns.' },
-];
-
-const AI_FEATURES = [
-  { icon: '🎤', title: 'VoiceRx', description: 'Dictate prescriptions in any language. AI transcribes, structures, and auto-populates in real-time.' },
-  { icon: '📸', title: 'SnapRx', description: 'Photograph handwritten prescriptions. Healthcare-grade OCR extracts and digitizes instantly.' },
-  { icon: '🎙️', title: 'AmbientRx', description: 'AI listens to doctor-patient conversations and auto-generates structured clinical notes.' },
-  { icon: '🧬', title: 'DDx Engine', description: 'Ranked differential diagnoses, drug interaction alerts, and evidence-based suggestions.' },
+  { icon: <CalendarCheck size={24} strokeWidth={2} className="text-white" />, title: 'Appointments', description: 'Smart scheduling with automated reminders and calendar sync for seamless patient management.' },
+  { icon: <Pill size={24} strokeWidth={2} className="text-white" />, title: 'Prescriptions', description: 'AI-powered prescription writing in seconds with VoiceRx, SnapRx, and AmbientRx modes.' },
+  { icon: <Receipt size={24} strokeWidth={2} className="text-white" />, title: 'Billing & Invoicing', description: 'Automated billing, GST invoicing, and payment tracking with integrated payment gateway.' },
+  { icon: <BarChart3 size={24} strokeWidth={2} className="text-white" />, title: 'Reports & Analytics', description: 'Comprehensive dashboards with patient trends, revenue insights, and practice performance.' },
+  { icon: <FolderHeart size={24} strokeWidth={2} className="text-white" />, title: 'Patient Records', description: 'Complete digital health records with ABDM integration and longitudinal patient history.' },
+  { icon: <BellRing size={24} strokeWidth={2} className="text-white" />, title: 'Notifications & Recalls', description: 'Automated follow-up reminders, vaccination alerts, and patient engagement campaigns.' },
 ];
 
 const EHR_FEATURES = [
-  { icon: '📝', title: 'Clinical Notes', description: 'SOAP notes, templates, and auto-generated documentation from voice or ambient capture.' },
-  { icon: '💉', title: 'Vaccination Tracker', description: 'Complete immunization schedules with automated reminders for patients and providers.' },
-  { icon: '🔬', title: 'Lab Integration', description: 'Direct lab ordering, result tracking, and AI-powered interpretation of reports.' },
-  { icon: '📱', title: 'Telehealth', description: 'Built-in video consultations with digital prescription and payment integration.' },
+  { icon: <NotebookPen size={24} strokeWidth={2} className="text-[#6D28D9]" />, title: 'Clinical Notes', description: 'SOAP notes, templates, and auto-generated documentation from voice or ambient capture.' },
+  { icon: <Syringe size={24} strokeWidth={2} className="text-[#6D28D9]" />, title: 'Vaccination Tracker', description: 'Complete immunization schedules with automated reminders for patients and providers.' },
+  { icon: <Microscope size={24} strokeWidth={2} className="text-[#6D28D9]" />, title: 'Lab Integration', description: 'Direct lab ordering, result tracking, and AI-powered interpretation of reports.' },
+  { icon: <Video size={24} strokeWidth={2} className="text-[#6D28D9]" />, title: 'Telehealth', description: 'Built-in video consultations with digital prescription and payment integration.' },
 ];
 
 const WORKFLOW_POINTS = [
@@ -41,15 +35,15 @@ const WORKFLOW_POINTS = [
 
 const PRACTICE_SIZES = [
   {
-    icon: '🏥',
+    icon: <Stethoscope size={28} strokeWidth={2} className="text-[#6D28D9]" />,
     title: 'For Clinics & Solo Practices',
     description: 'Everything a solo practitioner or small clinic needs to go digital from day one.',
     features: ['Cloud-based EMR with zero setup', 'AI-powered prescription writing', 'Appointment booking & reminders', 'Billing & payment collection', 'Patient engagement tools'],
     buttonText: 'Start Free Trial',
-    buttonLink: '/',
+    buttonLink: 'https://health.tatvacare.in/login',
   },
   {
-    icon: '🏢',
+    icon: <Building2 size={28} strokeWidth={2} className="text-[#6D28D9]" />,
     title: 'Hospitals & Multi-Location',
     description: 'Enterprise-grade features for hospitals, chains, and multi-location healthcare networks.',
     features: ['Multi-department & multi-location support', 'Role-based access control', 'Advanced reporting & analytics', 'ABDM & ABHA integration', 'Dedicated account manager'],
@@ -94,7 +88,7 @@ export default function HomePage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {MANAGEMENT_FEATURES.map((f, i) => (
                 <div key={i} className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-colors text-left">
-                  <div className="w-12 h-12 rounded-xl bg-brand-500/20 flex items-center justify-center text-2xl mb-4">{f.icon}</div>
+                  <div className="w-12 h-12 rounded-xl bg-brand-500/20 flex items-center justify-center mb-4">{f.icon}</div>
                   <h3 className="text-[15px] font-extrabold text-white mb-2">{f.title}</h3>
                   <p className="text-[13px] text-white/50 leading-relaxed">{f.description}</p>
                 </div>
@@ -142,7 +136,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {EHR_FEATURES.map((f, i) => (
               <div key={i} className="bg-white rounded-2xl p-6 border border-black/5 shadow-sm hover:shadow-md transition-shadow text-center">
-                <div className="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center text-2xl mx-auto mb-4">{f.icon}</div>
+                <div className="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center mx-auto mb-4">{f.icon}</div>
                 <h3 className="text-[15px] font-extrabold text-g-6 mb-2">{f.title}</h3>
                 <p className="text-[13px] text-g-3 leading-relaxed">{f.description}</p>
               </div>
@@ -154,7 +148,7 @@ export default function HomePage() {
       {/* Streamline Clinical Workflows */}
       <UseCaseSection
         reverse
-        icon="⚡"
+        icon={<Stethoscope size={20} strokeWidth={2} className="text-white" />}
         name="Workflows"
         desc="Clinical Automation"
         iconBg="linear-gradient(135deg, #10b981, #059669)"

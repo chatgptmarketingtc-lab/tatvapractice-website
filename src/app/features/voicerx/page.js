@@ -1,15 +1,16 @@
 import { HeroSection, UseCaseSection, StatsBar, CTASection, FAQSection, FeatureGrid, ProductHeroVisual } from '@/components/sections';
 import { ScrollReveal, Button } from '@/components/ui';
+import { Mic, Languages, AudioLines, Pill, WifiOff, ShieldAlert, LayoutTemplate, Hospital, Baby, Home, Brain } from 'lucide-react';
 
 export const metadata = { title: 'VoiceRx — Voice-to-Prescription AI | TatvaPractice' };
 
 const CORE_FEATURES = [
-  { icon: '🌐', title: 'Multi-Language Support', description: 'Dictate prescriptions in Hindi, English, Tamil, Bengali, or any regional language. VoiceRx understands medical terminology across languages and scripts.' },
-  { icon: '⚡', title: 'Real-Time Transcription', description: 'See your words convert to structured prescriptions as you speak. No waiting, no lag — instant clinical documentation at the speed of thought.' },
-  { icon: '💊', title: 'Auto-Fill Drug Database', description: 'As you dictate, VoiceRx auto-suggests drug names, dosages, and formulations from a curated database of 100,000+ medicines available in India.' },
-  { icon: '📴', title: 'Offline Mode', description: 'No internet? No problem. VoiceRx works fully offline with on-device processing, syncing automatically when connectivity returns.' },
-  { icon: '🛡️', title: 'Drug Interaction Alerts', description: 'Real-time alerts for contraindications, duplicate therapies, and dosage warnings as you dictate — catching errors before they reach the patient.' },
-  { icon: '📋', title: 'Smart Templates', description: 'Specialty-specific voice templates that learn your prescribing patterns over time, making repeat prescriptions faster with each use.' },
+  { icon: <Languages className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Multi-Language Support', description: 'Dictate prescriptions in Hindi, English, Tamil, Bengali, or any regional language. VoiceRx understands medical terminology across languages and scripts.' },
+  { icon: <AudioLines className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Real-Time Transcription', description: 'See your words convert to structured prescriptions as you speak. No waiting, no lag — instant clinical documentation at the speed of thought.' },
+  { icon: <Pill className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Auto-Fill Drug Database', description: 'As you dictate, VoiceRx auto-suggests drug names, dosages, and formulations from a curated database of 100,000+ medicines available in India.' },
+  { icon: <WifiOff className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Offline Mode', description: 'No internet? No problem. VoiceRx works fully offline with on-device processing, syncing automatically when connectivity returns.' },
+  { icon: <ShieldAlert className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Drug Interaction Alerts', description: 'Real-time alerts for contraindications, duplicate therapies, and dosage warnings as you dictate — catching errors before they reach the patient.' },
+  { icon: <LayoutTemplate className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Smart Templates', description: 'Specialty-specific voice templates that learn your prescribing patterns over time, making repeat prescriptions faster with each use.' },
 ];
 
 const HOW_IT_WORKS_STEPS = [
@@ -42,7 +43,7 @@ export default function VoiceRxPage() {
         title='Speak it.<br/><em class="not-italic bg-gradient-to-r from-brand-500 to-brand-700 bg-clip-text text-transparent">Done.</em>'
         subtitle="Dictate prescriptions in any language. VoiceRx transcribes, structures, and auto-populates medications in real-time — turning a 3-minute prescription into a 12-second voice command."
         buttons={[{ text: 'Try VoiceRx Free →' }, { text: 'Watch Demo', variant: 'outline' }]}
-        visual={<ProductHeroVisual icon="🎤" name="VoiceRx" desc="Voice-to-Prescription AI" pills={['Multi-Language', 'Real-Time', 'Offline Ready', 'Drug Checks']} />}
+        visual={<ProductHeroVisual icon={<Mic className="text-white" size={24} strokeWidth={2} />} name="VoiceRx" desc="Voice-to-Prescription AI" pills={['Multi-Language', 'Real-Time', 'Offline Ready', 'Drug Checks']} />}
       />
 
       {/* Stats */}
@@ -64,7 +65,7 @@ export default function VoiceRxPage() {
 
       {/* How It Works */}
       <UseCaseSection
-        icon="🎤"
+        icon={<Mic className="text-white" size={24} strokeWidth={2} />}
         name="VoiceRx"
         desc="Voice-to-Prescription"
         category="How It Works"
@@ -79,7 +80,7 @@ export default function VoiceRxPage() {
       {/* Clinical Accuracy Section */}
       <UseCaseSection
         reverse
-        icon="🧠"
+        icon={<Brain className="text-white" size={24} strokeWidth={2} />}
         name="Medical NLP"
         desc="Clinical Intelligence"
         iconBg="linear-gradient(135deg, #f59e0b, #d97706)"
@@ -101,9 +102,9 @@ export default function VoiceRxPage() {
           <ScrollReveal variant="stagger">
             <div className="grid md:grid-cols-3 gap-6">
               {[
-                { icon: '🏥', title: 'High-Volume OPD', desc: 'See 50+ patients a day without compromising on documentation. VoiceRx keeps up with even the busiest clinics.' },
-                { icon: '👶', title: 'Pediatrics & Dosing', desc: 'Weight-based dosage calculations and age-appropriate formulations are automatically suggested as you dictate.' },
-                { icon: '🏠', title: 'Home Visits & Camps', desc: 'Offline mode ensures VoiceRx works at health camps, home visits, and rural areas with limited connectivity.' },
+                { icon: <Hospital className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'High-Volume OPD', desc: 'See 50+ patients a day without compromising on documentation. VoiceRx keeps up with even the busiest clinics.' },
+                { icon: <Baby className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Pediatrics & Dosing', desc: 'Weight-based dosage calculations and age-appropriate formulations are automatically suggested as you dictate.' },
+                { icon: <Home className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Home Visits & Camps', desc: 'Offline mode ensures VoiceRx works at health camps, home visits, and rural areas with limited connectivity.' },
               ].map((item, i) => (
                 <div key={i} className="bg-white rounded-2xl p-6 border border-black/5 shadow-sm hover:shadow-md transition-shadow text-center stagger-child">
                   <div className="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center text-2xl mx-auto mb-4">{item.icon}</div>
