@@ -64,17 +64,17 @@ export default function ClinicsPage() {
             description: 'Create GST-compliant invoices, track payments, manage outstanding dues, and generate revenue reports — all in one place.',
           },
           {
-            icon: '📋',
+            icon: <ClipboardList className="text-[#6D28D9]" size={24} strokeWidth={2} />,
             title: 'Patient Records',
             description: 'Maintain comprehensive digital health records for every patient with visit history, vitals, lab results, and documents.',
           },
           {
-            icon: '🔔',
+            icon: <BellRing className="text-[#6D28D9]" size={24} strokeWidth={2} />,
             title: 'Automated Reminders',
             description: 'Reduce no-shows with WhatsApp and SMS reminders for appointments, follow-ups, and medication refills.',
           },
           {
-            icon: '📊',
+            icon: <BarChart3 className="text-[#6D28D9]" size={24} strokeWidth={2} />,
             title: 'Practice Reports',
             description: 'Track patient footfall, revenue trends, and prescription patterns with simple dashboards built for busy clinicians.',
           },
@@ -82,7 +82,7 @@ export default function ClinicsPage() {
       />
 
       <UseCaseSection
-        icon="🚀"
+        icon={<Rocket className="text-white" size={24} strokeWidth={2} />}
         name="Quick Setup"
         desc="Up and running in 15 minutes"
         category="How It Works"

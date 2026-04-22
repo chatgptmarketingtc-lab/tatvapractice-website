@@ -1,15 +1,16 @@
 import { HeroSection, UseCaseSection, StatsBar, CTASection, FAQSection, FeatureGrid, ProductHeroVisual } from '@/components/sections';
 import { ScrollReveal, Button } from '@/components/ui';
+import { Bot, CalendarCheck, BellRing, BarChart3, Megaphone, Phone, FileText, Settings, Home, Hospital, Building } from 'lucide-react';
 
 export const metadata = { title: 'Receptionist AI — Automated Front Desk | TatvaPractice' };
 
 const CORE_FEATURES = [
-  { icon: '📅', title: 'Smart Scheduling', description: 'AI-optimized appointment slots that factor in consultation duration, doctor availability, patient preferences, and travel time — minimizing wait times and maximizing throughput.' },
-  { icon: '🔔', title: 'Automated Reminders', description: 'WhatsApp, SMS, and app-based reminders sent automatically before appointments. Reduces no-shows by up to 40% with intelligent timing and follow-up nudges.' },
-  { icon: '📊', title: 'Patient Queue Management', description: 'Real-time digital queue with estimated wait times, token numbers, and automatic status updates. Patients can check their position from their phone.' },
-  { icon: '📣', title: 'Follow-Up Campaigns', description: 'Automated follow-up messages for post-visit care, medication adherence, vaccination due dates, and periodic health checkups — keeping patients engaged between visits.' },
-  { icon: '📞', title: 'Intelligent Call Handling', description: 'AI handles incoming calls for appointment booking, rescheduling, and basic queries. Complex cases are routed to staff with full context and patient history.' },
-  { icon: '📝', title: 'Pre-Visit Digital Forms', description: 'Patients fill out medical history, symptoms, and insurance details digitally before arrival. Data flows directly into the EHR, saving 5-10 minutes per visit.' },
+  { icon: <CalendarCheck className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Smart Scheduling', description: 'AI-optimized appointment slots that factor in consultation duration, doctor availability, patient preferences, and travel time — minimizing wait times and maximizing throughput.' },
+  { icon: <BellRing className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Automated Reminders', description: 'WhatsApp, SMS, and app-based reminders sent automatically before appointments. Reduces no-shows by up to 40% with intelligent timing and follow-up nudges.' },
+  { icon: <BarChart3 className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Patient Queue Management', description: 'Real-time digital queue with estimated wait times, token numbers, and automatic status updates. Patients can check their position from their phone.' },
+  { icon: <Megaphone className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Follow-Up Campaigns', description: 'Automated follow-up messages for post-visit care, medication adherence, vaccination due dates, and periodic health checkups — keeping patients engaged between visits.' },
+  { icon: <Phone className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Intelligent Call Handling', description: 'AI handles incoming calls for appointment booking, rescheduling, and basic queries. Complex cases are routed to staff with full context and patient history.' },
+  { icon: <FileText className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Pre-Visit Digital Forms', description: 'Patients fill out medical history, symptoms, and insurance details digitally before arrival. Data flows directly into the EHR, saving 5-10 minutes per visit.' },
 ];
 
 const HOW_IT_WORKS_STEPS = [
@@ -42,7 +43,7 @@ export default function ReceptionistAIPage() {
         title='Your front desk,<br/><em class="not-italic bg-gradient-to-r from-brand-500 to-brand-700 bg-clip-text text-transparent">automated.</em>'
         subtitle="Receptionist AI handles appointment scheduling, patient reminders, queue management, and follow-up campaigns — so your staff can focus on patient care instead of phone calls and paperwork."
         buttons={[{ text: 'Automate Your Front Desk →' }, { text: 'Watch Demo', variant: 'outline' }]}
-        visual={<ProductHeroVisual icon="🤖" name="Receptionist AI" desc="Automated Front Desk" pills={['Scheduling', 'Reminders', 'Queue Mgmt', 'Follow-Ups']} />}
+        visual={<ProductHeroVisual icon={<Bot className="text-white" size={24} strokeWidth={2} />} name="Receptionist AI" desc="Automated Front Desk" pills={['Scheduling', 'Reminders', 'Queue Mgmt', 'Follow-Ups']} />}
       />
 
       {/* Stats */}
@@ -64,7 +65,7 @@ export default function ReceptionistAIPage() {
 
       {/* How It Works */}
       <UseCaseSection
-        icon="🤖"
+        icon={<Bot className="text-white" size={24} strokeWidth={2} />}
         name="Receptionist AI"
         desc="Front Desk Automation"
         category="How It Works"
@@ -79,7 +80,7 @@ export default function ReceptionistAIPage() {
       {/* Automation Intelligence Section */}
       <UseCaseSection
         reverse
-        icon="⚙️"
+        icon={<Settings className="text-white" size={24} strokeWidth={2} />}
         name="Automation Engine"
         desc="Practice Intelligence"
         iconBg="linear-gradient(135deg, #f59e0b, #d97706)"
@@ -101,9 +102,9 @@ export default function ReceptionistAIPage() {
           <ScrollReveal variant="stagger">
             <div className="grid md:grid-cols-3 gap-6">
               {[
-                { icon: '🏠', title: 'Solo Clinics', desc: 'Run your front desk without dedicated staff. Receptionist AI handles bookings, reminders, and walk-in management — letting you focus entirely on patient care.' },
-                { icon: '🏥', title: 'Multi-Doctor Practices', desc: 'Coordinate schedules across multiple doctors, rooms, and appointment types. The AI optimizes slot allocation to balance workload and minimize patient wait times.' },
-                { icon: '🏢', title: 'Hospital OPDs', desc: 'Manage high-volume outpatient departments with digital queue tokens, real-time wait-time displays, and automated patient flow across departments.' },
+                { icon: <Home className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Solo Clinics', desc: 'Run your front desk without dedicated staff. Receptionist AI handles bookings, reminders, and walk-in management — letting you focus entirely on patient care.' },
+                { icon: <Hospital className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Multi-Doctor Practices', desc: 'Coordinate schedules across multiple doctors, rooms, and appointment types. The AI optimizes slot allocation to balance workload and minimize patient wait times.' },
+                { icon: <Building className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Hospital OPDs', desc: 'Manage high-volume outpatient departments with digital queue tokens, real-time wait-time displays, and automated patient flow across departments.' },
               ].map((item, i) => (
                 <div key={i} className="bg-white rounded-2xl p-6 border border-black/5 shadow-sm hover:shadow-md transition-shadow text-center stagger-child">
                   <div className="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center text-2xl mx-auto mb-4">{item.icon}</div>
