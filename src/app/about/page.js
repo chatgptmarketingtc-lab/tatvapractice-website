@@ -124,10 +124,10 @@ export default function AboutPage() {
         subtitle="Four principles that shape every product we build, every team we grow, and every partnership we form."
         columns={4}
         features={[
-          { icon: <Heart className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Patient-First', description: 'Every product decision begins and ends with patient outcomes. Better tools for doctors mean better care for patients.' },
-          { icon: <Brain className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'AI-Native', description: 'AI is not an add-on — it is the foundation. From VoiceRx to smart scheduling, intelligence is woven into every workflow.' },
-          { icon: <MapPin className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'India-Built', description: 'Designed for Indian healthcare realities — multi-language support, ABDM compliance, GST billing, and pricing for every clinic size.' },
-          { icon: <ShieldCheck className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Data-Secure', description: 'Healthcare data is sacred. We maintain end-to-end encryption, role-based access, and full regulatory compliance.' },
+          { icon: <Heart className="text-purple-600" size={22} strokeWidth={1.5} />, title: 'Patient-First', description: 'Every product decision begins and ends with patient outcomes. Better tools for doctors mean better care for patients.' },
+          { icon: <Brain className="text-purple-600" size={22} strokeWidth={1.5} />, title: 'AI-Native', description: 'AI is not an add-on — it is the foundation. From VoiceRx to smart scheduling, intelligence is woven into every workflow.' },
+          { icon: <MapPin className="text-purple-600" size={22} strokeWidth={1.5} />, title: 'India-Built', description: 'Designed for Indian healthcare realities — multi-language support, ABDM compliance, GST billing, and pricing for every clinic size.' },
+          { icon: <ShieldCheck className="text-purple-600" size={22} strokeWidth={1.5} />, title: 'Data-Secure', description: 'Healthcare data is sacred. We maintain end-to-end encryption, role-based access, and full regulatory compliance.' },
         ]}
       />
 

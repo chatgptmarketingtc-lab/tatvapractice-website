@@ -5,12 +5,12 @@ import { Brain, AlertTriangle, FlaskConical, BookOpen, BarChart3, MessageSquare,
 export const metadata = { title: 'Doctor Agent — AI Clinical Assistant | TatvaPractice' };
 
 const CORE_FEATURES = [
-  { icon: <Brain className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Differential Diagnosis Engine', description: 'Enter symptoms, vitals, and history — get a ranked list of differential diagnoses with probability scores, supporting evidence, and recommended workup for each.' },
-  { icon: <AlertTriangle className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Drug Interaction Alerts', description: 'Real-time screening of all prescribed medications against a comprehensive interaction database. Flags contraindications, duplicate therapies, and dosage concerns before you finalize.' },
-  { icon: <FlaskConical className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Lab Report Interpretation', description: 'Upload lab reports and get AI-powered interpretation with clinical context — abnormal values highlighted, trends tracked over time, and differential implications explained.' },
-  { icon: <BookOpen className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Evidence-Based Suggestions', description: 'Treatment suggestions linked to current clinical guidelines, peer-reviewed literature, and Indian medical protocols. Every recommendation comes with a citation trail.' },
-  { icon: <BarChart3 className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Patient Risk Scoring', description: 'Continuous risk stratification using patient history, comorbidities, medications, and lab trends. Proactively identifies patients who need closer monitoring.' },
-  { icon: <MessageSquare className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Clinical Query Assistant', description: 'Ask clinical questions in natural language and get evidence-backed answers instantly. From drug dosages to diagnostic criteria — your medical knowledge base at hand.' },
+  { icon: <Brain className="text-purple-600" size={22} strokeWidth={1.5} />, title: 'Differential Diagnosis Engine', description: 'Enter symptoms, vitals, and history — get a ranked list of differential diagnoses with probability scores, supporting evidence, and recommended workup for each.' },
+  { icon: <AlertTriangle className="text-purple-600" size={22} strokeWidth={1.5} />, title: 'Drug Interaction Alerts', description: 'Real-time screening of all prescribed medications against a comprehensive interaction database. Flags contraindications, duplicate therapies, and dosage concerns before you finalize.' },
+  { icon: <FlaskConical className="text-purple-600" size={22} strokeWidth={1.5} />, title: 'Lab Report Interpretation', description: 'Upload lab reports and get AI-powered interpretation with clinical context — abnormal values highlighted, trends tracked over time, and differential implications explained.' },
+  { icon: <BookOpen className="text-purple-600" size={22} strokeWidth={1.5} />, title: 'Evidence-Based Suggestions', description: 'Treatment suggestions linked to current clinical guidelines, peer-reviewed literature, and Indian medical protocols. Every recommendation comes with a citation trail.' },
+  { icon: <BarChart3 className="text-purple-600" size={22} strokeWidth={1.5} />, title: 'Patient Risk Scoring', description: 'Continuous risk stratification using patient history, comorbidities, medications, and lab trends. Proactively identifies patients who need closer monitoring.' },
+  { icon: <MessageSquare className="text-purple-600" size={22} strokeWidth={1.5} />, title: 'Clinical Query Assistant', description: 'Ask clinical questions in natural language and get evidence-backed answers instantly. From drug dosages to diagnostic criteria — your medical knowledge base at hand.' },
 ];
 
 const HOW_IT_WORKS_STEPS = [
@@ -43,7 +43,7 @@ export default function DoctorAgentPage() {
         title='AI that thinks<br/><em class="not-italic bg-gradient-to-r from-brand-500 to-brand-700 bg-clip-text text-transparent">alongside you.</em>'
         subtitle="Doctor Agent is your AI clinical assistant — providing real-time differential diagnoses, drug interaction alerts, lab interpretation, and evidence-based treatment suggestions right inside your consultation workflow."
         buttons={[{ text: 'Try Doctor Agent Free →' }, { text: 'View Clinical Demo', variant: 'outline' }]}
-        visual={<ProductHeroVisual icon={<Brain className="text-white" size={24} strokeWidth={2} />} name="Doctor Agent" desc="AI Clinical Assistant" pills={['DDx Engine', 'Drug Alerts', 'Lab AI', 'Evidence-Based']} />}
+        visual={<ProductHeroVisual icon={<Brain className="text-white" size={22} strokeWidth={1.5} />} name="Doctor Agent" desc="AI Clinical Assistant" pills={['DDx Engine', 'Drug Alerts', 'Lab AI', 'Evidence-Based']} />}
       />
 
       {/* Stats */}
@@ -65,7 +65,7 @@ export default function DoctorAgentPage() {
 
       {/* How It Works */}
       <UseCaseSection
-        icon={<Brain className="text-white" size={24} strokeWidth={2} />}
+        icon={<Brain className="text-white" size={22} strokeWidth={1.5} />}
         name="Doctor Agent"
         desc="Clinical Assistant"
         category="How It Works"
@@ -80,7 +80,7 @@ export default function DoctorAgentPage() {
       {/* Clinical Intelligence Section */}
       <UseCaseSection
         reverse
-        icon={<Search className="text-white" size={24} strokeWidth={2} />}
+        icon={<Search className="text-white" size={22} strokeWidth={1.5} />}
         name="Knowledge Engine"
         desc="Medical Intelligence"
         iconBg="linear-gradient(135deg, #8b5cf6, #6d28d9)"
@@ -102,12 +102,12 @@ export default function DoctorAgentPage() {
           <ScrollReveal variant="stagger">
             <div className="grid md:grid-cols-3 gap-6">
               {[
-                { icon: <Stethoscope className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Complex Differentials', desc: 'A patient presents with atypical chest pain. Doctor Agent ranks cardiac, GI, musculoskeletal, and anxiety-related causes by probability, suggesting targeted workup for each.' },
-                { icon: <Pill className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Polypharmacy Safety', desc: 'An elderly patient on 8+ medications. Doctor Agent screens every new prescription against existing drugs, flagging interactions the busiest clinician might miss.' },
-                { icon: <FlaskConical className="text-[#6D28D9]" size={24} strokeWidth={2} />, title: 'Lab Trend Analysis', desc: 'HbA1c trending upward over three visits. Doctor Agent highlights the trend, correlates with current medications, and suggests guideline-based escalation options.' },
+                { icon: <Stethoscope className="text-purple-600" size={22} strokeWidth={1.5} />, title: 'Complex Differentials', desc: 'A patient presents with atypical chest pain. Doctor Agent ranks cardiac, GI, musculoskeletal, and anxiety-related causes by probability, suggesting targeted workup for each.' },
+                { icon: <Pill className="text-purple-600" size={22} strokeWidth={1.5} />, title: 'Polypharmacy Safety', desc: 'An elderly patient on 8+ medications. Doctor Agent screens every new prescription against existing drugs, flagging interactions the busiest clinician might miss.' },
+                { icon: <FlaskConical className="text-purple-600" size={22} strokeWidth={1.5} />, title: 'Lab Trend Analysis', desc: 'HbA1c trending upward over three visits. Doctor Agent highlights the trend, correlates with current medications, and suggests guideline-based escalation options.' },
               ].map((item, i) => (
                 <div key={i} className="bg-white rounded-2xl p-6 border border-black/5 shadow-sm hover:shadow-md transition-shadow text-center stagger-child">
-                  <div className="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center text-2xl mx-auto mb-4">{item.icon}</div>
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-100 to-purple-50 flex items-center justify-center text-2xl mx-auto mb-4">{item.icon}</div>
                   <h3 className="text-[15px] font-extrabold text-g-6 mb-2">{item.title}</h3>
                   <p className="text-[13px] text-g-3 leading-relaxed">{item.desc}</p>
                 </div>

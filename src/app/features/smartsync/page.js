@@ -107,7 +107,7 @@ export default function SmartSyncPage() {
                 { icon: <Ambulance className="text-purple-600" size={22} strokeWidth={1.5} />, title: 'Field & Camp Settings', desc: 'Offline-first design ensures full functionality at health camps, rural outreach, and mobile clinics with intermittent connectivity.' },
               ].map((item, i) => (
                 <div key={i} className="bg-white rounded-2xl p-6 border border-black/5 shadow-sm hover:shadow-md transition-shadow text-center stagger-child">
-                  <div className="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center text-2xl mx-auto mb-4">{item.icon}</div>
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-100 to-purple-50 flex items-center justify-center text-2xl mx-auto mb-4">{item.icon}</div>
                   <h3 className="text-[15px] font-extrabold text-g-6 mb-2">{item.title}</h3>
                   <p className="text-[13px] text-g-3 leading-relaxed">{item.desc}</p>
                 </div>

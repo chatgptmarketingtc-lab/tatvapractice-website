@@ -32,7 +32,7 @@ export default function HospitalsPage() {
         buttons={[{ text: 'Contact Sales →' }, { text: 'View Case Studies', variant: 'outline' }]}
         visual={
           <ProductHeroVisual
-            icon={<Landmark className="text-white" size={24} strokeWidth={2} />}
+            icon={<Landmark className="text-white" size={22} strokeWidth={1.5} />}
             name="TatvaPractice Enterprise"
             desc="Hospital Infrastructure · At Scale"
             pills={['Multi-Dept', 'RBAC', 'ABDM', 'Audit Trail']}
@@ -49,32 +49,32 @@ export default function HospitalsPage() {
         columns={3}
         features={[
           {
-            icon: <Building2 className="text-[#6D28D9]" size={24} strokeWidth={2} />,
+            icon: <Building2 className="text-purple-600" size={22} strokeWidth={1.5} />,
             title: 'Multi-Department Management',
             description: 'Deploy across OPD, IPD, pharmacy, lab, radiology, and more with specialty-specific workflows and a unified patient record.',
           },
           {
-            icon: <Lock className="text-[#6D28D9]" size={24} strokeWidth={2} />,
+            icon: <Lock className="text-purple-600" size={22} strokeWidth={1.5} />,
             title: 'Role-Based Access Control',
             description: 'Granular permissions for doctors, nurses, admin, and management. Control who sees what across departments and locations.',
           },
           {
-            icon: <BarChart3 className="text-[#6D28D9]" size={24} strokeWidth={2} />,
+            icon: <BarChart3 className="text-purple-600" size={22} strokeWidth={1.5} />,
             title: 'Centralised Reporting',
             description: 'Real-time dashboards aggregating clinical, operational, and financial data across every department and location in one view.',
           },
           {
-            icon: <Link2 className="text-[#6D28D9]" size={24} strokeWidth={2} />,
+            icon: <Link2 className="text-purple-600" size={22} strokeWidth={1.5} />,
             title: 'ABDM Integration',
             description: 'Fully certified ABDM integration with ABHA ID creation, health record linking, and consent-based data sharing out of the box.',
           },
           {
-            icon: <FileText className="text-[#6D28D9]" size={24} strokeWidth={2} />,
+            icon: <FileText className="text-purple-600" size={22} strokeWidth={1.5} />,
             title: 'Audit Trail & Compliance',
             description: 'Tamper-proof audit logs for every clinical action. Meet NABH, ABDM, and internal governance requirements with zero manual effort.',
           },
           {
-            icon: <Handshake className="text-[#6D28D9]" size={24} strokeWidth={2} />,
+            icon: <Handshake className="text-purple-600" size={22} strokeWidth={1.5} />,
             title: 'Dedicated Support',
             description: 'Named account manager, 24/7 priority support, on-site training, and a dedicated implementation team for every deployment.',
           },
@@ -82,7 +82,7 @@ export default function HospitalsPage() {
       />
 
       <UseCaseSection
-        icon={<Settings className="text-white" size={24} strokeWidth={2} />}
+        icon={<Settings className="text-white" size={22} strokeWidth={1.5} />}
         name="Enterprise Deployment"
         desc="Structured rollout for hospitals"
         category="How We Deploy"

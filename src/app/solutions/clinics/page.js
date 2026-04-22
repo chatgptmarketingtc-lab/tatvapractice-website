@@ -32,7 +32,7 @@ export default function ClinicsPage() {
         buttons={[{ text: 'Start Free Trial →' }, { text: 'Watch Demo', variant: 'outline' }]}
         visual={
           <ProductHeroVisual
-            icon={<Stethoscope className="text-white" size={24} strokeWidth={2} />}
+            icon={<Stethoscope className="text-white" size={22} strokeWidth={1.5} />}
             name="TatvaPractice"
             desc="Clinic Management · Made Simple"
             pills={['Scheduling', 'e-Rx', 'Billing', 'Reports']}
@@ -49,32 +49,32 @@ export default function ClinicsPage() {
         columns={3}
         features={[
           {
-            icon: <CalendarCheck className="text-[#6D28D9]" size={24} strokeWidth={2} />,
+            icon: <CalendarCheck className="text-purple-600" size={22} strokeWidth={1.5} />,
             title: 'Smart Scheduling',
             description: 'Online and walk-in appointment booking with slot management, queue view, and automatic wait-time estimation for patients.',
           },
           {
-            icon: <Pill className="text-[#6D28D9]" size={24} strokeWidth={2} />,
+            icon: <Pill className="text-purple-600" size={22} strokeWidth={1.5} />,
             title: 'AI Prescriptions',
             description: 'Generate structured digital prescriptions in seconds with VoiceRx, drug interaction alerts, and multi-language support.',
           },
           {
-            icon: <Receipt className="text-[#6D28D9]" size={24} strokeWidth={2} />,
+            icon: <Receipt className="text-purple-600" size={22} strokeWidth={1.5} />,
             title: 'Billing & Invoicing',
             description: 'Create GST-compliant invoices, track payments, manage outstanding dues, and generate revenue reports — all in one place.',
           },
           {
-            icon: <ClipboardList className="text-[#6D28D9]" size={24} strokeWidth={2} />,
+            icon: <ClipboardList className="text-purple-600" size={22} strokeWidth={1.5} />,
             title: 'Patient Records',
             description: 'Maintain comprehensive digital health records for every patient with visit history, vitals, lab results, and documents.',
           },
           {
-            icon: <BellRing className="text-[#6D28D9]" size={24} strokeWidth={2} />,
+            icon: <BellRing className="text-purple-600" size={22} strokeWidth={1.5} />,
             title: 'Automated Reminders',
             description: 'Reduce no-shows with WhatsApp and SMS reminders for appointments, follow-ups, and medication refills.',
           },
           {
-            icon: <BarChart3 className="text-[#6D28D9]" size={24} strokeWidth={2} />,
+            icon: <BarChart3 className="text-purple-600" size={22} strokeWidth={1.5} />,
             title: 'Practice Reports',
             description: 'Track patient footfall, revenue trends, and prescription patterns with simple dashboards built for busy clinicians.',
           },
@@ -82,7 +82,7 @@ export default function ClinicsPage() {
       />
 
       <UseCaseSection
-        icon={<Rocket className="text-white" size={24} strokeWidth={2} />}
+        icon={<Rocket className="text-white" size={22} strokeWidth={1.5} />}
         name="Quick Setup"
         desc="Up and running in 15 minutes"
         category="How It Works"
